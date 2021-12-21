@@ -1,0 +1,41 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/12/19 13:18:08 by jaewchoi          #+#    #+#              #
+#    Updated: 2021/12/19 13:18:10 by jaewchoi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libftprintf.a
+
+LIBFT = libft.a
+
+SRC = ./src/test.c
+
+OBJ = $(SRC:.c=.o)
+
+CFLAG = -Wall -Wextra -Werror
+
+all : $(NAME)
+
+clean :
+	@rm -f ./src/*.o
+
+fclean : clean
+	@rm -f $(NAME)
+
+re : fclean all
+
+$(NAME) : $(OBJ)
+	@$(MAKE) -C ./libft bonus
+	@ar -rcs $@ $^ ./libft/$(LIBFT)
+	@$(MAKE) -C ./libft fclean
+
+%.o : %.c
+	@gcc $(CFLAG) -c $^ -o $(^:.c=.o)
+
+.PHONY : all clean fclean re bonus
