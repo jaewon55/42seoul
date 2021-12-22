@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/19 13:18:08 by jaewchoi          #+#    #+#              #
-#    Updated: 2021/12/19 13:18:10 by jaewchoi         ###   ########.fr        #
+#    Updated: 2021/12/22 19:20:07 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,11 @@ CFLAG = -Wall -Wextra -Werror
 all : $(NAME)
 
 clean :
+	@$(MAKE) -C ./libft clean
 	@rm -f ./src/*.o
 
 fclean : clean
+	@$(MAKE) -C ./libft fclean
 	@rm -f $(NAME)
 
 re : fclean all
@@ -33,7 +35,6 @@ re : fclean all
 $(NAME) : $(OBJ)
 	@$(MAKE) -C ./libft bonus
 	@ar -rcs $@ $^ ./libft/$(LIBFT)
-	@$(MAKE) -C ./libft fclean
 
 %.o : %.c
 	@gcc $(CFLAG) -c $^ -o $(^:.c=.o)
