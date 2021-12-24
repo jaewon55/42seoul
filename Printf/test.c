@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <limits.h>
+#include <unistd.h>
 int	main()
 {
-	printf("%d\n", printf("%0-20.3d\n", 123456789));
+	write(1, "test\n", 5);
 	return 0;
 }
