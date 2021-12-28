@@ -15,7 +15,7 @@ static int	get_flag_len(char *start)
 {
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	while (start[i] && !ft_strchr("cspdiuxX%", start[i]))
 		i++;
 	return (i + 1);
@@ -30,11 +30,11 @@ int	ft_printf(const char *format, ...)
 	result = 0;
 	i = 0;
 	va_start(ap, format);
-	while (format[i])
+	while (format[i] && result >= 0)
 	{
 		if (format[i] == '%')
 		{
-			ft_handling_conversion(&format[i], ap, *result);
+			handling_conversion(&format[i], ap, *result);
 			format += get_flag_len(&format[i]);
 			i = 0;
 			continue ;
