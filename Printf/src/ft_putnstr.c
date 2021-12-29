@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_specifier.c                                    :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 21:13:32 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/12/28 21:13:33 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/12/30 01:05:14 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/12/30 01:05:15 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf"
-char	get_specifier(char *format, char *flags)
+#include "libftprintf.h"
+size_t	ft_putnstr(char *str, size_t n)
 {
-	size_t	i;
-
-	i = 1;
-	while (!ft_strchr("cspdiuxX%", format[i]))
-	{
-		format[i]
-	}
+	if (!str || !n)
+		return (0);
+	write(1, str, n);
+	return (n);
 }

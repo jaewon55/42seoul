@@ -34,13 +34,16 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			handling_conversion(&format[i], ap, *result);
+			result += (int)ft_putnstr(format, i);
+			result += handling_conversion(&format[i], ap, *result);
 			format += get_flag_len(&format[i]);
 			i = 0;
 			continue ;
 		}
 		i++;
 	}
+	if (result >= 0)
+		result += (int)ft_putnstr(format, i);
 	va_end(ap);
 	free(temp);
 	return (result);
