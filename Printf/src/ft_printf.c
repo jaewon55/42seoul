@@ -34,8 +34,8 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			result += (int)ft_putnstr(format, i);
-			result += handling_conversion(&format[i], ap, *result);
+			ft_putnstr(format, i, *result);
+			handling_conversion(&format[i], ap, *result);
 			format += get_flag_len(&format[i]);
 			i = 0;
 			continue ;
@@ -43,7 +43,7 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	if (result >= 0)
-		result += (int)ft_putnstr(format, i);
+		ft_putnstr(format, i, *result);
 	va_end(ap);
 	free(temp);
 	return (result);

@@ -11,10 +11,12 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-size_t	ft_putnstr(char *str, size_t n)
+void	ft_putnstr(char *str, size_t n, int *result)
 {
 	if (!str || !n)
-		return (0);
-	write(1, str, n);
-	return (n);
+		return ;
+	if (write(1, str, n) < 0)
+		result = -1;
+	else
+		result += n;
 }
