@@ -4,8 +4,15 @@
 #include <stdarg.h>
 int main()
 {
-	printf("%d\n", printf("%020d\n", 123));
-	printf("%d\n", printf("%10.5i\n", 123));
-	printf("%d\n", printf("%10s\n", "test123456789"));
+	int i = 0;
+	int j = 0;
+	int arr1[5] = {1, 2, 3, 4, 5};
+	int arr2[5] = {0,};
+	while (i < 5)
+		arr2[i++] = arr1[j++];
+	i = 0;
+	while (i < 5)
+		printf("%d\n", arr2[i++]);
+	// printf("%d\n", printf("%20%\n"));
 	return 0;
 }
