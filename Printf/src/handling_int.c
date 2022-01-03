@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static char	*malloc_modifier_result(char *nbr, int modifier)
+static char	*real_print_nbr(char *nbr, int modifier)
 {
 	char	*result;
 	int	len;
@@ -49,7 +49,7 @@ static char	*apply_modifier(char *nbr, int *flags)
 		return (NULL);
 	nbr_len = ft_strlen(nbr);
 	temp = nbr[0];
-	result = malloc_modifier_result(nbr, flags[6]);
+	result = real_print_nbr(nbr, flags[6]);
 	if (!result)
 		return (NULL);
 	i = 0;
