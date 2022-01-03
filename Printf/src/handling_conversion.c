@@ -88,12 +88,17 @@ static char	get_specifier(char *format, int *flags, va_list ap)
 	return (format[i]);
 }
 
-int	handling_conversion(char *format, va_list ap, int *result)
+void	handling_conversion(char *format, va_list ap, int *result, size_t i)
 {
 	char	specifier;
 	int	flags[7];
+	int	temp;
 
-	specifier = get_specifier(format, flags, ap);
-	if (specifier == 's')
-		print_string
+	specifier = get_specifier(&format[i], flags, ap);
+	if (specifier == 'd' || specifier == 'i')
+		temp = handling_int(flags, ap, format, i);
+	if (temp < 0)
+		*result = -1;
+	else
+		*result += temp;
 }

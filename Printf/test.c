@@ -4,6 +4,6 @@
 #include <stdarg.h>
 int main()
 {
-	printf("%d\n", printf("%10.5d\n", 123));
+	printf("%d\n", printf("%010.d\n", 123));
 	return 0;
 }

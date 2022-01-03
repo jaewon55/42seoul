@@ -11,27 +11,33 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static char	*real_print_nbr(char *nbr, int modifier)
+static int	get_len(char *nbr, int nbr_len, int *flags)
+{
+	if (nbr[0] != '-' && nbr_len >= flags[6] && (flags[1] || flags[2]))
+		return (nbr_len + 1);
+	else if (nbr_len > flags[6])
+		return (nbr_len);
+	return (flags[6]);
+}
+
+static char	*malloc_and_fill_nbr(char *nbr, int *flags)
 {
 	char	*result;
 	int	len;
 	int	nbr_len;
 
-	if (!modifier)
+	if (flags[6] <= 0)
 		return (nbr);
-	nbr_len = ft_strlen(nbr)
-	if (nbr_len > modifier)
-		len = nbr_len;
-	else
-		len = modifier;
+	nbr_len = ft_strlen(nbr);
+	len = get_len(nbr, nbr_len, flags);
 	result = (char *)ft_calloc(len + 1, sizeof(char)));
 	if (!result)
 	{
 		free(nbr);
 		return (NULL);
 	}
-	while (nbr_len > 0)
-		result[len--] = nbr[nbr_len--];
+	while (nbr_len > 1)
+		result[--len] = nbr[--nbr_len];
 	if (nbr[0] != '-')
 		result[len] = nbr[nbr_len];
 	free(nbr);
@@ -49,7 +55,7 @@ static char	*apply_modifier(char *nbr, int *flags)
 		return (NULL);
 	nbr_len = ft_strlen(nbr);
 	temp = nbr[0];
-	result = real_print_nbr(nbr, flags[6]);
+	result = malloc_and_fill_nbr(nbr, flags);
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -61,15 +67,22 @@ static char	*apply_modifier(char *nbr, int *flags)
 		result[i++] = ' ';
 	while (i < (flags[6] - nbr_len))
 		result[i++] = '0';
-	return (result);
+	return (get_field(result));
 }
 
-char	*handling_int(char specifier, int *flags, va_list ap)
+int	handling_int(int *flags, va_list ap, char *format, size_t i);
 {
-	char	*write_nbr
+	char	*field;
+	int	result;
 
-	write_nbr = apply_modifier(ft_itoa(va_arg(ap, int)), flags);
-	if (!write_nbr)
-		return (NULL);
-	
+	field = apply_modifier(ft_itoa(va_arg(ap, int)), flags);
+	if (!field)
+		return (-1);
+	result = ft_putnstr(format, i);
+	if (result < 0 || write(1, field, ft_strlen(field)) < 0)
+		result = -1;
+	else
+		result += ft_strlen(field);
+	free(field);
+	return (result);
 }
