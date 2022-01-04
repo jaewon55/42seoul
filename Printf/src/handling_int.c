@@ -30,7 +30,7 @@ static char	*malloc_and_fill_nbr(char *nbr, int *flags)
 		return (nbr);
 	nbr_len = ft_strlen(nbr);
 	len = get_len(nbr, nbr_len, flags);
-	result = (char *)ft_calloc(len + 1, sizeof(char)));
+	result = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!result)
 	{
 		free(nbr);
@@ -49,7 +49,7 @@ static char	*apply_modifier(char *nbr, int *flags)
 	char	*result;
 	int	nbr_len;
 	int	i;
-	char	tmp;
+	char	temp;
 
 	if (!nbr)
 		return (NULL);
@@ -67,10 +67,10 @@ static char	*apply_modifier(char *nbr, int *flags)
 		result[i++] = ' ';
 	while (i < (flags[6] - nbr_len))
 		result[i++] = '0';
-	return (get_field(result));
+	return (get_field(result, flags));
 }
 
-int	handling_int(int *flags, va_list ap, char *format, size_t i);
+int	handling_int(int *flags, va_list ap, const char *format, size_t i)
 {
 	char	*field;
 	int	result;

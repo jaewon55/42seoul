@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static int	get_flag_len(char *start)
+static int	get_flag_len(const char *start)
 {
 	size_t	i;
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			handling_conversion(format, ap, *result, i);
+			handling_conversion(format, ap, &result, i);
 			format += (get_flag_len(&format[i]) + i);
 			i = 0;
 			continue ;
@@ -42,8 +42,7 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	if (result >= 0)
-		ft_putnstr(format, i, *result);
+		result += ft_putnstr(format, i);
 	va_end(ap);
-	free(temp);
 	return (result);
 }

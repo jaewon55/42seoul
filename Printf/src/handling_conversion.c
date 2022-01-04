@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static size_t get_modifier(char *format, int *flags, va_list ap)
+static size_t get_modifier(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
 	int	modifier;
@@ -36,7 +36,7 @@ static size_t get_modifier(char *format, int *flags, va_list ap)
 	return (i);
 }
 
-static size_t get_width(char *format, int *flags, va_list ap)
+static size_t get_width(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
 	int	width;
@@ -61,7 +61,7 @@ static size_t get_width(char *format, int *flags, va_list ap)
 	return (i);
 }
 
-static char	get_specifier(char *format, int *flags, va_list ap)
+static char	get_specifier(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
 
@@ -88,17 +88,17 @@ static char	get_specifier(char *format, int *flags, va_list ap)
 	return (format[i]);
 }
 
-void	handling_conversion(char *format, va_list ap, int *result, size_t i)
+void	handling_conversion(const char *format, va_list ap, int *n, size_t i)
 {
 	char	specifier;
 	int	flags[7];
 	int	temp;
 
 	specifier = get_specifier(&format[i], flags, ap);
-	if (specifier == 'd' || specifier == 'i')
+	// if (specifier == 'd' || specifier == 'i')
 		temp = handling_int(flags, ap, format, i);
 	if (temp < 0)
-		*result = -1;
+		*n = -1;
 	else
-		*result += temp;
+		*n += temp;
 }

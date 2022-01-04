@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf"
+#include "libftprintf.h"
 static void	fill_field(char *str, char *field, int *flags)
 {
 	int	i;
@@ -48,7 +48,6 @@ static char	*malloc_and_fill_field(char *str, int len)
 
 char	*get_field(char *str, int *flags)
 {
-	int	i;
 	int	len;
 	char	*field;
 

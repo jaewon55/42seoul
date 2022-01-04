@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-int	ft_putnstr(char *str, size_t n)
+int	ft_putnstr(const char *str, size_t n)
 {
 	if (!str || !n)
 		return (0);

@@ -14,7 +14,8 @@ NAME = libftprintf.a
 
 LIBFT = libft.a
 
-SRC = ./src/test.c
+SRC = ./src/ft_printf.c ./src/ft_putnstr.c ./src/get_field.c ./src/handling_conversion.c\
+	./src/handling_int.c
 
 OBJ = $(SRC:.c=.o)
 
