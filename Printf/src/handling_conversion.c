@@ -11,35 +11,35 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static size_t get_modifier(const char *format, int *flags, va_list ap)
+static size_t get_precision(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
-	int	modifier;
+	int	precision;
 
 	i = 1;
-	modifier = 0;
+	precision = 0;
 	while (format[i] && !ft_strchr("cspdiuxX%", format[i]))
 	{
 		if (format[i] == '*')
 		{
-			modifier = va_arg(ap, int);
+			precision = va_arg(ap, int);
 			i++;
 			break ;
 		}
-		modifier *= 10;
-		modifier += (format[i] - '0');
+		precision *= 10;
+		precision += (format[i] - '0');
 		i++;
 	}
-	if (!modifier)
-		modifier = -1;
-	flags[6] = modifier;
+	if (!precision)
+		precision = -1;
+	flags[6] = precision;
 	return (i);
 }
 
 static size_t get_width(const char *format, int *flags, va_list ap)
 {
-	size_t	i;
-	int	width;
+	size_t		i;
+	long long	width;
 
 	i = 0;
 	width = 0;
@@ -48,6 +48,8 @@ static size_t get_width(const char *format, int *flags, va_list ap)
 		if (format[i] == '*')
 		{
 			width = va_arg(ap, int);
+			if (width < 0)
+				width *= -1;
 			i++;
 			break;
 		}
@@ -57,7 +59,7 @@ static size_t get_width(const char *format, int *flags, va_list ap)
 	}
 	flags[5] = width;
 	if (format[i] == '.')
-		i += get_modifier(&format[i], flags, ap);
+		i += get_precision(&format[i], flags, ap);
 	return (i);
 }
 
@@ -84,7 +86,7 @@ static char	get_specifier(const char *format, int *flags, va_list ap)
 	if (ft_strchr("*123456789", format[i]))
 		i += get_width(&format[i], flags, ap);
 	else if (format[i] == '.')
-		i += get_modifier(&format[i], flags, ap);
+		i += get_precision(&format[i], flags, ap);
 	return (format[i]);
 }
 

@@ -32,7 +32,7 @@ static void	fill_field(char *str, char *field, int *flags)
 static char	*malloc_and_fill_field(char *str, int len)
 {
 	char	*field;
-	int	i;
+	int		i;
 
 	field = malloc(sizeof(char) * (len + 1));
 	if (!field)
@@ -48,11 +48,16 @@ static char	*malloc_and_fill_field(char *str, int len)
 
 char	*get_field(char *str, int *flags)
 {
-	int	len;
+	int		len;
 	char	*field;
 
 	if (!str)
 		return (NULL);
+	if (flags[5] < 0)
+	{
+		free(str);
+		return (NULL);
+	}
 	len = ft_strlen(str);
 	if (flags[5] <= len)
 		return (str);

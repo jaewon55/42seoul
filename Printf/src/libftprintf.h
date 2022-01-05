@@ -13,14 +13,13 @@
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-# include "./../libft/libft.h"
+# include "../libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
-int	ft_putnstr(const char *str, size_t n);
-int	handling_int(int *flags, va_list ap, const char *format, size_t i);
+int		ft_putnstr(const char *str, size_t n);
+int		handling_int(int *flags, va_list ap, const char *format, size_t i);
 char	*get_field(char *str, int *flags);
-int	main();
 
 #endif

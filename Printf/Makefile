@@ -35,7 +35,9 @@ re : fclean all
 
 $(NAME) : $(OBJ)
 	@$(MAKE) -C ./libft bonus
-	@ar -rcs $@ $^ ./libft/$(LIBFT)
+	@cp ./libft/$(LIBFT) ./$@
+	@ar rcs $@ $^
+	@gcc $@ main.c
 
 %.o : %.c
 	@gcc $(CFLAG) -c $^ -o $(^:.c=.o)

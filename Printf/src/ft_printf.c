@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			handling_conversion(format, ap, &result, i);
-			format += (get_flag_len(&format[i]) + i);
+			format += (get_flag_len(&format[i]) + i + 1);
 			i = 0;
 			continue ;
 		}
