@@ -11,14 +11,14 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-static int	get_flag_len(const char *start)
+static int	f_len(const char *start)
 {
 	size_t	i;
 
 	i = 1;
 	while (start[i] && !ft_strchr("cspdiuxX%", start[i]))
 		i++;
-	return (i);
+	return (sizeof(char) * i);
 }
 
 int	ft_printf(const char *format, ...)
@@ -35,7 +35,7 @@ int	ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			handling_conversion(format, ap, &result, i);
-			format += (get_flag_len(&format[i]) + i + 1);
+			format += (f_len(&format[i]) + (sizeof(char) * i) + sizeof(char));
 			i = 0;
 			continue ;
 		}

@@ -13,7 +13,8 @@
 #include "libftprintf.h"
 static int	get_len(char *nbr, int nbr_len, int *flags)
 {
-	if (nbr[0] != '-' && nbr_len >= flags[6] && (flags[1] || flags[2]))
+	if (nbr[0] != '-' && nbr_len >= flags[PRECISION] \
+	&& (flags[PLUS_FLAG] || flags[SPACE_FLAG]))
 		return (nbr_len + 1);
 	else if (nbr_len > flags[6])
 		return (nbr_len);
@@ -23,8 +24,8 @@ static int	get_len(char *nbr, int nbr_len, int *flags)
 static char	*malloc_and_fill_nbr(char *nbr, int *flags)
 {
 	char	*result;
-	int	len;
-	int	nbr_len;
+	int		len;
+	int		nbr_len;
 
 	if (flags[6] <= 0)
 		return (nbr);
@@ -47,8 +48,8 @@ static char	*malloc_and_fill_nbr(char *nbr, int *flags)
 static char	*apply_modifier(char *nbr, int *flags)
 {
 	char	*result;
-	int	nbr_len;
-	int	i;
+	int		nbr_len;
+	int		i;
 	char	temp;
 
 	if (!nbr)
@@ -67,22 +68,17 @@ static char	*apply_modifier(char *nbr, int *flags)
 		result[i++] = ' ';
 	while (i < (flags[6] - nbr_len))
 		result[i++] = '0';
-	return (get_field(result, flags));
+	return (result);
 }
 
-int	handling_int(int *flags, va_list ap, const char *format, size_t i)
+int	handling_int(const char *format, va_list ap, int *flags)
 {
-	char	*field;
-	int	result;
+	char	*digit;
+	int		result;
 
-	field = apply_modifier(ft_itoa(va_arg(ap, int)), flags);
-	if (!field)
+	digit = apply_modifier(ft_itoa(va_arg(ap, int)), flags);
+	if (!digit)
 		return (-1);
-	result = ft_putnstr(format, i);
-	if (result < 0 || write(1, field, ft_strlen(field)) < 0)
-		result = -1;
-	else
-		result += ft_strlen(field);
-	free(field);
+	free(digit);
 	return (result);
 }
