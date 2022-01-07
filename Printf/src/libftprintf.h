@@ -19,13 +19,15 @@
 # define ZERO_FLAG 4
 # define WIDTH 5
 # define PRECISION 6
+# define DIGIT_MISSING -1
+# define DIGIT_ZERO -2
+# define WRONG_PRECISION -3
 # include "../libft/libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 
 int		ft_printf(const char *format, ...);
 void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
-int		ft_putnstr(const char *str, size_t n);
 int		handling_int(const char *format, int nbr int *flags);
 size_t	get_width(const char *format, int *flags, va_list ap);
 size_t	get_precision(const char *format, int *flags, va_list ap);

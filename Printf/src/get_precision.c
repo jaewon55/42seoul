@@ -17,7 +17,9 @@ static size_t	ft_precision_va_arg(const char *format, int *flags, va_list ap)
 
 	precision = va_arg(ap, int);
 	if (precision < 0 || precision > INT_MAX - 1)
-		flags[PRECISION] = -1;
+		flags[PRECISION] = WRONG_PRECISION;
+	else if (!precision)
+		flags[PRECISION] = DIGIT_ZERO;
 	else
 		flags[PRECISION] = precision;
 	return (1);
@@ -35,7 +37,9 @@ static size_t	ft_precision_iterator(const char *format, int *flags)
 		i++;
 	}
 	if (i = 1)
-		flags[PRECISION] = 1;
+		flags[PRECISION] = DIGIT_MISSING;
+	else if (!flags[PRECISION])
+		flags[PRECISION] = DIGIT_ZERO;
 	return (i);
 }
 

@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnstr.c                                       :+:      :+:    :+:   */
+/*   nbr_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 01:05:14 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/12/30 01:05:15 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/07 16:47:37 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/07 16:47:39 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-int	ft_putnstr(const char *str, size_t n)
+int	nbr_len(ssize_t nbr, int base, int *flags)
 {
-	if (!str || !n)
-		return (0);
-	if (write(1, str, n) < 0)
-		return (-1);
-	else
-		return (n);
+	int	result;
+
+	if (!nbr)
+		return (1);
+	result = 0;
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		result++;
+	}
+	if (base == 16 && flags[POUND_KEY_FLAG])
+		result += 2;
+	while (nbr)
+	{
+		nbr \= base;
+		result++;
+	}
+	return (result);
 }
