@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <stdarg.h>
 static void	write_recursive(ssize_t nbr, int base, int *result, char specifier)
 {
 	char	c;
@@ -42,8 +43,6 @@ int	main()
 {
 	// printf("\nlen : %d\n", printf("% d", 0));
 	// printf("\nlen : %d\n", printf("%.2147483646d", 123));
-	printf("%X%x\n", 123, 123);
-	write_nbr(123, 16, 'X');
-	write_nbr(123, 16, 'x');
+	printf("%zd\n", sizeof(void *));
 	return (0);
 }
