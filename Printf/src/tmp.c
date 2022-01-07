@@ -54,6 +54,28 @@ int	write_blank(char blank, int n)
 	return (result);
 }
 
+static void	ft_nbr_recursive(ssize_t nbr, int base, int *result)
+{
+	char	c;
+
+	if (nbr >= 10)
+		ft_nbr_recursive(nbr /base, base, result);
+	c = '0' + (nbr % base);
+	write(1, &c, 1);
+	(*result)++;
+}
+
+int	write_nbr(ssize_t nbr, int base)
+{
+	int	result;
+
+	result = 0;
+	if (nbr < 0)
+		nbr *= -1;
+	ft_nbr_recursive(nbr, base, &result);
+	return (result);
+}
+
 static int	write_output(int nbr, int nbr_len, int output_len, int *flags)
 {
 	int		result;
@@ -66,7 +88,8 @@ static int	write_output(int nbr, int nbr_len, int output_len, int *flags)
 	else if (flags[SPACE_FLAG])
 		result += write(1, " ", 1);
 	result += write_blank('0', output_len - nbr_len);
-	result += write_nbr(nbr, 10);
+	result += ft_write_nbr(nbr, 10);
+	return (result);
 }
 
 int	handling_int(const char *format, int nbr int *flags)
@@ -74,6 +97,7 @@ int	handling_int(const char *format, int nbr int *flags)
 	size_t	field_len;
 	int		output_len;
 	int		result;
+	char	blank;
 
 	output_len = output_len(nbr, nbr_len(nbr, 10), flags);
 	if (output_len > flags[WIDTH])
@@ -81,7 +105,12 @@ int	handling_int(const char *format, int nbr int *flags)
 	else
 		field_len = flags[WIDTH];
 	result = 0;
-	while (format[result] != '%')
+	while (result >= 0 && format[result] != '%')
 		write(1, format + (sizeof(char) * result++), 1);
-	result += write_
+	if (flags[MINUS_FLAG])
+	{
+		result += write_output()
+		result += write_blank()
+	}
+	else if (flags[ZERO] && flags[])
 }
