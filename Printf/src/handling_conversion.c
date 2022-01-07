@@ -46,13 +46,13 @@ static int	ft_no_optional(const char *format, char spe, va_list ap)
 static int	ft_optional(const char *format, char spe, va_list ap, int *flags)
 {
 	if (spe == 'u' || spe == 'x' || spe == 'X')
-		return (handling_uint(format, spe, av_arg(nbr), flags));
+		return (handling_uint(format, spe, av_arg(ap, int), flags));
 	else if (spe == 'd' || spe == 'i')
-		return (handling_int(format, va_arg(nbr), flags));
+		return (handling_int(format, va_arg(ap, int), flags));
 	else if (spe == 'c' || spe == '%')
-		return (handling_char());
+		return (handling_char(format, av_arg(ap, int)));
 	else if (spe == 'p')
-		return (handling_ptr());
+		return (handling_ptr(format, av_art(ap, )));
 	else
 		return (handling_str());
 }
