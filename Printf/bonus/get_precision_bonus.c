@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_precision.c                                    :+:      :+:    :+:   */
+/*   get_precision_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 13:26:04 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/06 13:26:05 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 19:31:44 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:31:48 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 static size_t	ft_precision_va_arg(const char *format, int *flags, va_list ap)
 {
 	int	precision;

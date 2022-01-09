@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nbr_len.c                                          :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 16:47:37 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/07 16:47:39 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/12/19 15:51:15 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/12/24 14:10:57 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-int	nbr_len(ssize_t nbr, int base, int *flags)
-{
-	int	result;
+#ifndef LIBFTPRINTF_H
+# include "../libft/libft.h"
+# include <stdarg.h>
+# include <stdio.h>
 
-	if (!nbr)
-		return (1);
-	result = 0;
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		result++;
-	}
-	if (base == 16 && flags[POUND_KEY_FLAG])
-		result += 2;
-	while (nbr)
-	{
-		nbr \= base;
-		result++;
-	}
-	return (result);
-}
+int		ft_printf(const char *format, ...);
+void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
+int		nbr_len(ssize_t nbr, char spe, int *flags);
+int		write_char(char c);
+int		write_nbr(ssize_t nbr, int base, char specifier);
+int		write_str(char *str);
+
+#endif

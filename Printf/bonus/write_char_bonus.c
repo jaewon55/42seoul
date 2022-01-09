@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_blank_bonus.c                                :+:      :+:    :+:   */
+/*   write_char_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 16:48:07 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/07 16:48:08 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 19:33:24 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:33:36 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-int	write_blank(char blank, int n)
+#include "libftprintf_bonus.h"
+int	write_char(char c)
 {
-	int	result;
-	int	temp;
-
-	result = 0;
-	while (result > -1 && n > 0)
-	{
-		temp = write(1, &blank, 1);
-		if (temp < 0)
-			return (-1);
-		n--;
-		result++;
-	}
-	return (result);
+	return (write(1, &c, 1));
 }

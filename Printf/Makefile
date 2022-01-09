@@ -14,10 +14,16 @@ NAME = libftprintf.a
 
 LIBFT = libft.a
 
-SRC = ./src/ft_printf.c ./src/ft_putnstr.c ./src/get_field.c ./src/handling_conversion.c\
-	./src/handling_int.c
+SRC = ./mandatory/ft_printf.c ./mandatory/handling_conversion.c\
+	  ./mandatory/write_char.c ./mandatory/write_nbr.c ./mandatory/write_str.c
 
-OBJ = $(SRC:.c=.o)
+BSRC
+
+ifeq ($(WITH_BONUS), true)
+	OBJ = $(BSRC:.c=.o)
+else
+	OBJ = $(SRC:.c=.o)
+endif
 
 CFLAG = -Wall -Wextra -Werror
 
@@ -25,7 +31,7 @@ all : $(NAME)
 
 clean :
 	@$(MAKE) -C ./libft clean
-	@rm -f ./src/*.o
+	@rm -f $(OBJ)
 
 fclean : clean
 	@$(MAKE) -C ./libft fclean
@@ -33,11 +39,13 @@ fclean : clean
 
 re : fclean all
 
+bonus :
+	@make WITH_BONUS=true all
+
 $(NAME) : $(OBJ)
 	@$(MAKE) -C ./libft bonus
 	@cp ./libft/$(LIBFT) ./$@
 	@ar rcs $@ $^
-	@gcc $@ main.c
 
 %.o : %.c
 	@gcc $(CFLAG) -c $^ -o $(^:.c=.o)

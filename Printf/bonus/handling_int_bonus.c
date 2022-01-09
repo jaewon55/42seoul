@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handling_int_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 21:35:09 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/07 17:33:43 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 19:32:28 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:32:33 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 static int	output_len(int nbr, int nbr_len, int *flags)
 {
 	if (nbr >= 0 && nbr_len >= flags[PRECISION] \
@@ -21,13 +21,11 @@ static int	output_len(int nbr, int nbr_len, int *flags)
 	return (flags[PRECISION]);
 }
 
-static int	write_output(int nbr, int nbr_len, int *flags)
+static int	write_output(int nbr, int nbr_len, int output_len, int *flags)
 {
 	int		result;
-	int		output_len;
 	int		temp;
 
-	output_len = output_len(nbr, nbr_len(nbr, 10), flags)
 	temp = 0;
 	if (nbr < 0)
 		temp = write(1, "-", 1);
@@ -42,7 +40,7 @@ static int	write_output(int nbr, int nbr_len, int *flags)
 	if (temp < 0)
 		return (-1);
 	result += temp;
-	temp = ft_write_nbr(nbr, 10, 'd');
+	temp = write_nbr(nbr, 10, 'd');
 	if (temp < 0)
 		return (-1);
 	return (result + temp);
@@ -53,22 +51,20 @@ static int	write_field(size_t field_len, int output_len, int nbr, int *flags)
 	int	result;
 	int	temp;
 
-	temp = 0;
 	if (flags[MINUS_FLAG])
 	{
-		temp = write_output(nbr, nbr_len(nbr, 10), flags);
+		temp = write_output(nbr, nbr_len(nbr, 'd', flags), output_len, flags);
 		result = write_blank(' ', field_len - output_len);
-		
 	}
 	else if (flags[ZERO] && !flags[PRECISION])
 	{
 		temp = write_blank('0', field_len - output_len);
-		result = write_output(nbr, nbr_len(nbr, 10), flags);
+		result = write_output(nbr, nbr_len(nbr, 'd', flags), output_len, flags);
 	}
 	else
 	{
 		temp = write_blank(' ', field_len - output_len);
-		result = write_output(nbr, nbr_len(nbr, 10), flags);
+		result = write_output(nbr, nbr_len(nbr, 'd', flags), output_len, flags);
 	}
 	if (temp < 0 || result < 0)
 		return (-1);
@@ -82,7 +78,7 @@ int	handling_int(const char *format, int nbr int *flags)
 	int		output_len;
 	int		temp;
 
-	output_len = output_len(nbr, nbr_len(nbr, 10), flags);
+	output_len = output_len(nbr, nbr_len(nbr, 'd', flags), flags);
 	if (output_len > flags[WIDTH])
 		field_len = output_len;
 	else

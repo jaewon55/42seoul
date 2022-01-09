@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   libftprintf_bonus.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 15:51:15 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/12/24 14:10:57 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 19:05:52 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:05:54 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef LIBFTPRINTF_BONUS_H
+# define LIBFTPRINTF_BONUS_H
 # define MINUS_FLAG 0
 # define PLUS_FLAG 1
 # define SPACE_FLAG 2
@@ -27,9 +27,16 @@
 # include <stdio.h>
 
 int		ft_printf(const char *format, ...);
-void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
-int		handling_int(const char *format, int nbr int *flags);
+int		check_error(int *flags);
 size_t	get_width(const char *format, int *flags, va_list ap);
 size_t	get_precision(const char *format, int *flags, va_list ap);
+void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
+int		handling_int(const char *format, int nbr int *flags);
+int		handling_uint(const char *format, char spe, unsigned int n, int *flgas);
+int		nbr_len(ssize_t nbr, char spe, int *flags);
+int		write_blank(char blank, int n);
+int		write_char(char c);
+int		write_nbr(ssize_t nbr, int base, char specifier);
+int		write_str(char *str);
 
 #endif

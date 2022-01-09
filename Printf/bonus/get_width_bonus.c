@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_width.c                                        :+:      :+:    :+:   */
+/*   get_width_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 13:25:42 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/06 13:25:43 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 19:32:07 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:32:10 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf_bonus.h"
 static size_t	ft_width_va_arg(const char *format, int *flags, va_list ap)
 {
 	long long	width;
