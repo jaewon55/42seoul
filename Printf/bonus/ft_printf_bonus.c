@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 19:30:56 by jaewchoi          #+#    #+#             */
 /*   Updated: 2022/01/09 19:31:23 by jaewchoi         ###   ########.fr       */
@@ -42,7 +42,7 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	if (result >= 0)
-		result += ft_putnstr(format, i);
+		ft_putnstr(format, i, &result);
 	va_end(ap);
 	return (result);
 }

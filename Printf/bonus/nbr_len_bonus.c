@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
-int	nbr_len(ssize_t nbr, char spe, int *flags)
+int	nbr_len(ssize_t nbr, char spe)
 {
-	int	result;
-	int	base;
+	int		result;
+	int		base;
 
-	if (spe == 'x' || 'X')
+	if (spe == 'x' || spe == 'X' || spe == 'p')
 		base = 16;
 	else
 		base = 10;
@@ -30,7 +30,7 @@ int	nbr_len(ssize_t nbr, char spe, int *flags)
 	}
 	while (nbr)
 	{
-		nbr \= base;
+		nbr /= base;
 		result++;
 	}
 	return (result);

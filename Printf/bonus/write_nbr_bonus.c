@@ -36,10 +36,15 @@ static void	write_recursive(ssize_t nbr, int base, int *result, char specifier)
 		(*result)++;
 }
 
-int	write_nbr(ssize_t nbr, int base, char specifier)
+int	write_nbr(ssize_t nbr, char specifier)
 {
 	int	result;
+	int	base;
 
+	if (specifier == 'x' || specifier == 'X' || specifier == 'p')
+		base = 16;
+	else
+		base = 10;
 	result = 0;
 	if (nbr < 0)
 		nbr *= -1;

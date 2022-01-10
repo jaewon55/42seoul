@@ -1,10 +1,12 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <limits.h>
-#include <stdarg.h>
+
 int	main()
 {
-	printf("\nlen : %d\n", printf("%03.20%"));
-	return (0);
+	printf("%ld\n", LONG_MAX);
+	printf("%lld\n", LLONG_MAX);
+	printf("%lu\n", ULONG_MAX);
+	printf("%lu\n", (ssize_t)ULONG_MAX);
+	printf("%lu\n", (size_t)ULONG_MAX);
+	return 0;
 }

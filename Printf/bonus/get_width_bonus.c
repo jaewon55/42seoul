@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
-static size_t	ft_width_va_arg(const char *format, int *flags, va_list ap)
+static size_t	ft_width_va_arg(int *flags, va_list ap)
 {
 	long long	width;
 
@@ -45,7 +45,7 @@ size_t get_width(const char *format, int *flags, va_list ap)
 	size_t	i;
 
 	if (format[0] == '*')
-		i = ft_width_va_arg(format, flags, ap);
+		i = ft_width_va_arg(flags, ap);
 	else
 		i = ft_width_iterator(format, flags);
 	if (format[i] == '.')

@@ -15,14 +15,26 @@ NAME = libftprintf.a
 LIBFT = libft.a
 
 SRC = ./mandatory/ft_printf.c ./mandatory/handling_conversion.c\
-	  ./mandatory/write_char.c ./mandatory/write_nbr.c ./mandatory/write_str.c
+	  ./mandatory/write_char.c ./mandatory/write_nbr.c ./mandatory/write_str.c\
+	  ./mandatory/ft_putnstr.c
 
-BSRC
+OBJ = $(SRC:.c=.o)
+
+BSRC = ./bonus/ft_printf_bonus.c ./bonus/check_error_bonus.c\
+	   ./bonus/get_precision_bonus.c ./bonus/get_width_bonus.c\
+	   ./bonus/handling_conversion_bonus.c ./bonus/handling_char_bonus.c\
+	   ./bonus/handling_int_bonus.c ./bonus/handling_uint_bonus.c\
+	   ./bonus/handling_ptr_bonus.c ./bonus/handling_str_bonus.c\
+	   ./bonus/nbr_len_bonus.c	./bonus/write_blank_bonus.c\
+	   ./bonus/write_char_bonus.c ./bonus/write_nbr_bonus.c\
+	   ./bonus/write_str_bonus.c ./bonus/ft_putnstr_bonus.c
+
+BOBJ = $(BSRC:.c=.o)
 
 ifeq ($(WITH_BONUS), true)
-	OBJ = $(BSRC:.c=.o)
+	OBJECT = $(BOBJ)
 else
-	OBJ = $(SRC:.c=.o)
+	OBJECT = $(OBJ)
 endif
 
 CFLAG = -Wall -Wextra -Werror
@@ -31,7 +43,7 @@ all : $(NAME)
 
 clean :
 	@$(MAKE) -C ./libft clean
-	@rm -f $(OBJ)
+	@rm -f $(OBJ) $(BOBJ)
 
 fclean : clean
 	@$(MAKE) -C ./libft fclean
@@ -42,7 +54,7 @@ re : fclean all
 bonus :
 	@make WITH_BONUS=true all
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJECT)
 	@$(MAKE) -C ./libft bonus
 	@cp ./libft/$(LIBFT) ./$@
 	@ar rcs $@ $^

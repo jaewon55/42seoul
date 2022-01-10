@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
-static char	*get_specifier(const char *format, int *flags, va_list ap)
+static const char	*get_specifier(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
 
@@ -43,19 +43,19 @@ static int	ft_no_optional(char spe, va_list ap)
 	int	temp;
 
 	if (spe == 'd' || spe == 'i' || spe == 'u')
-		return (write_nbr(va_arg(ap, int), 10, spe));
-	else if (spe == 'x' || spe 'X')
-		return (write_nbr(va_arg(ap, int), 16, spe));
+		return (write_nbr(va_arg(ap, int), spe));
+	else if (spe == 'x' || spe == 'X')
+		return (write_nbr(va_arg(ap, int), spe));
 	else if (spe == 'c')
 		return (write_char(va_arg(ap, int)));
 	else if (spe == 's')
-		return (write_char(va_arg(ap, char *)));
+		return (write_str(va_arg(ap, char *)));
 	else if (spe == '%')
 		return (write_char('%'));
 	temp = write(1, "0x", 2);
 	if (temp < 0)
 		return (temp);
-	temp = write_nbr((ssize_t)va_arg(ap, void *), 16, spe);
+	temp = write_nbr((ssize_t)va_arg(ap, void *), spe);
 	if (temp < 0)
 		return (temp);
 	return (temp + 2);
@@ -63,12 +63,12 @@ static int	ft_no_optional(char spe, va_list ap)
 
 static int	ft_optional(const char *format, char spe, va_list ap, int *flags)
 {
-	if (check_error(spe, flags) < 0)
+	if (check_error(flags) < 0)
 		return (-1);
 	else if (spe == 'u' || spe == 'x' || spe == 'X')
 		return (handling_uint(format, spe, va_arg(ap, int), flags));
 	else if (spe == 'd' || spe == 'i')
-		return (handling_int(format, spe, va_arg(ap, int), flags));
+		return (handling_int(format, va_arg(ap, int), flags));
 	else if (spe == 'c' || spe == '%')
 		return (handling_char(format, spe, ap, flags));
 	else if (spe == 'p')
@@ -78,10 +78,10 @@ static int	ft_optional(const char *format, char spe, va_list ap, int *flags)
 
 void	handling_conversion(const char *format, va_list ap, int *n, size_t i)
 {
-	char	*specifier;
-	int		flags[7];
-	int		temp1;
-	int		temp2;
+	const char	*specifier;
+	int			flags[7];
+	int			temp1;
+	int			temp2;
 
 	specifier = get_specifier(&format[i], flags, ap);
 	temp1 = 0;
@@ -95,7 +95,7 @@ void	handling_conversion(const char *format, va_list ap, int *n, size_t i)
 			*n = -1;
 			return ;
 		}
-		temp1 = ft_no_optional(format, *specifier, ap);
+		temp1 = ft_no_optional(*specifier, ap);
 	}
 	else
 		temp1 = ft_optional(format, *specifier, ap, flags);

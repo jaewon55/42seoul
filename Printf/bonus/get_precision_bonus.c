@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
-static size_t	ft_precision_va_arg(const char *format, int *flags, va_list ap)
+static size_t	ft_precision_va_arg(int *flags, va_list ap)
 {
 	int	precision;
 
@@ -36,7 +36,7 @@ static size_t	ft_precision_iterator(const char *format, int *flags)
 		flags[PRECISION] += (format[i] - '0');
 		i++;
 	}
-	if (i = 1)
+	if (i == 1)
 		flags[PRECISION] = DIGIT_MISSING;
 	else if (!flags[PRECISION])
 		flags[PRECISION] = DIGIT_ZERO;
@@ -49,7 +49,7 @@ size_t get_precision(const char *format, int *flags, va_list ap)
 
 	i = 1;
 	if (format[i] == '*')
-		i += ft_precision_va_arg(format, flags, ap);
+		i += ft_precision_va_arg(flags, ap);
 	else
 		i += ft_precision_iterator(format, flags);
 	return (i);

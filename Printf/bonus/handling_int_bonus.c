@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf_bonus.h"
-static int	output_len(int nbr, int nbr_len, int *flags)
+static int	ft_output_len(int nbr, int nbr_len, int *flags)
 {
 	if (nbr >= 0 && nbr_len >= flags[PRECISION] \
 	&& (flags[PLUS_FLAG] || flags[SPACE_FLAG]))
@@ -40,7 +40,7 @@ static int	write_output(int nbr, int nbr_len, int output_len, int *flags)
 	if (temp < 0)
 		return (-1);
 	result += temp;
-	temp = write_nbr(nbr, 10, 'd');
+	temp = write_nbr(nbr, 'd');
 	if (temp < 0)
 		return (-1);
 	return (result + temp);
@@ -53,32 +53,32 @@ static int	write_field(size_t field_len, int output_len, int nbr, int *flags)
 
 	if (flags[MINUS_FLAG])
 	{
-		temp = write_output(nbr, nbr_len(nbr, 'd', flags), output_len, flags);
+		temp = write_output(nbr, nbr_len(nbr, 'd'), output_len, flags);
 		result = write_blank(' ', field_len - output_len);
 	}
-	else if (flags[ZERO] && !flags[PRECISION])
+	else if (flags[ZERO_FLAG] && !flags[PRECISION])
 	{
 		temp = write_blank('0', field_len - output_len);
-		result = write_output(nbr, nbr_len(nbr, 'd', flags), output_len, flags);
+		result = write_output(nbr, nbr_len(nbr, 'd'), output_len, flags);
 	}
 	else
 	{
 		temp = write_blank(' ', field_len - output_len);
-		result = write_output(nbr, nbr_len(nbr, 'd', flags), output_len, flags);
+		result = write_output(nbr, nbr_len(nbr, 'd'), output_len, flags);
 	}
 	if (temp < 0 || result < 0)
 		return (-1);
 	return (result + temp);
 }
 
-int	handling_int(const char *format, int nbr int *flags)
+int	handling_int(const char *format, int nbr, int *flags)
 {
 	size_t	field_len;
 	int		result;
 	int		output_len;
 	int		temp;
 
-	output_len = output_len(nbr, nbr_len(nbr, 'd', flags), flags);
+	output_len = ft_output_len(nbr, nbr_len(nbr, 'd'), flags);
 	if (output_len > flags[WIDTH])
 		field_len = output_len;
 	else

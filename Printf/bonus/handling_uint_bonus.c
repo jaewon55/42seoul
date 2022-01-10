@@ -11,35 +11,47 @@
 /* ************************************************************************** */
 
 #include  "libftprintf_bonus.h"
-static int	output_len(int nbr_len, int *flgas)
+static int	ft_output_len(int nbr_len, int *flags)
 {
+	int	result;
+
+	result = 0;
 	if (flags[POUND_KEY_FLAG])
-		nbr_len += 2;
-	if (nbr_len >= flgas[PRECISION])
-		return (nbr_len);
-	return (flgas[PRECISION]);
+		result = 2;
+	if (nbr_len >= flags[PRECISION])
+		result += nbr_len;
+	else
+		result += flags[PRECISION];
+	return (result);
 }
 
-static int	write_output(unsigned int nbr, int nbr_len, char spe, int *flags)
+static int	check_pound_key_flag(char spe, int *flags)
+{
+	int	result;
+
+	if (!flags[POUND_KEY_FLAG])
+		return (0);
+	result = write_char('0');
+	result += write_char(spe);
+	if (result != 2)
+		return (-1);
+	return (result);
+}
+
+static int	write_output(int output, unsigned int nbr, char spe, int *flags)
 {
 	int		result;
 	int		temp;
 
-	result = 0;
 	temp = 0;
-	if (flgas[POUND_KEY_FLAG])
-	{
-		temp = write_char('0');
-		result = write_char(spe);
-	}
-	if (temp < 0 || result < 0)
+	result = check_pound_key_flag(spe, flags);
+	if (result < 0)
 		return (-1);
-	result += temp;
-	temp = write_blank('0', flags[PRECISION] - nbr_len);
+	temp = write_blank('0',  output - nbr_len(nbr, spe) - result);
 	if (temp < 0)
 		return (-1);
 	result += temp;
-	temp = write_nbr(nbr, 16, spe);
+	temp = write_nbr(nbr, spe);
 	if (temp < 0)
 		return (-1);
 	return (result + temp);
@@ -49,45 +61,42 @@ static int	write_field(size_t field_len, int nbr, char spe, int *flags)
 {
 	int	result;
 	int	temp;
-
-	temp = 0;
+	int	output_len;
+	
+	output_len = ft_output_len(nbr_len(nbr, spe), flags);
 	if (flags[MINUS_FLAG])
 	{
-		temp = write_output(nbr, nbr_len(nbr, spe, flags), spe, flags);
+		temp = write_output(output_len, nbr, spe, flags);
 		result = write_blank(' ', field_len - output_len);
 	}
-	else if (flags[ZERO] && !flags[PRECISION])
+	else if (flags[ZERO_FLAG] && !flags[PRECISION])
 	{
-		if (flags[POUND_KEY_FLAG])
-			flags[PRECISION] = field_len - 2;
-		else
-			flags[PRECISION] = field_len;
-		result = write_output(nbr, nbr_len(nbr, spe, flags), spe, flags);
+		temp = check_pound_key_flag(spe, flags);
+		result = write_blank('0', field_len - nbr_len(nbr, spe) - temp);
+		temp += write_nbr(nbr, spe);
 	}
 	else
 	{
 		temp = write_blank(' ', field_len - output_len);
-		result = write_output(nbr, nbr_len(nbr, spe, flags), spe, flags);
+		result = write_output(output_len, nbr, spe, flags);
 	}
-	if (temp < 0 || result < 0)
-		return (-1);
 	return (result + temp);
 }
 
-int	handling_uint(const char *format, char spe, unsigned int n, int *flgas)
+int	handling_uint(const char *format, char spe, unsigned int n, int *flags)
 {
-	size_t	field_len;
+	int		field_len;
 	int		output_len;
 	int		result;
 	int		temp;
 
 	if (!n || spe == 'u')
 		flags[POUND_KEY_FLAG] = 0;
-	output_len = output_len(nbr_len(n, spe, flgas), flgas);
-	if (output_len > flgas[WIDTH])
+	output_len = ft_output_len(nbr_len(n, spe), flags);
+	if (output_len > flags[WIDTH])
 		field_len = output_len;
 	else
-		field_len = flgas[WIDTH];
+		field_len = flags[WIDTH];
 	temp = 0;
 	result = 0;
 	while (temp >= 0 && format[result] != '%')
@@ -95,7 +104,7 @@ int	handling_uint(const char *format, char spe, unsigned int n, int *flgas)
 	if (temp < 0)
 		return (-1);
 	temp = write_field(field_len, n, spe, flags);
-	if (temp < 0)
+	if (field_len != temp)
 		return (-1);
 	return (result + temp);
 }

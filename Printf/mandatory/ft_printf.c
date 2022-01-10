@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			handling_conversion(format, ap, &result, i);
+			handling_conversion(format, ap, &result);
 			format += (f_len(&format[i]) + (sizeof(char) * i) + sizeof(char));
 			i = 0;
 			continue ;
@@ -42,7 +42,7 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	if (result >= 0)
-		result += ft_putnstr(format, i);
+		ft_putnstr(format, i, &result);
 	va_end(ap);
 	return (result);
 }

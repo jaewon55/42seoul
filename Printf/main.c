@@ -1,8 +1,10 @@
-#include "./src/libftprintf.h"
+#include "stdio.h"
+#include "mandatory/libftprintf.h"
+#include "limits.h"
+
 int	main()
 {
-	int temp = INT_MAX;
-	printf("\n%d\n", printf("123%*d", 4096, 123));
-	printf("\n%d\n", ft_printf("123%*d", 4096, 123));
+	printf("\n%d\n", printf(" %p %p", (void *)-1, (void *)ULONG_MAX));
+	printf("\n%d\n", ft_printf(" %p %p", (void *)-1, (void *)ULONG_MAX));
 	return 0;
 }

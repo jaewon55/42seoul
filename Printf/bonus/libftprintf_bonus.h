@@ -28,15 +28,19 @@
 
 int		ft_printf(const char *format, ...);
 int		check_error(int *flags);
+void	ft_putnstr(const char *format, size_t i, int *result);
 size_t	get_width(const char *format, int *flags, va_list ap);
 size_t	get_precision(const char *format, int *flags, va_list ap);
 void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
-int		handling_int(const char *format, int nbr int *flags);
+int		handling_int(const char *format, int nbr, int *flags);
 int		handling_uint(const char *format, char spe, unsigned int n, int *flgas);
-int		nbr_len(ssize_t nbr, char spe, int *flags);
+int		handling_char(const char *format, char spe, va_list ap, int *flags);
+int		handling_ptr(const char *format, ssize_t ptr, int *flags);
+int		handling_str(const char *format, char *str, int *flags);
+int		nbr_len(ssize_t nbr, char spe);
 int		write_blank(char blank, int n);
 int		write_char(char c);
-int		write_nbr(ssize_t nbr, int base, char specifier);
+int		write_nbr(ssize_t nbr, char specifier);
 int		write_str(char *str);
 
 #endif

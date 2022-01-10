@@ -16,10 +16,11 @@
 # include <stdio.h>
 
 int		ft_printf(const char *format, ...);
-void	handling_conversion(const char *format, va_list ap, int *n, size_t i);
+void	ft_putnstr(const char *format, size_t i, int *result);
+void	handling_conversion(const char *format, va_list ap, int *n);
 int		nbr_len(ssize_t nbr, char spe, int *flags);
 int		write_char(char c);
-int		write_nbr(ssize_t nbr, int base, char specifier);
+int		write_nbr(ssize_t nbr, int base, char spe);
 int		write_str(char *str);
 
 #endif
