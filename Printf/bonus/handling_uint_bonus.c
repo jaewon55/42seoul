@@ -6,11 +6,11 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 15:15:15 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/09 19:32:44 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:08:29 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 static int	ft_output_len(int nbr_len, int *flags)
 {
 	int	result;
@@ -47,23 +47,25 @@ static int	write_output(int output, unsigned int nbr, char spe, int *flags)
 	result = check_pound_key_flag(spe, flags);
 	if (result < 0)
 		return (-1);
-	temp = write_blank('0',  output - nbr_len(nbr, spe) - result);
+	temp = write_blank('0', output - nbr_len(nbr, spe, flags) - result);
 	if (temp < 0)
 		return (-1);
 	result += temp;
-	temp = write_nbr(nbr, spe);
+	temp = 0;
+	if (output)
+		temp = write_nbr(nbr, spe);
 	if (temp < 0)
 		return (-1);
 	return (result + temp);
 }
 
-static int	write_field(size_t field_len, int nbr, char spe, int *flags)
+static int	write_field(size_t field_len, size_t nbr, char spe, int *flags)
 {
 	int	result;
 	int	temp;
 	int	output_len;
-	
-	output_len = ft_output_len(nbr_len(nbr, spe), flags);
+
+	output_len = ft_output_len(nbr_len(nbr, spe, flags), flags);
 	if (flags[MINUS_FLAG])
 	{
 		temp = write_output(output_len, nbr, spe, flags);
@@ -72,7 +74,7 @@ static int	write_field(size_t field_len, int nbr, char spe, int *flags)
 	else if (flags[ZERO_FLAG] && !flags[PRECISION])
 	{
 		temp = check_pound_key_flag(spe, flags);
-		result = write_blank('0', field_len - nbr_len(nbr, spe) - temp);
+		result = write_blank('0', field_len - nbr_len(nbr, spe, flags) - temp);
 		temp += write_nbr(nbr, spe);
 	}
 	else
@@ -92,7 +94,7 @@ int	handling_uint(const char *format, char spe, unsigned int n, int *flags)
 
 	if (!n || spe == 'u')
 		flags[POUND_KEY_FLAG] = 0;
-	output_len = ft_output_len(nbr_len(n, spe), flags);
+	output_len = ft_output_len(nbr_len(n, spe, flags), flags);
 	if (output_len > flags[WIDTH])
 		field_len = output_len;
 	else

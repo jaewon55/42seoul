@@ -10,27 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
-int	nbr_len(ssize_t nbr, char spe)
+#include "ft_printf_bonus.h"
+int	nbr_len(ssize_t nbr, char spe, int *flags)
 {
-	int		result;
-	int		base;
+	int				result;
+	int				base;
+	unsigned long	temp;
 
+	if (flags[PRECISION] < 0 && nbr == 0)
+		return (0);
+	else if (!nbr)
+		return (1);
 	if (spe == 'x' || spe == 'X' || spe == 'p')
 		base = 16;
 	else
 		base = 10;
-	if (!nbr)
-		return (1);
 	result = 0;
-	if (nbr < 0)
-	{
+	if ((spe == 'i' || spe == 'd') && nbr < 0)
 		nbr *= -1;
-		result++;
-	}
-	while (nbr)
+	temp = nbr;
+	while (temp)
 	{
-		nbr /= base;
+		temp /= base;
 		result++;
 	}
 	return (result);

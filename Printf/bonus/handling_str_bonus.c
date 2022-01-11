@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 static int	ft_output_len(int str_len, int *flags)
 {
-	if (!flags[PRECISION])
+	if (!flags[PRECISION] || !str_len)
 		return (str_len);
 	else if (flags[PRECISION] < 0)
 		return (0);
-	else if (flags[PRECISION] > str_len)
-		return (flags[PRECISION]);
-	return (str_len);
+	else if (flags[PRECISION] >= str_len)
+		return (str_len);
+	return (flags[PRECISION]);
 }
 
 static int	write_output(char *str, size_t output_len)
@@ -28,7 +28,7 @@ static int	write_output(char *str, size_t output_len)
 	int		temp;
 
 	i = 0;
-	while (i < output_len)
+	while (str[i] && i < output_len)
 	{
 		temp = write_char(str[i]);
 		if (temp < 0)

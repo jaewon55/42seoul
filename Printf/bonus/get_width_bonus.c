@@ -6,11 +6,11 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 19:32:07 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/09 19:32:10 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:07:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 static size_t	ft_width_va_arg(int *flags, va_list ap)
 {
 	long long	width;
@@ -40,7 +40,7 @@ static size_t	ft_width_iterator(const char *format, int *flags)
 	return (i);
 }
 
-size_t get_width(const char *format, int *flags, va_list ap)
+size_t	get_width(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
 

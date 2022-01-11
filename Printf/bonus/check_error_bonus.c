@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 int	check_error(int *flags)
 {
 	if (flags[PRECISION] == WRONG_PRECISION || flags[WIDTH] < 0)

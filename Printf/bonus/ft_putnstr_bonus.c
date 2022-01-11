@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 void	ft_putnstr(const char *format, size_t i, int *result)
 {
 	int	temp;

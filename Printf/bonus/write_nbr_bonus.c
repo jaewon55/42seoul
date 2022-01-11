@@ -10,19 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
-static void	write_recursive(ssize_t nbr, int base, int *result, char specifier)
+#include "ft_printf_bonus.h"
+static void	ft_recursive(unsigned long nbr, int base, int *result, char spe)
 {
 	char	c;
 	int		temp;
 
+	if (nbr >= (unsigned int)base)
+		ft_recursive(nbr / base, base, result, spe);
 	if (*result < 0)
 		return ;
-	if (nbr >= base)
-		write_recursive(nbr / base, base, result, specifier);
-	if (nbr % base >= 10)
+	if (!nbr)
+		c = '0';
+	else if (nbr % base >= 10)
 	{
-		if (specifier == 'X')
+		if (spe == 'X')
 			c = 'A' + (nbr % base) - 10;
 		else
 			c = 'a' + (nbr % base) - 10;
@@ -36,18 +38,23 @@ static void	write_recursive(ssize_t nbr, int base, int *result, char specifier)
 		(*result)++;
 }
 
-int	write_nbr(ssize_t nbr, char specifier)
+int	write_nbr(ssize_t nbr, char spe)
 {
 	int	result;
 	int	base;
 
-	if (specifier == 'x' || specifier == 'X' || specifier == 'p')
-		base = 16;
-	else
-		base = 10;
 	result = 0;
-	if (nbr < 0)
+	if (spe == 'i' || spe == 'd' || spe == 'u')
+		base = 10;
+	else
+		base = 16;
+	if ((spe == 'i' || spe == 'd') && nbr < 0)
+	{
+		result = write(1, "-", 1);
+		if (result < 0)
+			return (-1);
 		nbr *= -1;
-	write_recursive(nbr, base, &result, specifier);
+	}
+	ft_recursive(nbr, base, &result, spe);
 	return (result);
 }

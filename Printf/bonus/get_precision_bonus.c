@@ -6,11 +6,11 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 19:31:44 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/09 19:31:48 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:06:38 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 static size_t	ft_precision_va_arg(int *flags, va_list ap)
 {
 	int	precision;
@@ -43,12 +43,12 @@ static size_t	ft_precision_iterator(const char *format, int *flags)
 	return (i);
 }
 
-size_t get_precision(const char *format, int *flags, va_list ap)
+size_t	get_precision(const char *format, int *flags, va_list ap)
 {
-	size_t i;
+	size_t	i;
 
-	i = 1;
-	if (format[i] == '*')
+	i = 0;
+	if (format[1] == '*')
 		i += ft_precision_va_arg(flags, ap);
 	else
 		i += ft_precision_iterator(format, flags);

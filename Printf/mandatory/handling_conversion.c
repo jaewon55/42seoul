@@ -6,19 +6,19 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 18:41:00 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/09 18:41:02 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:05:26 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 static int	write_specifier(char spe, va_list ap)
 {
 	int	temp;
 
-	if (spe == 'd' || spe == 'i' || spe == 'u')
-		return (write_nbr(va_arg(ap, int), 10, spe));
-	else if (spe == 'x' || spe == 'X')
-		return (write_nbr(va_arg(ap, int), 16, spe));
+	if (spe == 'd' || spe == 'i')
+		return (write_nbr(va_arg(ap, int), spe));
+	else if (spe == 'x' || spe == 'X' || spe == 'u')
+		return (write_nbr((unsigned int)va_arg(ap, int), spe));
 	else if (spe == 'c')
 		return (write_char(va_arg(ap, int)));
 	else if (spe == 's')
@@ -28,7 +28,7 @@ static int	write_specifier(char spe, va_list ap)
 	temp = write(1, "0x", 2);
 	if (temp < 0)
 		return (temp);
-	temp = write_nbr((unsigned long)va_arg(ap, void *), 16, spe);
+	temp = write_nbr((ssize_t)va_arg(ap, void *), spe);
 	if (temp < 0)
 		return (temp);
 	return (temp + 2);

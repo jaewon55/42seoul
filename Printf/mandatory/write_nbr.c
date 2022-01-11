@@ -10,17 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 static void	ft_recursive(unsigned long nbr, int base, int *result, char spe)
 {
 	char	c;
 	int		temp;
 
-	if (*result < 0)
-		return ;
 	if (nbr >= (unsigned int)base)
 		ft_recursive(nbr / base, base, result, spe);
-	if (nbr % base >= 10)
+	if (*result < 0)
+		return ;
+	if (!nbr)
+		c = '0';
+	else if (nbr % base >= 10)
 	{
 		if (spe == 'X')
 			c = 'A' + (nbr % base) - 10;
@@ -36,11 +38,16 @@ static void	ft_recursive(unsigned long nbr, int base, int *result, char spe)
 		(*result)++;
 }
 
-int	write_nbr(ssize_t nbr, int base, char spe)
+int	write_nbr(ssize_t nbr, char spe)
 {
 	int	result;
+	int	base;
 
 	result = 0;
+	if (spe == 'i' || spe == 'd' || spe == 'u')
+		base = 10;
+	else
+		base = 16;
 	if ((spe == 'i' || spe == 'd') && nbr < 0)
 	{
 		result = write(1, "-", 1);

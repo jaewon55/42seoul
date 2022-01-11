@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf_bonus.h                                :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 19:05:52 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/01/09 19:05:54 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:36:47 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_BONUS_H
-# define LIBFTPRINTF_BONUS_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 # define MINUS_FLAG 0
 # define PLUS_FLAG 1
 # define SPACE_FLAG 2
@@ -24,7 +24,6 @@
 # define WRONG_PRECISION -3
 # include "../libft/libft.h"
 # include <stdarg.h>
-# include <stdio.h>
 
 int		ft_printf(const char *format, ...);
 int		check_error(int *flags);
@@ -37,10 +36,10 @@ int		handling_uint(const char *format, char spe, unsigned int n, int *flgas);
 int		handling_char(const char *format, char spe, va_list ap, int *flags);
 int		handling_ptr(const char *format, ssize_t ptr, int *flags);
 int		handling_str(const char *format, char *str, int *flags);
-int		nbr_len(ssize_t nbr, char spe);
+int		nbr_len(ssize_t nbr, char spe, int *flags);
 int		write_blank(char blank, int n);
 int		write_char(char c);
-int		write_nbr(ssize_t nbr, char specifier);
+int		write_nbr(ssize_t nbr, char spe);
 int		write_str(char *str);
 
 #endif

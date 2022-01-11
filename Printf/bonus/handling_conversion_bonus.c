@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf_bonus.h"
+#include "ft_printf_bonus.h"
 static const char	*get_specifier(const char *format, int *flags, va_list ap)
 {
 	size_t	i;
@@ -42,10 +42,10 @@ static int	ft_no_optional(char spe, va_list ap)
 {
 	int	temp;
 
-	if (spe == 'd' || spe == 'i' || spe == 'u')
+	if (spe == 'd' || spe == 'i')
 		return (write_nbr(va_arg(ap, int), spe));
-	else if (spe == 'x' || spe == 'X')
-		return (write_nbr(va_arg(ap, int), spe));
+	else if (spe == 'x' || spe == 'X' || spe == 'u')
+		return (write_nbr((unsigned int)va_arg(ap, int), spe));
 	else if (spe == 'c')
 		return (write_char(va_arg(ap, int)));
 	else if (spe == 's')
