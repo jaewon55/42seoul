@@ -51,7 +51,7 @@ bonus :
 	@make WITH_BONUS=true all
 
 $(NAME) : $(OBJFILES)
-	@ar -rcs $@ $^
+	@ar rcs $@ $^
 
 %.o : %.c
 	@gcc $(CFLAG) -c $^
