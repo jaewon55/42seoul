@@ -14,10 +14,18 @@
 # define PUSH_SWAP_H
 # include <unistd.h>
 # include <stdlib.h>
+typedef struct s_list
+{
+	int				content;
+	struct s_list	*pre;
+	struct s_list	*next;
+}	t_list;
 typedef struct s_stack
 {
-	int *stack_a;
-	int *stack_b;
+	t_list	*top_a;
+	t_list	*top_b;
+	size_t	a_len;
+	size_t	b_len;
 }	t_stack;
 
 #endif
