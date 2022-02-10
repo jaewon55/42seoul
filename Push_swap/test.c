@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
-int	main()
+int	main(int ac, char *av[])
 {
-	write(1, "test\n", 5);
+	// int i = 0;
+	// printf("%d\n", i);
+	// char *str = "    456789";
+	// while (str[i++] == ' ');
+	printf("%d\n", +0);
 	return 0;
 }
