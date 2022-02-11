@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:55:37 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/10 21:51:13 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/11 16:11:19 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,6 @@ static int	add_list(t_list *head, int num)
 	new->pre = last;
 	head->pre = new;
 	return (TRUE);
-}
-
-static int	del_list(t_list *head)
-{
-	t_list	*idx_node;
-	t_list	*tmp_node;
-
-	idx_node = head->next;
-	while (idx_node != head)
-	{
-		tmp_node = idx_node;
-		idx_node = idx_node->next;
-		free(tmp_node);
-	}
-	free(head);
-	return (FALSE);
 }
 
 static int	check_duplicates(t_list *head, int num)
@@ -99,13 +83,13 @@ int	ft_split_num(char *str, t_list *head)
 			i++;
 		num = get_integer(str, &i);
 		if (num < 0 && (INT_MIN > num))
-			return (del_list(head));
+			return (ft_list_del(head));
 		else if (num >= 0 && (INT_MAX < num))
-			return (del_list(head));
+			return (ft_list_del(head));
 		else if (!check_duplicates(head, num))
-			return (del_list(head));
+			return (ft_list_del(head));
 		if (!add_list(head, num))
-			return (del_list(head));
+			return (ft_list_del(head));
 	}
 	return (TRUE);
 }

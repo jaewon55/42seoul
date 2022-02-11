@@ -1,17 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_make_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 16:29:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/11 20:28:01 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/02/11 20:26:48 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/02/11 21:48:16 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	push_swap()
+t_stack	*ft_make_stack(t_list *list)
 {
-	
+	t_stack	*stack;
+
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+	{
+		ft_list_del(list);
+		return (NULL);
+	}
+	stack->top_a = list;
+	stack->a_len = ft_list_len(list);
+	stack->b_len = 0;
+	stack->sorted_arr = ft_sorted_arr(stack);
+	if (!stack->sorted_arr)
+	{
+		ft_list_del(stack->top_a);
+		free(stack);
+		return (NULL);
+	}
+	return (stack);
 }

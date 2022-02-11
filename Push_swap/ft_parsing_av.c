@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:25:45 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/10 21:48:33 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/11 15:59:02 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ t_list	*ft_parsing_av(int ac, char *av[])
 	head = malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
+	head->content = 0;
 	if (!ft_head_content(av, 1, head))
 		return (NULL);
 	head->next = head;
