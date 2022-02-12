@@ -6,12 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:20:18 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/11 21:41:29 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/12 15:49:03 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-static void merge(t_arr *arr, size_t left, size_t mid, size_t right)
+static void	merge(t_arr *arr, size_t left, size_t mid, size_t right)
 {
 	size_t	l_idx;
 	size_t	r_idx;
@@ -21,10 +21,12 @@ static void merge(t_arr *arr, size_t left, size_t mid, size_t right)
 	r_idx = mid + 1;
 	tmp_idx = left;
 	while (l_idx <= mid && r_idx <= right)
+	{
 		if (arr->arr[l_idx] <= arr->arr[r_idx])
 			arr->tmp_arr[tmp_idx++] = arr->arr[l_idx++];
 		else
 			arr->tmp_arr[tmp_idx++] = arr->arr[r_idx++];
+	}
 	while (l_idx <= mid)
 		arr->tmp_arr[tmp_idx++] = arr->arr[l_idx++];
 	while (left < tmp_idx)

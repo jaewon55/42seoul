@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:37:32 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/11 20:51:05 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/12 15:45:40 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	*ft_sorted_arr(t_stack *stack)
 	if (!arr)
 		return (NULL);
 	ft_copy_node(arr, stack->top_a);
-	arr = ft_merge_sort(arr, stack->a_len - 1);
+	arr = ft_merge_sort(arr, stack->a_len);
 	if (!arr)
 		return (NULL);
 	return (arr);
