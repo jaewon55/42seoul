@@ -4,6 +4,5 @@ int	main(int ac, char *av[])
 {
 	int i[5] = {0, };
 	int j = 0;
-	while ()
 	return 0;
 }

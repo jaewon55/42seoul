@@ -34,11 +34,11 @@ int	main(int ac, char *av[])
 	t_stack *stack;
 
 	head = ft_parsing_av(ac, av);
-	// input_check(head);
+	if (!head)
+		return (0);
 	stack = ft_make_stack(head);
-	int i = 0;
-	while (i < stack->a_len)
-		printf("%d\t", stack->sorted_arr[i++]);
-
+	if (!stack)
+		return (0);
+	push_swap(stack);
 	return (0);
 }
