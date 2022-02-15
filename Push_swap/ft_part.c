@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_partition.c                                     :+:      :+:    :+:   */
+/*   ft_part.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:58:56 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/12 21:46:38 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/15 15:41:47 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int	ft_partition(t_stack *stack, t_list *left, t_list *right)
+void	ft_part(t_stack *stack, t_list *left, t_list *right, t_list *pivot)
 {
-	int		pivot;
-	size_t	left_i;
-	size_t	right_i;
-	size_t	len;
-	t_list	*tmp;
-
-	pivot = ft_get_pivot(stack, left, right);
-	left_i = 0;
-	right_i = 0;
-	tmp = left;
-	while (tmp != right)
+	while (left->idx < right->idx)
 	{
-		tmp = tmp->next;
-		right_i++;
-		len
+		while (left != stack->top_a->pre && left->content <= pivot->content)
+			left = left->next;
+		while (right != stack->top_a && right->content >= pivot->content)
+			right = right->pre;
+		if (left->idx < right->idx)
+			ft_swap(stack, left, right, left->content);
 	}
-	while (left_i < right_i)
-	{
-		tmp = left;
-		while (left_i <= )
-	}
+	if (left != right && pivot->idx > right->idx)
+		ft_swap(stack, right->next, pivot, right->next->content);
+	else
+		ft_swap(stack, right, pivot, right->content);
 }

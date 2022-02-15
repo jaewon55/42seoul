@@ -6,12 +6,27 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:25:45 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/11 15:59:02 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:18:17 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int	ft_head_content(char *av[], int minus, t_list *head)
+static void	list_idx_initialize(t_list *head)
+{
+	t_list	*tmp;
+	size_t	i;
+
+	tmp = head->next;
+	head->idx = 0;
+	i = 1;
+	while (tmp != head)
+	{
+		tmp->idx = i++;
+		tmp = tmp->next;
+	}
+}
+
+static int	ft_head_content(char *av[], int minus, t_list *head)
 {
 	size_t	i;
 
@@ -59,5 +74,6 @@ t_list	*ft_parsing_av(int ac, char *av[])
 	while (++i < ac)
 		if (!ft_split_num(av[i], head))
 			return (NULL);
+	list_idx_initialize(head);
 	return (head);
 }

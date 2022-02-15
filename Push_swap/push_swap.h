@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:26:08 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/11 21:51:04 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/15 16:58:14 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef struct s_list
 {
 	int				content;
+	size_t			idx;
 	struct s_list	*pre;
 	struct s_list	*next;
 }	t_list;
