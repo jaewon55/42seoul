@@ -22,8 +22,10 @@ void	ft_part(t_stack *stack, t_list *left, t_list *right, t_list *pivot)
 		if (left->idx < right->idx)
 			ft_swap(stack, left, right, left->content);
 	}
-	if (left != right && pivot->idx > right->idx)
+	if (left == right)
+		ft_swap(stack, right, pivot, right->content);
+	else if (pivot->idx > right->idx)
 		ft_swap(stack, right->next, pivot, right->next->content);
 	else
-		ft_swap(stack, right, pivot, right->content);
+		ft_swap(stack, pivot, right, pivot->content);
 }

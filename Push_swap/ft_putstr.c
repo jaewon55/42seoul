@@ -1,17 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 16:29:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/12 18:13:48 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/02/16 16:40:12 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/02/16 17:42:08 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	push_swap(t_stack *stack)
+static size_t	ft_strlen(const char *str)
 {
-	ft_push_b(stack, stack->sorted_arr[stack->a_len / 2]);
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_putstr(char *str)
+{
+	if (!str)
+		return ;
+	write(1, str, ft_strlen(str));
+	write(1, "\n", 1);
 }

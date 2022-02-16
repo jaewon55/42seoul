@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:25:45 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/15 14:18:17 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/16 21:31:07 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	ft_head_content(char *av[], int minus, t_list *head)
 t_list	*ft_parsing_av(int ac, char *av[])
 {
 	t_list	*head;
-	size_t	i;
+	int		i;
 
 	if (ac == 1)
 		return (NULL);

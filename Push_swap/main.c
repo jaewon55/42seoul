@@ -11,23 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// void	input_check(t_list *head)
-// {
-// 	if (!head)
-// 		printf("ERROR\n");
-// 	else
-// 	{
-// 		t_list *tmp = head->next;
-// 		printf ("%d\t", head->content);
-// 		while (tmp != head)
-// 		{
-// 			printf("%d\t", tmp->content);
-// 			tmp = tmp->next;
-// 		}
-// 		printf("\n");
-// 	}
-// }
-
 int	main(int ac, char *av[])
 {
 	t_list	*head;
@@ -35,10 +18,17 @@ int	main(int ac, char *av[])
 
 	head = ft_parsing_av(ac, av);
 	if (!head)
+	{
+		ft_putstr("Error");
 		return (0);
+	}
 	stack = ft_make_stack(head);
 	if (!stack)
+	{
+		ft_putstr("Error");
 		return (0);
-	push_swap(stack);
+	}
+	ft_quick_sort(stack);
+	ft_stack_del(stack);
 	return (0);
 }

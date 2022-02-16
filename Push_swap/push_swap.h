@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:26:08 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/15 16:58:14 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/16 17:42:15 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,12 @@ size_t	ft_list_len(t_list *head);
 t_stack	*ft_make_stack(t_list *list);
 int		*ft_merge_sort(int *arr, size_t len);
 t_list	*ft_parsing_av(int ac, char *av[]);
+void	ft_part(t_stack *stack, t_list *left, t_list *right, t_list *pivot);
+void	ft_putstr(char *str);
+void	ft_quick_sort(t_stack *stack);
 int		*ft_sorted_arr(t_stack *stack);
 int		ft_split_num(char *str, t_list *head);
 void	ft_stack_del(t_stack *stack);
+void	ft_swap(t_stack *stack, t_list *left, t_list *right, int tmp);
 
 #endif

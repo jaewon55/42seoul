@@ -2,7 +2,13 @@
 #include <unistd.h>
 int	main(int ac, char *av[])
 {
-	int i[5] = {0, };
-	int j = 0;
+	size_t	i = 0;
+
+	while (i++ < 0)
+		printf("%zd\t", i);
+	printf("\n%zd\n", i);
+	while (--i > 0)
+		printf ("%zd\t", i);
+	printf("\n%zd\n", i);
 	return 0;
 }
