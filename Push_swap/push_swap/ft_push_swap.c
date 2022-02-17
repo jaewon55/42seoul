@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 16:10:47 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/17 18:34:36 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/17 20:20:48 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,12 @@ static void	list_idx_initialize(t_list *head)
 
 void	ft_push_swap(t_stack *stack)
 {
-	ft_half_to_b(stack, stack->sorted_arr[(stack->a_len - 1) / 2]);
+	size_t	pivot_idx;
+
+	pivot_idx = (stack->a_len - 1) / 2;
+	ft_half_to_b(stack, stack->sorted_arr[pivot_idx]);
 	list_idx_initialize(stack->top_a);
 	list_idx_initialize(stack->top_b);
-	// ft_quick_sort(stack);
+	ft_quick_sort(stack);
+	ft_half_to_a(stack, pivot_idx);
 }

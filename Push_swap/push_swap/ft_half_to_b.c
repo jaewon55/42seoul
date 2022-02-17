@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 16:30:42 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/17 18:31:16 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:34:01 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	list_push_b(t_stack *stack, t_list *list)
 	list->next->pre = list->pre;
 	if (stack->top_b)
 	{
-		stack->top_b->pre->next = list;
-		stack->top_b->pre = list;
 		list->next = stack->top_b;
 		list->pre = stack->top_b->pre;
+		stack->top_b->pre->next = list;
+		stack->top_b->pre = list;
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:28:51 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/16 19:30:37 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/17 21:45:48 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	quick_sort(t_stack *stack, t_list *left, t_list *right, int pivot)
 
 void	ft_quick_sort(t_stack *stack)
 {
-	int	first_pivot;
-	
-	first_pivot = stack->sorted_arr[(stack->a_len - 1) / 2];
-	quick_sort(stack, stack->top_a, stack->top_a->pre, first_pivot);
+	int	pivot;
+
+	pivot = stack->sorted_arr[stack->b_len + (stack->a_len - 1) / 2];
+	quick_sort(stack, stack->top_a, stack->top_a->pre, pivot);
 }

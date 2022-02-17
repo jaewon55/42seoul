@@ -29,18 +29,6 @@ int	main(int ac, char *av[])
 		return (0);
 	}
 	ft_push_swap(stack);
-	// int i = 0;
-	// while (i < 100)
-	// 	printf("%d ", stack->sorted_arr[i++]);
-	// printf("\n\n\n");
-	// printf("%d ", stack->top_a->content);
-	// t_list *tmp = stack->top_a->next;
-	// while (tmp != stack->top_a)
-	// {
-	// 	printf("%d ", tmp->content);
-	// 	tmp = tmp->next;
-	// }
-	// printf("\n\n\n");
 	ft_stack_del(stack);
 	return (0);
 }
