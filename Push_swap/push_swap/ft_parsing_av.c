@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:25:45 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/22 15:47:28 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:55:48 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_head_content(char *av[], int minus, t_list *head)
 	}
 	if ((minus < 0 && tmp < INT_MIN) || (minus > 0 && tmp > INT_MAX))
 		return (FALSE);
-	head->content *= (int)(tmp * minus);
+	head->content = (int)(tmp * minus);
 	av[1] = &(av[1][i]);
 	return (TRUE);
 }
@@ -66,7 +66,10 @@ t_list	*ft_parsing_av(int ac, char *av[])
 	if (!head)
 		return (NULL);
 	if (!ft_head_content(av, 1, head))
+	{
+		free(head);
 		return (NULL);
+	}
 	head->next = head;
 	head->pre = head;
 	i = 0;
