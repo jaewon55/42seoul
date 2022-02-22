@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 20:01:43 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/22 17:22:57 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:37:45 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	put_b_to_a(t_stack *stack, t_list *list, size_t rot_cnt)
 	list->pre->next = list->next;
 	list->next->pre = list->pre;
 	free(list);
-	if (!(--stack->b_len))
+	stack->b_len--;
+	if (!(stack->b_len))
 		stack->top_b = NULL;
 }
 
