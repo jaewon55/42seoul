@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:55:37 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/11 16:11:19 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:03:43 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ static int	add_list(t_list *head, int num)
 	new = malloc(sizeof(t_list));
 	if (!new)
 		return (FALSE);
-	last = head->next;
-	while (last->next != head)
-		last = last->next;
-	new->content = num;
+	last = head->pre;
 	last->next = new;
-	new->next = head;
 	new->pre = last;
+	new->next = head;
 	head->pre = new;
+	new->content = num;
 	return (TRUE);
 }
 

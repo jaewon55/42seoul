@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:25:45 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/16 21:31:07 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:47:28 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	list_idx_initialize(t_list *head)
 static int	ft_head_content(char *av[], int minus, t_list *head)
 {
 	size_t	i;
+	ssize_t	tmp;
 
 	i = 0;
 	while (av[1][i] && av[1][i] == ' ')
@@ -41,16 +42,15 @@ static int	ft_head_content(char *av[], int minus, t_list *head)
 		i++;
 	}
 	if (!av[1][i] || !(av[1][i] >= '0' && av[1][i] <= '9'))
-	{
-		free(head);
 		return (FALSE);
-	}
 	while (av[1][i] && (av[1][i] >= '0' && av[1][i] <= '9'))
 	{
-		head->content *= 10;
-		head->content += av[1][i] - '0';
-		i++;
+		tmp *= 10;
+		tmp += av[1][i++] - '0';
 	}
+	if ((minus < 0 && tmp < INT_MIN) || (minus > 0 && tmp > INT_MAX))
+		return (FALSE);
+	head->content *= (int)(tmp * minus);
 	av[1] = &(av[1][i]);
 	return (TRUE);
 }
@@ -65,7 +65,6 @@ t_list	*ft_parsing_av(int ac, char *av[])
 	head = malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
-	head->content = 0;
 	if (!ft_head_content(av, 1, head))
 		return (NULL);
 	head->next = head;
