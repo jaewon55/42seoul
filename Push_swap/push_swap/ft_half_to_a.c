@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 20:01:43 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/17 20:58:32 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:22:57 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	put_b_to_a(t_stack *stack, t_list *list, size_t rot_cnt)
 	size_t	i;
 	char	*rotate;
 
-	rotate = "rra";
+	rotate = "rrb";
 	if (rot_cnt <= stack->b_len / 2)
-		rotate = "ra";
+		rotate = "rb";
 	else
 		rot_cnt = stack->b_len - rot_cnt;
 	i = 0;

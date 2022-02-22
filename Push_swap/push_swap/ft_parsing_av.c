@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 16:25:45 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/22 16:55:48 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:02:15 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int	ft_head_content(char *av[], int minus, t_list *head)
 	}
 	if (!av[1][i] || !(av[1][i] >= '0' && av[1][i] <= '9'))
 		return (FALSE);
+	tmp = 0;
 	while (av[1][i] && (av[1][i] >= '0' && av[1][i] <= '9'))
 	{
 		tmp *= 10;
