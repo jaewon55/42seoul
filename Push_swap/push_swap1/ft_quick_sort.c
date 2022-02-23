@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:28:51 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/22 19:01:36 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:33:46 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,34 @@ static void	quick_sort(t_stack *stack, t_list *left, t_list *right, int pivot)
 void	ft_quick_sort(t_stack *stack)
 {
 	int	pivot;
+	
+	int i = 0;
+	while (i < 100)
+		printf("%d ", stack->sorted_arr[i++]);
+	printf("\n\n");
 	t_list	*tmp;
-
 	tmp = stack->top_a->next;
-	printf("a_head : %zd\t", stack->top_a->idx);
-	int	i = 1;
+	printf("a_head : %d ", stack->top_a->content);
+	i = 1;
 	while (tmp != stack->top_a)
 	{
-		printf("b_idx%d : %zd\t", i++, tmp->idx);
+		printf("%d ", tmp->content);
 		tmp = tmp->next;
 	}
 
 	printf("\n\n");
 	tmp = stack->top_b->next;
-	printf("b_head : %zd\t", stack->top_b->idx);
+	printf("b_head : %d ", stack->top_b->content);
 	i = 1;
 	while (tmp != stack->top_b)
 	{
-		printf("b_idx%d : %zd\t", i++, tmp->idx);
+		printf("%d ", tmp->content);
 		tmp = tmp->next;
 	}
+	printf("\n\n");
 
 	pivot = stack->sorted_arr[stack->b_len + (stack->a_len - 1) / 2];
+	printf("pivot : %d\n", pivot);
 	quick_sort(stack, stack->top_a, stack->top_a->pre, pivot);
+	printf("quick_sort_done\n");
 }
