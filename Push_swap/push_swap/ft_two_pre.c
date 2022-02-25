@@ -1,21 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_del.c                                     :+:      :+:    :+:   */
+/*   ft_two_pre.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 20:29:35 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/25 17:08:00 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/02/25 21:39:31 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/02/25 21:40:44 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-void	ft_stack_del(t_stack *stack)
-{
-	ft_list_del(stack->top_a);
-	stack->top_a = NULL;
-	free(stack->sorted_arr);
-	stack->sorted_arr = NULL;
-	free(stack);
-}
+// 현재 top_b가 push할 값의 전전값일 경우
+void	ft_two_pre(t_stack *stack, size_t num_idx)

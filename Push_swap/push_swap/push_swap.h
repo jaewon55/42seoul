@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:26:08 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/24 20:05:08 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/02/25 21:22:09 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ void	ft_stack_del(t_stack *stack);
 void	ft_all_to_b(t_stack *stack, int	pivot);
 void	ft_sort_a(t_stack *stack);
 void	ft_three_sort(t_stack *stack, int big_num);
+void	ft_quarter_b(t_stack *stack, int pivot, int spivot);
+size_t	ft_rb_cnt(t_list *top_b, int push_num);
+size_t	ft_rrb_cnt(t_list *top_b, int push_num);
+char	*ft_get_rot(t_stack *stack, int num);
+void	ft_pa_rule(t_stack *stack);
+void	ft_sa_rule(t_stack *stack, int push_num);
 
 void	test(t_stack *stack, char c);
 

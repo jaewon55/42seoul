@@ -4,6 +4,11 @@ static void	print_a(t_stack *stack)
 	t_list	*tmp;
 
 	printf("\n\n");
+	if (!(stack->top_a))
+	{
+		printf("stack->a is NULL\n\n");
+		return ;
+	}
 	tmp = stack->top_a->next;
 	printf("a_head : %d ", stack->top_a->content);
 	while (tmp != stack->top_a)
@@ -19,6 +24,11 @@ static void	print_b(t_stack *stack)
 	t_list	*tmp;
 
 	printf("\n\n");
+	if (!(stack->top_b))
+	{
+		printf("stack->b is NULL\n\n");
+		return ;
+	}
 	tmp = stack->top_b->next;
 	printf("b_head : %d ", stack->top_b->content);
 	while (tmp != stack->top_b)
