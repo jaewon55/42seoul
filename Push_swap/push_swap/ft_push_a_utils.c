@@ -6,12 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 20:17:10 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/25 21:31:44 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/03 13:13:37 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-size_t	ft_rb_cnt(t_list *top_b, int push_num)
+static size_t	ft_rb_cnt(t_list *top_b, int push_num)
 {
 	size_t	result;
 
@@ -24,7 +24,7 @@ size_t	ft_rb_cnt(t_list *top_b, int push_num)
 	return (result);
 }
 
-size_t	ft_rrb_cnt(t_list *top_b, int push_num)
+static size_t	ft_rrb_cnt(t_list *top_b, int push_num)
 {
 	size_t	result;
 
@@ -44,6 +44,18 @@ char	*ft_get_rot(t_stack *stack, int num)
 	return ("rrb");
 }
 
+size_t	ft_get_rot_cnt(t_stack *stack, int num)
+{
+	size_t	rb_cnt;
+	size_t	rrb_cnt;
+
+	rb_cnt = ft_rb_cnt(stack->top_b, num);
+	rrb_cnt = ft_rrb_cnt(stack->top_b, num);
+	if (rb_cnt < rrb_cnt)
+		return (rb_cnt);
+	return (rrb_cnt);
+}
+
 void	ft_pa_rule(t_stack *stack)
 {
 	t_list	*tmp;
@@ -59,21 +71,4 @@ void	ft_pa_rule(t_stack *stack)
 	stack->top_a = tmp;
 	ft_putstr("pa");
 	stack->b_len--;
-}
-
-void	ft_sa_rule(t_stack *stack, int push_num)
-{
-	int	tmp;
-
-	tmp = stack->top_a->content;
-	if (stack->top_b->next->content == push_num)
-	{
-		ft_putstr("ss");
-		stack->top_b->next->content = stack->top_b->content;
-		stack->top_b->content = push_num;
-	}
-	else
-		ft_putstr("sa");
-	stack->top_a->content = stack->top_a->next->content;
-	stack->top_a->next->content = tmp;
 }

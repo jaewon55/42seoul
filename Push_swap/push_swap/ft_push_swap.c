@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 16:10:47 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/25 19:26:42 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/03 16:43:23 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,7 @@ void	ft_push_swap(t_stack *stack)
 		spivot_idx = ++pivot_idx + (stack->a_len - 1) / 4;
 		pivot_idx = pivot_idx + (stack->a_len - 1) / 2;
 	}
-	// test(stack, 'r');
-	// test(stack, 'a');
-	// test(stack, 'b');
 	list_idx_initialize(stack->top_a);
 	ft_sort_a(stack);
 	ft_push_to_a(stack);
-	// test(stack, 'r');
-	// test(stack, 'a');
-	// test(stack, 'b');
 }
