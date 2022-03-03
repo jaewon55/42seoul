@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 20:51:18 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/03/03 13:53:00 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/03/03 17:19:27 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC = ft_push_to_b.c ft_push_to_a.c ft_list_del.c\
 	  ft_sorted_arr.c ft_split_num.c ft_stack_del.c\
 	  ft_sort_a.c ft_three_sort.c ft_quarter_b.c\
 	  ft_push_a_utils.c ft_two_pre_num.c\
-	  main.c test.c 
+	  push_swap_main.c test.c 
 
 OBJ = $(SRC:.c=.o)
 
