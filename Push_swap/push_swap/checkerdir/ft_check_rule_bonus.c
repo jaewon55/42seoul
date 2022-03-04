@@ -6,24 +6,25 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:15:01 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/04 21:40:54 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 03:33:23 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-static void	*ft_execute_rule(t_stack *stack, char *rule)
+static int	ft_execute_rule(t_stack *stack, char *rule)
 {
-	if (rule[0] == 's')
+	if (rule[0] == 's' && !rule[2])
 		return (ft_swap_rule(stack, rule));
-	else if (rule[0] == 'p')
+	else if (rule[0] == 'p' && !rule[2])
 		return (ft_push_rule(stack, rule));
 	else if (rule[0] == 'r')
+	{
 		if (!rule[2])
 			return (ft_rot_rule(stack, rule));
-		else
+		else if (rule[1] == 'r' && !rule[3])
 			return (ft_rrot_rule(stack, rule));
-	else
-		return (NULL);
+	}
+	return (0);
 }
 
 static char	*sorted_check(t_stack *stack)
@@ -31,7 +32,7 @@ static char	*sorted_check(t_stack *stack)
 	int		small_num;
 	t_list	*tmp;
 
-	if (stack->b_len)
+	if (stack->b_len || !stack->top_a)
 		return ("KO\n");
 	small_num = stack->top_a->content;
 	tmp = stack->top_a->next;
@@ -62,26 +63,17 @@ static size_t	get_rule(char *rule, char *stdin)
 char	*ft_check_rule(t_stack *stack)
 {
 	char	*stdin;
-	char	rule[4];
-	size_t	i;
 
-	stdin = get_next_line();
-	if (!stdin)
-		retrun (NULL);
-	i = 0;
-	while (stdin[i])
+	stdin = get_next_line(stack);
+	while (stdin)
 	{
-		i += get_rule(rule, stdin);
-		if (stdin[i++] != '\n')
+		if (!ft_execute_rule(stack, stdin))
 		{
 			free(stdin);
-			return ((char *)ft_del_stack(stack));
+			ft_error(stack);
 		}
-		if (!ft_execute_rule(stack, rule))
-		{
-			free(stdin);
-			return ((char *)ft_del_stack(stack));
-		}
+		free(stdin);
+		stdin = get_next_line(stack);
 	}
 	return (sorted_check(stack));
 }
