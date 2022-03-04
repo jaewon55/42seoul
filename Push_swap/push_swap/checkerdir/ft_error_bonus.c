@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rule_rr.c                                          :+:      :+:    :+:   */
+/*   ft_error_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 01:18:32 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/09 01:18:32 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/03/05 00:58:54 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/03/05 01:00:38 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-void	rule_rr(t_stack *stack)
+#include "checker.h"
+void	ft_error(t_stack *stack)
 {
-	rule_ra(stack);
-	rule_rb(stack);
+	ft_del_stack(stack);
+	write(2, "Error\n", 6);
+	exit(-1);
 }

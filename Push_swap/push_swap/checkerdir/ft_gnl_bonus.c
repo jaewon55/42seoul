@@ -1,40 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gnl_utils_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_gnl_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/04 19:01:25 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/04 21:04:47 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/03/05 01:32:16 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/03/05 03:34:22 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-static size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-static void	ft_strcpy(char *dst, char *src)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-}
-
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*result;
 	size_t	i;
@@ -55,23 +32,44 @@ char	*ft_strdup(const char *s1)
 	return (result);
 }
 
-char	*ft_strjoin(char *s1, char *s2, int s2_len)
+static int	read_input(char *text, t_stack *stack)
 {
-	size_t	i;
-	char	*result;
-	size_t	size;
+	char	buf[1];
+	int		buf_size;
+	int		i;
 
-	size = ft_strlen(s1) + s2_len;
-	result = malloc(sizeof(char) * len + 1);
-	if (!result)
-	{
-		free(s1);
-		return (NULL);
-	}
+	buf_size = 1;
 	i = 0;
-	while (s1[i])
-		result[i++] = s1[i];
-	ft_strcpy(&result[i], s2);
-	free(s1);
+	while (i < 4)
+	{
+		buf_size = read(0, buf, 1);
+		if (buf_size < 0)
+			ft_error(stack);
+		else if (!buf_size)
+			break ;
+		if (*buf == '\n')
+			break ;
+		text[i++] = *buf;
+	}
+	if (!buf_size && (i == 0 || i == 1))
+		return (1);
+	if (text[i] != '\n')
+		ft_error(stack);
+	text[i] = '\0';
+	return (0);
+}
+
+char	*get_next_line(t_stack *stack)
+{
+	char	text[5];
+	char	*result;
+	int		end;
+	
+	end = read_input(text, stack);
+	if (end)
+		return (NULL);
+	result = ft_strdup(text);
+	if (!result)
+		ft_error(stack);
 	return (result);
 }
