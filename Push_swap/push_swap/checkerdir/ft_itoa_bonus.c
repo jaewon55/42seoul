@@ -48,5 +48,5 @@ ssize_t	ft_itoa(char **str)
 	if ((minus < 0 && n > (ssize_t)INT_MAX + 1) || (minus > 0 && n > INT_MAX))
 		return (UINT_MAX);
 	*str = &((*str)[i]);
-	return (n);
+	return (n * minus);
 }

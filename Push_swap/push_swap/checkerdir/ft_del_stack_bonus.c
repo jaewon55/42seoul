@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_del_bonus.c                                :+:      :+:    :+:   */
+/*   ft_del_stack_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 21:19:49 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/03 21:19:49 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/03/04 21:07:21 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/03/04 21:20:04 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-void	*ft_list_del(t_list *head)
+void	*ft_del_stack(t_stack *stack)
 {
-	t_list	*idx_node;
-	t_list	*tmp_node;
-
-	if (!head)
-		return (NULL);
-	idx_node = head->next;
-	while (idx_node && idx_node != head)
-	{
-		tmp_node = idx_node;
-		idx_node = idx_node->next;
-		free(tmp_node);
-	}
-	free(head);
+	ft_list_del(stack->top_a);
+	stack->top_a = NULL;
+	ft_list_del(stack->top_b);
+	stack->top_b = NULL;
+	free(stack);
 	return (NULL);
 }
