@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 21:05:04 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/25 16:53:12 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:04:45 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	sa_rule(t_stack *stack)
 
 	if (stack->top_a->content > stack->top_a->next->content)
 	{
-		ft_putstr("sa");
+		ft_putstr("sa\n");
 		tmp = stack->top_a->content;
 		stack->top_a->content = stack->top_a->next->content;
 		stack->top_a->next->content = tmp;

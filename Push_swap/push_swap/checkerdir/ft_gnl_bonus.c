@@ -6,77 +6,101 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 01:32:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 20:47:36 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 06:55:39 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-static char	*get_one_line(char **text)
+static char	*new_text(t_stack *stack, char *text)
 {
-	char	*line;
 	int		i;
-	int		tmp;
+	int		j;
+	char	*new;
+
+	new = malloc(sizeof(char) * 30);
+	if (!new)
+	{
+		free(text);
+		ft_error(stack);
+	}
+	i = 0;
+	while (text[i++] != '\n');
+	j = 0;
+	while (text[i])
+		new[j++] = text[i++];
+	new[j] = '\0';
+	free(text);
+	return (new);
+}
+
+static char	*one_line(t_stack *stack, char *text)
+{
+	int		i;
+	char	*line;
 
 	i = 0;
-	while ((*text)[i] && (*text)[i] != '\n')
+	while (text[i] && text[i] != '\n')
 		i++;
-	if ((*text)[i] == '\0')
-		return (NULL);
-	line = malloc(sizeof(char) * i + 1);
+	// 개행이 없어서 error가 난다.
+	if (text[i] == '\0')
+	{
+		printf("%s\n", text);
+		free(text);
+		ft_error(stack);
+	}
+	line = malloc(sizeof(char) * i);
 	if (!line)
-		return (NULL);
-	tmp = i;
+	{
+		free(text);
+		ft_error(stack);
+	}
+	i = -1;
+	while (text[++i] != '\n')
+		line[i] = text[i];
 	line[i] = '\0';
-	while (--i >= 0)
-		line[i] = (*text)[i];
-	while ((*text)[tmp])
-		(*text)[++i] = (*text)[++tmp];
 	return (line);
 }
 
-static int	read_input(char **text, t_stack *stack)
+static char	*read_line(t_stack *stack, char *text)
 {
 	char	buf[20];
-	int		buf_size;
-	int		i;
+	int		size;
 
-	buf_size = read(0, buf, 10);
-	if (buf_size < 0)
+	size = read(0, buf, 10);
+	if (size < 0)
 	{
-		free(*text);
+		free(text);
 		ft_error(stack);
 	}
-	else if (buf_size == 0)
-		return (1);
-	buf[buf_size] = '\0';
-	*text = ft_strcat(*text, buf);
-	return (0);
+	else if (!size)
+	{
+		free(text);
+		return (NULL);
+	}	
+	buf[size] = '\0';
+	text = ft_strjoin(text, buf);
+	if (!text)
+		ft_error(stack);
+	return (text);
 }
 
 char	*get_next_line(t_stack *stack)
 {
 	static char	*text;
 	char		*result;
-	int			end;
 
 	if (!text)
-		text = malloc(sizeof(char) * 20);
-	if (!text)
-		ft_error(stack);
+	{
+		text = malloc(sizeof(char) * 30);
+		if (!text)
+			ft_error(stack);
+		text[0] = '\0';
+	}
 	if (!ft_strchr(text, '\n'))
-		end = read_input(&text, stack);
-	else
-		end = 0;
-	if (end)
-	{
-		free(text);
+		text = read_line(stack, text);
+	if (!text)
 		return (NULL);
-	}
-	result = get_one_line(&text);
-	if (!result)
-	{
-		free(text);
-		ft_error(stack);
-	}
+	result = one_line(stack, text);
+	text = new_text(stack, text);
 	return (result);
 }

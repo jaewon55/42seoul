@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 16:30:42 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/25 17:49:42 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:02:14 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ static void	push_b(t_stack *stack, t_list *list, size_t cnt_ra, int spivot)
 	i = 0;
 	if (stack->b_len > 2 && cnt_ra && stack->top_b->content <= spivot)
 	{
-		ft_putstr("rr");
+		ft_putstr("rr\n");
 		stack->top_b = stack->top_b->next;
 		i++;
 	}
 	if (stack->b_len > 2 && !cnt_ra && stack->top_b->content <= spivot)
 	{
-		ft_putstr("rb");
+		ft_putstr("rb\n");
 		stack->top_b = stack->top_b->next;
 	}
 	while (i++ < cnt_ra)
-		ft_putstr("ra");
-	ft_putstr("pb");
+		ft_putstr("ra\n");
+	ft_putstr("pb\n");
 	list_push_b(stack, list);
 }
 

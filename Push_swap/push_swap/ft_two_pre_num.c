@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 21:39:31 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/03 13:27:08 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:12:17 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static void	two_pre_num_to_last(t_stack *stack, char *rot, int num)
 {
 	if (stack->top_b->content != num && rot[1] != 'r')
 	{
-		ft_putstr("rr");
+		ft_putstr("rr\n");
 		stack->top_b = stack->top_b->next;
 		stack->top_a = stack->top_a->next;
 	}
 	else
 	{
-		ft_putstr("ra");
+		ft_putstr("ra\n");
 		stack->top_a = stack->top_a->next;
 	}
 }
@@ -56,7 +56,7 @@ static void	num_to_a(t_stack *stack, size_t num_idx, int p_num)
 	ft_pa_rule(stack);
 	if (stack->top_a->content > stack->top_a->next->content)
 	{
-		ft_putstr("sa");
+		ft_putstr("sa\n");
 		stack->top_a->content = stack->top_a->next->content;
 		stack->top_a->next->content = p_num;
 	}
@@ -84,6 +84,6 @@ void	ft_two_pre_num(t_stack *stack, size_t num_idx)
 		num_to_a(stack, num_idx, stack->sorted_arr[num_idx]);
 	else
 		two_num_to_a(stack, num_idx);
-	ft_putstr("rra");
+	ft_putstr("rra\n");
 	stack->top_a = stack->top_a->pre;
 }

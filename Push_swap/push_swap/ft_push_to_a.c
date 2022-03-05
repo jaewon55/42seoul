@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 18:59:33 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/03 16:43:09 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:03:36 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	ft_sa_rule(t_stack *stack, int push_num)
 	tmp = stack->top_a->content;
 	if (stack->top_b && stack->top_b->next->content == push_num)
 	{
-		ft_putstr("ss");
+		ft_putstr("ss\n");
 		stack->top_b->next->content = stack->top_b->content;
 		stack->top_b->content = push_num;
 	}
 	else
-		ft_putstr("sa");
+		ft_putstr("sa\n");
 	stack->top_a->content = stack->top_a->next->content;
 	stack->top_a->next->content = tmp;
 }

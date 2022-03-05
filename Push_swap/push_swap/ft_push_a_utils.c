@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 20:17:10 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/03 13:13:37 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:04:37 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static size_t	ft_rrb_cnt(t_list *top_b, int push_num)
 char	*ft_get_rot(t_stack *stack, int num)
 {
 	if (ft_rb_cnt(stack->top_b, num) < ft_rrb_cnt(stack->top_b, num))
-		return ("rb");
-	return ("rrb");
+		return ("rb\n");
+	return ("rrb\n");
 }
 
 size_t	ft_get_rot_cnt(t_stack *stack, int num)
@@ -69,6 +69,6 @@ void	ft_pa_rule(t_stack *stack)
 	stack->top_a->pre->next = tmp;
 	stack->top_a->pre = tmp;
 	stack->top_a = tmp;
-	ft_putstr("pa");
+	ft_putstr("pa\n");
 	stack->b_len--;
 }

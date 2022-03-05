@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 18:59:33 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/25 20:23:33 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:06:18 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	push_pre_num(t_stack *stack)
 	tmp->next = stack->top_a;
 	tmp->pre = stack->top_a->pre;
 	stack->top_a = tmp;
-	ft_putstr("pa");
+	ft_putstr("pa\n");
 	stack->b_len--;
 	
 }
@@ -63,8 +63,8 @@ void	ft_push_to_a(t_stack *stack)
 		rb_cnt = ft_rb_cnt(stack->top_b, push_num);
 		rrb_cnt = ft_rrb_cnt(stack->top_b, push_num);
 		if (rb_cnt < rrb_cnt)
-			push_a(stack, "rb", rb_cnt, stack->b_len - 1);
+			push_a(stack, "rb\n", rb_cnt, stack->b_len - 1);
 		else
-			push_a(stack, "rrb", rrb_cnt, stack->b_len - 1);
+			push_a(stack, "rrb\n", rrb_cnt, stack->b_len - 1);
 	}
 }

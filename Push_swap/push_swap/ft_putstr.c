@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:40:12 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/02/16 17:42:08 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:00:41 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	ft_putstr(char *str)
 	if (!str)
 		return ;
 	write(1, str, ft_strlen(str));
-	write(1, "\n", 1);
 }

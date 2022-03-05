@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:20:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 03:19:28 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 07:06:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ int		ft_rrot_rule(t_stack *stack, char *rule);
 t_list	*ft_split_list(char *str, t_list *head);
 int		ft_swap_rule(t_stack *stack, char *rule);
 char	*get_next_line(t_stack *stack);
+char	*ft_strchr(char *s, int c);
+char	*ft_strcat(char *text, char *buf);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

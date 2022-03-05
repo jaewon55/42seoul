@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:50:14 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 20:47:41 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/06 06:45:58 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,30 @@ char	*ft_strcat(char *text, char *buf)
 		text[i++] = buf[j++];
 	text[i] = '\0';
 	return (text);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	char	*result;
+
+	result = malloc(sizeof(char) * (30));
+	if (!result)
+	{
+		free(s1);
+		return (NULL);
+	}
+	i = 0;
+	while (s1[i])
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	free(s1);
+	j = 0;
+	while (s2[j])
+		result[i++] = s2[j++];
+	result[i] = '\0';
+	return (result);
 }
