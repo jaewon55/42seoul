@@ -6,70 +6,110 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 01:32:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 03:34:22 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 19:48:09 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-char	*ft_strdup(char *s1)
+static char	*get_one_line(char **text)
 {
-	char	*result;
-	size_t	i;
+	char	*line;
+	int		i;
+	int		tmp;
 
 	i = 0;
-	while (s1[i])
+	while ((*text)[i] && (*text)[i] != '\n')
 		i++;
-	result = malloc(sizeof(char) * (i + 1));
-	if (!result)
+	if ((*text)[i] == '\0')
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		result[i] = s1[i];
-		i++;
-	}
-	result[i] = '\0';
-	return (result);
+	line = malloc(sizeof(char) * i + 1);
+	if (!line)
+		return (NULL);
+	tmp = i;
+	line[i] = '\0';
+	while (--i >= 0)
+		line[i] = (*text)[i];
+	while ((*text)[tmp])
+		(*text)[++i] = (*text)[++tmp];
+	return (line);
 }
 
-static int	read_input(char *text, t_stack *stack)
+static char	*ft_strchr(char *s, int c)
 {
-	char	buf[1];
+	int	i;
+
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (0);
+}
+
+static char	*ft_strcat(char *text, char *buf)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (text[i])
+		i++;
+	j = 0;
+	while (buf[j])
+		text[i++] = buf[j++];
+	text[i] = '\0';
+	return (text);
+}
+
+static int	read_input(char **text, t_stack *stack)
+{
+	char	buf[20];
 	int		buf_size;
 	int		i;
 
-	buf_size = 1;
-	i = 0;
-	while (i < 4)
+	buf_size = read(0, buf, 10);
+	if (buf_size < 0)
 	{
-		buf_size = read(0, buf, 1);
-		if (buf_size < 0)
-			ft_error(stack);
-		else if (!buf_size)
-			break ;
-		if (*buf == '\n')
-			break ;
-		text[i++] = *buf;
-	}
-	if (!buf_size && (i == 0 || i == 1))
-		return (1);
-	if (text[i] != '\n')
+		free(*text);
 		ft_error(stack);
-	text[i] = '\0';
+	}
+	else if (buf_size == 0)
+		return (1);
+	buf[buf_size] = '\0';
+	*text = ft_strcat(*text, buf);
 	return (0);
 }
 
 char	*get_next_line(t_stack *stack)
 {
-	char	text[5];
-	char	*result;
-	int		end;
-	
-	end = read_input(text, stack);
-	if (end)
-		return (NULL);
-	result = ft_strdup(text);
-	if (!result)
+	static char	*text;
+	char		*result;
+	int			end;
+
+	if (!text)
+		text = malloc(sizeof(char) * 20);
+	if (!text)
 		ft_error(stack);
+	if (!ft_strchr(text, '\n'))
+		end = read_input(&text, stack);
+	else
+		end = 0;
+	if (end)
+	{
+		free(text);
+		return (NULL);
+	}
+	result = get_one_line(&text);
+	if (!result)
+	{
+		free(text);
+		ft_error(stack);
+	}
 	return (result);
 }

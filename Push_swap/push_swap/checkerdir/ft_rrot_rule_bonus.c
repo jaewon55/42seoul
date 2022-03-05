@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 02:59:32 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 03:05:28 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 20:02:43 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_rrot_rule(t_stack *stack, char *rule)
 		return (rrr_rule(stack));
 	else if (rule[2] == 'a')
 		return (rra_rule(stack));
-	else if (rule[3] == 'b')
+	else if (rule[2] == 'b')
 		return (rrb_rule(stack));
 	else
 		return (0);

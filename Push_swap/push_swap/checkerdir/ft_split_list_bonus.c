@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 19:09:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/03 19:09:02 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 17:46:22 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static char *node_content(char *str, t_list *head)
 	new->pre = head->pre;
 	head->pre->next = new;
 	head->pre = new;
+	while (*str && *str == ' ')
+		str++;
 	return (str);
 }
 
@@ -59,6 +61,8 @@ static char	*head_content(char *str, t_list *head)
 	head->content = (int)tmp;
 	head->next = head;
 	head->pre = head;
+	while (*str && *str == ' ')
+		str++;
 	return (str);
 }
 

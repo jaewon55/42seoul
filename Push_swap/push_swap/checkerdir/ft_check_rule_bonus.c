@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 18:15:01 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 03:33:23 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 20:11:28 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,20 @@ static char	*sorted_check(t_stack *stack)
 	return ("OK\n");
 }
 
-static size_t	get_rule(char *rule, char *stdin)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < 4 && stdin[i] && stdin[i] != '\n')
-	{
-		rule[i] = stdin[i];
-		i++;
-	}
-	rule[i] = '\0';
-	return (i);
-}
-
 char	*ft_check_rule(t_stack *stack)
 {
-	char	*stdin;
+	char	*rule;
 
-	stdin = get_next_line(stack);
-	while (stdin)
+	rule = get_next_line(stack);
+	while (rule)
 	{
-		if (!ft_execute_rule(stack, stdin))
+		if (!ft_execute_rule(stack, rule))
 		{
-			free(stdin);
+			free(rule);
 			ft_error(stack);
 		}
-		free(stdin);
-		stdin = get_next_line(stack);
+		free(rule);
+		rule = get_next_line(stack);
 	}
 	return (sorted_check(stack));
 }

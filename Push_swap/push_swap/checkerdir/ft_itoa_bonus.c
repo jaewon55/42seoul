@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 18:29:46 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/03 18:29:46 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 17:40:40 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static char	*num_start_point(char *str, int *minus)
 	int	i;
 
 	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
 	if (str[i] == '+')
 		i++;
 	else if (str[i] == '-')
