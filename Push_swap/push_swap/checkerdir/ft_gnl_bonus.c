@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 01:32:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/05 19:48:09 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/05 20:47:36 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,6 @@ static char	*get_one_line(char **text)
 	while ((*text)[tmp])
 		(*text)[++i] = (*text)[++tmp];
 	return (line);
-}
-
-static char	*ft_strchr(char *s, int c)
-{
-	int	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char)c)
-			return ((char *)&s[i]);
-		i++;
-	}
-	if (s[i] == (char)c)
-		return ((char *)&s[i]);
-	return (0);
-}
-
-static char	*ft_strcat(char *text, char *buf)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (text[i])
-		i++;
-	j = 0;
-	while (buf[j])
-		text[i++] = buf[j++];
-	text[i] = '\0';
-	return (text);
 }
 
 static int	read_input(char **text, t_stack *stack)
