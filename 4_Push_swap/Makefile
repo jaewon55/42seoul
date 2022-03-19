@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 20:51:18 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/03/08 19:39:34 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/03/19 13:12:01 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,6 @@ SOBJ = $(SSRC:.c=.o)
 BOBJ = $(BSRC:.c=.o)
 
 CFLAG = -Wall -Wextra -Werror
-
-CC = gcc
 
 RM = rm -f
 
