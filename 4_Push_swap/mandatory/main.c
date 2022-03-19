@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 17:18:10 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/08 19:22:34 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:08:36 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ int	main(int ac, char *av[])
 	head = ft_parsing(ac, av);
 	if (!head)
 		ft_error(NULL);
+	else if (ft_sorted_check(head))
+	{
+		ft_list_del(head);
+		return (0);
+	}
 	stack = ft_stack_create(head);
 	if (!stack)
 		ft_error(NULL);

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 16:26:08 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/08 19:36:28 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/19 18:03:03 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ t_list	*ft_parsing(int ac, char *av[]);
 t_list	*ft_split_list(char *str, t_list *head);
 t_stack	*ft_stack_create(t_list *head);
 void	*ft_stack_del(t_stack *stack);
+int		ft_sorted_check(t_list *head);
 
 #endif

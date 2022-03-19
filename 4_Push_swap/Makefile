@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/16 20:51:18 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/03/19 13:12:01 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/03/19 18:03:21 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC = ./mandatory/ft_merge_sort.c ./mandatory/ft_push_a_utils.c\
 	  ./mandatory/ft_push_to_b.c ./mandatory/ft_putstr.c\
 	  ./mandatory/ft_quarter_b.c ./mandatory/ft_sort_a.c\
 	  ./mandatory/ft_sorted_arr.c ./mandatory/ft_three_sort.c\
-	  ./mandatory/ft_two_pre_num.c ./mandatory/main.c
+	  ./mandatory/ft_two_pre_num.c ./mandatory/main.c ./mandatory/ft_sorted_check.c
 
 SSRC = ./share/ft_itoa.c ./share/ft_list_del.c ./share/ft_list_len.c\
 	   ./share/ft_parsing.c ./share/ft_split_list.c ./share/ft_stack_del.c\
