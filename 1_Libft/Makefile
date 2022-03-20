@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/23 20:46:28 by jaewchoi          #+#    #+#              #
-#    Updated: 2021/12/01 14:38:30 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/03/20 16:36:47 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,39 +21,36 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 	  ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c\
 	  ft_putendl_fd.c ft_putnbr_fd.c
 
+SRC += $(BSRC)
+
 OBJ	= $(SRC:.c=.o)
 
-BSRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
-	   ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c\
-	   ft_lstmap.c
-
-BOBJ = $(BSRC:.c=.o)
-
-ifeq ($(WITH_BONUS), true)
-	OBJFILES = $(OBJ) $(BOBJ)
-else
-	OBJFILES = $(OBJ)
-endif
+BOBJ = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o \
+	ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o \
+	ft_lstmap.o
 
 CFLAG = -Wall -Wextra -Werror
 
 all	: $(NAME)
 
 clean :
-	@rm -f *.o
+	rm -f $(BOBJ) $(OBJ)
 
 fclean : clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re : fclean all
 
 bonus :
-	@make WITH_BONUS=true all
+	@make "BSRC =\
+	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+	ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+	ft_lstmap.c" all
 
-$(NAME) : $(OBJFILES)
-	@ar -rcs $@ $^
+$(NAME) : $(OBJ)
+	ar -rcs $@ $^
 
 %.o : %.c
-	@gcc $(CFLAG) -c $^
+	gcc $(CFLAG) -c $^
 
 .PHONY : all clean fclean re bonus
