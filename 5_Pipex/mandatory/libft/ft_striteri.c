@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/29 20:14:28 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/22 18:02:14 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/28 15:44:02 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <stdlib.h>
-int main(int ac, char **av, char **envp)
+#include "libft.h"
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	**path;
-	int		second_input_fd;
-	int		i;
+	unsigned int	i;
 
-	if (ac != 5)
-		return (0);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	second_input_fd = ft_first_cmd(av, envp, path);
-	ft_second_cmd(av, envp, path, second_input_fd);
+	if (!s || !f)
+		return ;
 	i = 0;
-	while (path[i])
-		free(path[i++]);
-	free(path);
-	return (0);
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_prog_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/29 20:14:28 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/03/29 17:05:39 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/03/29 19:55:20 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdlib.h>
-int main(int ac, char **av, char **envp)
+char	*ft_prog_name(char *path, char *cmd)
 {
-	char	**path;
-	int		second_input_fd;
-	int		i;
+	char	*program;
+	size_t	len;
+	size_t	tmp;
 
-	if (ac != 5)
-		return (0);
-	path = ft_get_path(envp);
-	if (!path)
+	if (cmd[0] == '/')
+		return (cmd);
+	len = ft_strlen(path) + ft_strlen(cmd);
+	program = malloc(sizeof(char) * (len + 2));
+	if (!program)
 		exit(1);
-	second_input_fd = ft_first_cmd(av, envp, path);
-	ft_second_cmd(av, envp, path, second_input_fd);
-	i = 0;
-	while (path[i])
-		free(path[i++]);
-	free(path);
-	return (0);
+	tmp = ft_strlcpy(program, path, len);
+	program[tmp] = '/';
+	ft_strlcpy(&program[tmp + 1], cmd, len);
+	return (program);
 }

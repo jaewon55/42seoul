@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/29 20:14:28 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/20 20:30:05 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/26 13:26:20 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <stdlib.h>
-int main(int ac, char **av, char **envp)
+#include "libft.h"
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	char	**path;
-	int		second_input_fd;
-	int		i;
+	size_t	i;
+	size_t	s2_len;
 
-	if (ac != 5)
-		return (0);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	second_input_fd = ft_first_cmd(av, envp, path);
-	ft_second_cmd(av, envp, path, second_input_fd);
+	if (*s2 == '\0')
+		return ((char *)s1);
+	s2_len = ft_strlen(s2);
 	i = 0;
-	while (path[i])
-		free(path[i++]);
-	free(path);
+	while (s1[i] && s2_len <= n - i)
+	{
+		if (s1[i] == s2[0] && !ft_strncmp(&s1[i], s2, s2_len))
+			return ((char *)&s1[i]);
+		i++;
+	}
 	return (0);
 }

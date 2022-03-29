@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/29 20:14:28 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/20 20:08:49 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/25 17:25:08 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <stdlib.h>
-int main(int ac, char **av, char **envp)
+#include "libft.h"
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	**path;
-	int		second_input_fd;
-	int		i;
+	size_t	i;
 
-	if (ac != 5)
-		return (0);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	second_input_fd = ft_first_cmd(av, envp, path);
-	ft_second_cmd(av, envp, path, second_input_fd);
 	i = 0;
-	while (path[i])
-		free(path[i++]);
-	free(path);
+	while (i < n)
+	{
+		if (((unsigned char *)s1)[i] > ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		else if (((unsigned char *)s1)[i] < ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
+	}
 	return (0);
 }

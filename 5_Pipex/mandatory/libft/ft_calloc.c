@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/29 20:14:28 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/21 14:57:59 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/25 13:34:35 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <stdlib.h>
-int main(int ac, char **av, char **envp)
+#include "libft.h"
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	**path;
-	int		second_input_fd;
-	int		i;
+	void	*result;
+	size_t	i;
 
-	if (ac != 5)
+	result = malloc(size * count);
+	if (!result)
 		return (0);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	second_input_fd = ft_first_cmd(av, envp, path);
-	ft_second_cmd(av, envp, path, second_input_fd);
 	i = 0;
-	while (path[i])
-		free(path[i++]);
-	free(path);
-	return (0);
+	while (i < (size * count))
+	{
+		((unsigned char *)result)[i] = 0;
+		i++;
+	}
+	return (result);
 }
