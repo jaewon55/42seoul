@@ -1,17 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <fcntl.h>
+#include <stdio.h>
+#include <sys/wait.h>
+#include <stdlib.h>
 
-int	main(int argc, char *argv[], char *envp[])
+int main(int ac, char *av[], char *envp[])
 {
-	char	tmp[1024];
-	int		size;
-	int fd = open("infile", O_RDWR);
-	size = 1;
-	while (size > 0)
-		size = read(fd, tmp, 1024);
-	write(fd, "hello\n", 6);
-	close(fd);
-	return(0);
+	int acc = access(av[1], X_OK);
+	perror(NULL);
+	printf("%d\n", acc);
+	return (0);
 }

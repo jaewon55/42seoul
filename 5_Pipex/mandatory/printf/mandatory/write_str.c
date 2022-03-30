@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   write_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 14:29:19 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 14:29:20 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "ft_printf.h"
+int	write_str(char *str)
 {
-	t_fildes	fildes;
-
-	if (infile)
-	{
-		fildes.in_fd = open(infile, O_RDONLY);
-		if (fildes.in_fd < 0)
-			perror(NULL);
-	}
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	if (!str)
+		return (write(1, "(null)", 6));
+	return (write(1, str, ft_strlen(str)));
 }

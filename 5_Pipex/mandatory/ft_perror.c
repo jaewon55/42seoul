@@ -6,14 +6,14 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 05:08:41 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/29 05:11:40 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/03/30 21:23:08 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
-void	ft_perror(char *msg)
+void	ft_perror(void)
 {
-	perror(msg);
+	perror(NULL);
 	exit(1);
 }
