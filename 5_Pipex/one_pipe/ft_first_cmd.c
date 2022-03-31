@@ -13,7 +13,6 @@
 #include "pipex.h"
 #include <sys/wait.h>
 #include <stdlib.h>
-#include <stdio.h>
 static void	ft_set_child_fd(t_fildes fildes)
 {
 	close(fildes.pipe_fd[0]);
@@ -43,8 +42,7 @@ static void	ft_child_proc(t_fildes fildes, char *cmd, char **envp, char **path)
 	}
 	if (!path[i])
 	{
-		dup2(2, 1);
-		ft_printf("command not found: %s\n", av[0]);
+		ft_printf("command not found: %s\n", cmd);
 		exit(127);
 	}
 	ft_set_child_fd(fildes);
@@ -61,7 +59,6 @@ int	ft_first_cmd(char **av, char **envp, char **path)
 	if (fildes.in_fd < 0)
 	{
 		close(fildes.pipe_fd[1]);
-		perror(NULL);
 		return (fildes.pipe_fd[0]);
 	}
 	pid = fork();

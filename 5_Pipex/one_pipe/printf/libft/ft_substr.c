@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/21 16:16:02 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/23 18:19:49 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "libft.h"
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	t_fildes	fildes;
+	char			*result;
+	size_t			i;
+	unsigned int	temp;
 
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	if (!s)
+		return (0);
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	i = 0;
+	temp = start;
+	while (i < len && s[temp])
+	{
+		temp++;
+		i++;
+	}
+	result = malloc(sizeof(char) * (i + 1));
+	if (!result)
+		return (0);
+	ft_strlcpy(result, &s[start], i + 1);
+	return (result);
 }

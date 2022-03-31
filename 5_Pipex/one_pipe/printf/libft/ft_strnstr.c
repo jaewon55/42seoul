@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/20 20:30:05 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/26 13:26:20 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "libft.h"
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	t_fildes	fildes;
+	size_t	i;
+	size_t	s2_len;
 
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	if (*s2 == '\0')
+		return ((char *)s1);
+	s2_len = ft_strlen(s2);
+	i = 0;
+	while (s1[i] && s2_len <= n - i)
+	{
+		if (s1[i] == s2[0] && !ft_strncmp(&s1[i], s2, s2_len))
+			return ((char *)&s1[i]);
+		i++;
+	}
+	return (0);
 }

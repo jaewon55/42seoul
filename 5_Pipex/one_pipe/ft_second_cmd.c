@@ -47,10 +47,7 @@ static void	ft_child_proc(int in_fd, char **av, char **envp, char **path)
 	}
 	if (!path[i])
 	{
-		dup2(2, 1);
-		ft_printf("command not found: %s\n", args[0]);
-		if (open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644) < 0)
-			ft_perror();
+		ft_printf("command not found: %s\n", av[3]);
 		exit(127);
 	}
 	ft_set_child_fd(av[4], in_fd);

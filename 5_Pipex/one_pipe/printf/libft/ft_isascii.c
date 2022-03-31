@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/08 22:51:41 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/23 17:45:44 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "libft.h"
+int	ft_isascii(int c)
 {
-	t_fildes	fildes;
-
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	if (c >= 0 && c <= 127)
+		return (42);
+	return (0);
 }

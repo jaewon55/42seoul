@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/10 15:06:05 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/10 15:06:06 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "ft_printf.h"
+void	ft_putnstr(const char *format, size_t i, int *result)
 {
-	t_fildes	fildes;
+	int	temp;
 
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	temp = (write(1, format, i));
+	if (temp < 0)
+		*result = -1;
+	else
+		*result += temp;
 }

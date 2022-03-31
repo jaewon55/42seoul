@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/28 15:28:54 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/28 16:09:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "libft.h"
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_fildes	fildes;
-
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
+	lst = 0;
 }

@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_prog_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/03/29 17:05:39 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/03/30 21:21:54 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include <stdlib.h>
+char	*ft_prog_name(char *path, char *cmd)
 {
-	t_fildes	fildes;
+	char	*program;
+	size_t	len;
+	size_t	tmp;
 
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+	if (cmd[0] == '/')
+		return (cmd);
+	len = ft_strlen(path) + ft_strlen(cmd);
+	program = malloc(sizeof(char) * (len + 2));
+	if (!program)
+		exit(1);
+	tmp = ft_strlcpy(program, path, len);
+	program[tmp] = '/';
+	ft_strlcpy(&program[tmp + 1], cmd, len);
+	return (program);
 }

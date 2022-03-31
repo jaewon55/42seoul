@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_fd.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 05:34:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:21:45 by jaewchoi         ###   ########.fr       */
+/*   Created: 2021/11/22 19:02:37 by jaewchoi          #+#    #+#             */
+/*   Updated: 2021/11/29 15:08:22 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-#include <fcntl.h>
-#include <stdio.h>
-t_fildes	ft_open_fd(char *infile)
+#include "libft.h"
+static void	ft_nbr_recursive(int n, int fd)
 {
-	t_fildes	fildes;
+	if (n >= 10)
+		ft_nbr_recursive(n / 10, fd);
+	ft_putchar_fd('0' + (n % 10), fd);
+}
 
-	if (infile)
-		fildes.in_fd = open(infile, O_RDONLY);
-	if (pipe(fildes.pipe_fd) < 0)
-		ft_perror();
-	return (fildes);
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n >= 0)
+		ft_nbr_recursive(n, fd);
+	else
+	{
+		ft_putchar_fd('-', fd);
+		if (n == -2147483648)
+			ft_putstr_fd("2147483648", fd);
+		else
+			ft_putnbr_fd((n * -1), fd);
+	}
 }
