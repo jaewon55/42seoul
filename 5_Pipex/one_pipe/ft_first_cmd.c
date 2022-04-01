@@ -5,68 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 20:29:07 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/30 21:22:57 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/01 16:16:36 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/01 20:25:05 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <sys/wait.h>
 #include <stdlib.h>
-static void	ft_set_child_fd(t_fildes fildes)
+static t_data	ft_set_fd(char *file)
 {
-	close(fildes.pipe_fd[0]);
-	if (dup2(fildes.pipe_fd[1], 1) < 0 || dup2(fildes.in_fd, 0) < 0)
-		ft_perror();
-	close(fildes.pipe_fd[1]);
-	close(fildes.in_fd);
+	t_data	data;
+
+	data.in_fd = ft_open_file(file, READ);
+	pipe(data.pipe_fd);
+	if (data.in_fd < 0)
+	{
+		close(data.pipe_fd[WRITE]);
+		return (data);
+	}
+	return (data);
 }
 
-static void	ft_child_proc(t_fildes fildes, char *cmd, char **envp, char **path)
+static void	ft_set_child_fd(t_data data)
 {
-	int		i;
-	char	**av;
+	close(data.pipe_fd[READ]);
+	if (dup2(data.pipe_fd[WRITE], STDOUT) < 0 || dup2(data.in_fd, STDIN) < 0)
+		ft_perror();
+	close(data.pipe_fd[WRITE]);
+	close(data.in_fd);
+}
+
+static void	ft_child_proc(t_data data, char *cmd, char **envp, char **path)
+{
 	char	*program;
 
-	av = ft_split(cmd, ' ');
-	if (!av)
+	data.args = ft_split(cmd, ' ');
+	if (!data.args)
 		ft_perror();
-	i = 0;
-	while (path[i])
+	program = ft_prog_name(path, data.args[0]);
+	if (!program)
 	{
-		program = ft_prog_name(path[i], av[0]);
-		if (!access(program, X_OK))
-			break ;
-		i++;
-		free(program);
+		dup2(2, 1);
+		ft_printf("command not found: %s\n", data.args[0]);
+		exit(1);
 	}
-	if (!path[i])
-	{
-		ft_printf("command not found: %s\n", cmd);
-		exit(127);
-	}
-	ft_set_child_fd(fildes);
-	execve(program, av, envp);
-	exit(1);
+	ft_set_child_fd(data);
+	if (execve(program, data.args, envp) < 0)
+		ft_perror();
 }
 
 int	ft_first_cmd(char **av, char **envp, char **path)
 {
-	t_fildes	fildes;
-	pid_t		pid;
+	t_data	data;
+	pid_t	pid;
 
-	fildes = ft_open_fd(av[1]);
-	if (fildes.in_fd < 0)
-	{
-		close(fildes.pipe_fd[1]);
-		return (fildes.pipe_fd[0]);
-	}
+	data = ft_set_fd(av[1]);
+	if (data.in_fd < 0)
+		return (data.pipe_fd[READ]);
 	pid = fork();
 	if (pid < 0)
-		ft_perror();
+		exit(1);
 	else if (pid == 0)
-		ft_child_proc(fildes, av[2], envp, path);
-	close(fildes.pipe_fd[1]);
-	close(fildes.in_fd);
-	return (fildes.pipe_fd[0]);
+		ft_child_proc(data, av[2], envp, path);
+	close(data.pipe_fd[WRITE]);
+	close(data.in_fd);
+	return (data.pipe_fd[READ]);
 }

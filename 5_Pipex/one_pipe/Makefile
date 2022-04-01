@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 18:11:53 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/03/30 03:21:33 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/04/01 18:57:02 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ NAME = pipex
 
 PRINTF = libftprintf.a
 
-SRC = ft_first_cmd.c ft_get_path.c ft_open_fd.c ft_perror.c\
-	  ft_prog_name.c ft_second_cmd.c main.c
+SRC = ft_first_cmd.c ft_get_path.c ft_last_cmd.c\
+	  ft_open_file.c ft_perror.c ft_prog_name.c\
+	  main.c
 
 OBJ = $(SRC:.c=.o)
 
