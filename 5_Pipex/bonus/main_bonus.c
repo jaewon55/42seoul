@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/02 05:15:06 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/01 20:40:22 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/02 04:53:41 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ int	main(int ac, char **av, char **envp)
 	char	**path;
 	int		in_fd;
 	t_data	data;
+	int		i;
 
-	if (ac != 5)
+	if (ac < 5)
 		return (1);
 	path = ft_get_path(envp);
 	if (!path)
 		exit(1);
 	in_fd = ft_first_cmd(av, envp, path);
+	i = 2;
+	while (++i < ac - 2)
+		in_fd = ft_mid_cmd(av[i], envp, path, in_fd);
 	data.in_fd = in_fd;
 	data.last_cmd = av[ac - 2];
 	data.out_fd = ft_open_file(av[ac - 1], WRITE);

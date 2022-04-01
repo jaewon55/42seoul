@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_perror.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/02 05:15:06 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/03/29 05:08:41 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/02 05:14:47 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include <stdio.h>
 #include <stdlib.h>
-int	main(int ac, char **av, char **envp)
+void	ft_perror(void)
 {
-	char	**path;
-	int		in_fd;
-	t_data	data;
-
-	if (ac != 5)
-		return (1);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	in_fd = ft_first_cmd(av, envp, path);
-	data.in_fd = in_fd;
-	data.last_cmd = av[ac - 2];
-	data.out_fd = ft_open_file(av[ac - 1], WRITE);
-	if (data.out_fd < 0)
-		ft_perror();
-	ft_last_cmd(envp, path, data);
-	while (wait(NULL) > 0)
-		;
-	exit (0);
+	perror(NULL);
+	exit(1);
 }
