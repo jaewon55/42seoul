@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/05 20:10:38 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/06 01:25:05 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int ac, char **av, char **envp)
 {
 	char	**path;
-	int		in_fd;
 	t_data	data;
 
 	if (ac != 5)

@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   ft_unquotes_limiter.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 20:40:22 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/06 03:24:20 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/08 01:34:02 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/08 01:35:02 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdlib.h>
-int	main(int ac, char **av, char **envp)
+void	ft_unquotes_limiter(int fd, char *limiter)
 {
-	char	**path;
-
-	if (ac < 5)
-		return (1);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	if (ft_is_here_doc(av[1]))
-		ft_here_doc(ac, av, envp, path);
-	else
-		ft_multiple_pipes(ac, av, envp, path);
-	exit (0);
+	
 }

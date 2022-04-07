@@ -1,0 +1,11 @@
+test total 24
+-rw-r--r--   1 jaewon  staff  1734  4  2 04:17 Makefile
+drwxr-xr-x   7 jaewon  staff   224  4  7 01:56 PIPEX_TESTER
+drwxr-xr-x  10 jaewon  staff   320  4  8 01:32 bonus
+-rw-r--r--   1 jaewon  staff   781  3 31 21:24 deepthought.txt
+drwxr-xr-x   3 jaewon  staff    96  4  2 04:52 include
+drwxr-xr-x   3 jaewon  staff    96  4  7 15:33 mandatory
+-rw-r--r--   1 jaewon  staff   520  4  8 01:42 outfile
+drwxr-xr-x  13 jaewon  staff   416  4  2 01:12 pipex-tester
+drwxr-xr-x   5 jaewon  staff   160  4  7 15:33 printf
+drwxr-xr-x   8 jaewon  staff   256  4  7 15:33 share

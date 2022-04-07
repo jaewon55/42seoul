@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   ft_is_here_doc_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 20:40:22 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/06 03:24:20 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/06 02:43:09 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/06 03:28:39 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdlib.h>
-int	main(int ac, char **av, char **envp)
+int	ft_is_here_doc(char *first_argument)
 {
-	char	**path;
+	char	*tmp;
 
-	if (ac < 5)
-		return (1);
-	path = ft_get_path(envp);
-	if (!path)
-		exit(1);
-	if (ft_is_here_doc(av[1]))
-		ft_here_doc(ac, av, envp, path);
-	else
-		ft_multiple_pipes(ac, av, envp, path);
-	exit (0);
+	tmp = "here_doc";
+	while (*tmp && *first_argument)
+	{
+		if (*tmp != *first_argument)
+			return (0);
+		tmp++;
+		first_argument++;
+	}
+	if (*tmp != *first_argument)
+		return (0);
+	return (1);
 }

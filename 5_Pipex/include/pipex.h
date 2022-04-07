@@ -6,16 +6,17 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 04:25:07 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/02 05:24:37 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/07 17:21:51 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
 # include <unistd.h>
-# include <stdio.h>
 # define READ 0
 # define WRITE 1
+# define APPEND 2
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
@@ -38,5 +39,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 int		ft_printf(const char *format, ...);
 int		ft_mid_cmd(char *cmd, char **envp, char **path, int in_fd);
 char	*ft_strchr(const char *s, int c);
+int		ft_is_here_doc(char *first_argument);
+void	ft_multiple_pipes(int ac, char **av, char **envp, char **path);
 
 #endif
