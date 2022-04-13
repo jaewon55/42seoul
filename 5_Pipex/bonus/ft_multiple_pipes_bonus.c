@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 03:21:40 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/06 03:28:41 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:26:14 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ void	ft_multiple_pipes(int ac, char **av, char **envp, char **path)
 {
 	t_data	data;
 	int		i;
+	int		exit_code;
 
 	data.in_fd = ft_first_cmd(av, envp, path);
 	i = 2;
@@ -24,5 +25,7 @@ void	ft_multiple_pipes(int ac, char **av, char **envp, char **path)
 	data.out_fd = ft_open_file(av[ac - 1], WRITE);
 	if (data.out_fd < 0)
 		ft_perror();
-	ft_last_cmd(envp, path, data);
+	exit_code = ft_last_cmd(envp, path, data);
+	if (exit_code > 0)
+		exit(exit_code);
 }

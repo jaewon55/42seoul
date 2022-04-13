@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unquotes_limiter.c                              :+:      :+:    :+:   */
+/*   ft_create_exe_file.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/08 01:34:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/13 14:24:09 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/13 17:57:27 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/13 20:09:00 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-void	ft_unquotes_limiter(int fd, char *limiter)
+#include <fcntl.h>
+static size_t	ft_strlen(const char *str)
 {
-	char	*one_line;
+	size_t	i;
 
-	
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_create_exe_file(void)
+{
+	int		fd;
+	char	*hashbang;
+
+	hashbang = "#!/bin/bash\n";
+	fd = open("/tmp/exe", O_WRONLY | O_CREAT, 0755);
+	if (fd < 0)
+		ft_perror();
+	write(fd, hashbang, ft_strlen(hashbang));
+	return (fd);
 }

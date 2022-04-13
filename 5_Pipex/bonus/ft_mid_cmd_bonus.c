@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 23:36:46 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/02 06:01:32 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/13 14:38:50 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_child_proc(t_data data, char *cmd, char **envp, char **path)
 	{
 		dup2(STDERR, STDOUT);
 		ft_printf("command not found: %s\n", args[0]);
-		exit(1);
+		exit(127);
 	}
 	ft_set_child_fd(data);
 	if (execve(program, args, envp) < 0)

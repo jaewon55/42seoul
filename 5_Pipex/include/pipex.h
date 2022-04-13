@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 04:25:07 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/07 17:21:51 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:00:45 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_data
 }	t_data;
 int		ft_first_cmd(char **av, char **envp, char **path);
 char	**ft_get_path(char *envp[]);
-void	ft_last_cmd(char **envp, char **path, t_data data);
+int		ft_last_cmd(char **envp, char **path, t_data data);
 int		ft_open_file(char *file, int option);
 void	ft_perror(void);
 char	*ft_prog_name(char **path, char *cmd);

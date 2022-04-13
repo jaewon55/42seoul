@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:24:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/06 01:25:05 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/13 15:04:19 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int ac, char **av, char **envp)
 {
 	char	**path;
 	t_data	data;
+	int		exit_code;
 
 	if (ac != 5)
 		return (1);
@@ -27,8 +28,6 @@ int	main(int ac, char **av, char **envp)
 	data.out_fd = ft_open_file(av[ac - 1], WRITE);
 	if (data.out_fd < 0)
 		ft_perror();
-	ft_last_cmd(envp, path, data);
-	while (wait(NULL) > 0)
-		;
-	exit (0);
+	exit_code = ft_last_cmd(envp, path, data);
+	exit (exit_code);
 }
