@@ -1,2 +1,1 @@
-echo "$PATH
-$(whoami)"
+echo "`ls`"

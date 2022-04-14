@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_multiple_pipe.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 17:57:48 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/13 19:12:14 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/15 03:10:18 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/15 03:44:52 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-#include <stdio.h>
+#include "pipex.h"
+int	ft_multiple_pipe(int ac, char **av, char **envp)
+{
+	int	fd;
 
-# include <unistd.h>
-int		ft_create_exe_file(void);
-void	ft_write_exe_file(int ac, char **av, int fd);
-int		ft_exec_file(char **envp);
-void	ft_perror(void);
-
-#endif
+	fd = ft_create_exe_file();
+	ft_write_exe_file(ac, av, fd);
+	return (ft_exec_file(envp));
+}

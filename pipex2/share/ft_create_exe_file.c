@@ -6,22 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:57:27 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/13 22:51:52 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/15 03:22:18 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <fcntl.h>
-static size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 int	ft_create_exe_file(void)
 {
 	int		fd;
