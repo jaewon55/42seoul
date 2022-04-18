@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/16 19:24:19 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/16 19:24:30 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:54:31 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
 void	ft_putstr_fd(char *s, int fd)
 {
 	if (!s)

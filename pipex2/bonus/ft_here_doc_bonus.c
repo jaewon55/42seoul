@@ -6,12 +6,13 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 03:11:38 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/16 21:42:29 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:08:01 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdlib.h>
+
 static char	*ft_pars_limiter(char *limiter)
 {
 	char	*result;
@@ -25,7 +26,7 @@ static char	*ft_pars_limiter(char *limiter)
 	j = 0;
 	while (limiter[i])
 		result[j++] = limiter[i++];
-	result[j] = '\0';
+	result[j - 1] = '\0';
 	return (result);
 }
 
@@ -34,19 +35,20 @@ int	ft_here_doc(int ac, char **av, char **envp)
 	int		fd;
 	char	*pars_limiter;
 
-	if (ac != 6)
+	if (ac < 6)
 		return (1);
-	fd = ft_create_exe_file("/tmp/pipe_here_doc");
-	pars_limiter = ft_pars_limiter(av[1]);
+	pars_limiter = ft_pars_limiter(av[2]);
 	if (pars_limiter)
 	{
+		fd = ft_create_exe_file("/tmp/pipe_here_doc", 1);
 		ft_quotes_limiter(pars_limiter, fd);
-		ft_write_append_exe_file(av, 1);
+		ft_write_append_exe_file(ac, av, 1);
 	}
 	else
 	{
-		ft_unquotes_limiter(av[1], fd);
-		ft_write_append_exe_file(av, 0);
+		fd = ft_create_exe_file("/tmp/pipe_here_doc", 0);
+		ft_unquotes_limiter(av[2], fd);
+		ft_write_append_exe_file(ac, av, 0);
 	}
 	return (ft_exec_file(envp));
 }

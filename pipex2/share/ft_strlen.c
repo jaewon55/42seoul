@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 03:14:33 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/15 03:15:23 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:54:45 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;

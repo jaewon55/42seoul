@@ -1,1 +1,1 @@
-echo "$(ls)"
+#!/bin/bash
