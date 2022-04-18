@@ -1,1 +1,1 @@
-cat infile | cat
+./infile | cat

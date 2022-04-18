@@ -1,6 +1,5 @@
 #ifndef _ARRAYLIST_
 #define _ARRAYLIST_
-
 typedef struct ArrayListNodeType
 {
 	int data;
@@ -13,7 +12,6 @@ typedef struct ArrayListType
 	ArrayListNode *pElement;	// 원소 저장을 위한 1차원 배열
 } ArrayList;
 
-
 ArrayList* createArrayList(int maxElementCount);
 void deleteArrayList(ArrayList* pList);
 int isArrayListFull(ArrayList* pList);
@@ -23,7 +21,6 @@ ArrayListNode* getALElement(ArrayList* pList, int position);
 void displayArrayList(ArrayList* pList);
 void clearArrayList(ArrayList* pList);
 int getArrayListLength(ArrayList* pList);
-
 #endif
 
 #ifndef _COMMON_LIST_DEF_

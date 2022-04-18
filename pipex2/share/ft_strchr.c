@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 17:45:20 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/16 18:06:17 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/16 19:19:51 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/16 19:19:55 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-int	main(int ac, char **av, char **envp)
+char	*ft_strchr(const char *s, int c)
 {
-	int	fd;
+	int	i;
 
-	if (ac != 5)
-		return (1);
-	fd = ft_create_exe_file("/tmp/pipe_exe");
-	ft_write_exe_file(ac, av, fd);
-	return (ft_exec_file(envp));
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (0);
 }

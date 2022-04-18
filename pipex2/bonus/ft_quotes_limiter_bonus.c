@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_here_doc.c                                   :+:      :+:    :+:   */
+/*   ft_quotes_limiter_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 03:07:01 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/15 03:09:12 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/16 18:48:25 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/16 21:21:11 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_here_doc(char *first_argument)
+#include "pipex.h"
+#include <stdlib.h>
+void	ft_quotes_limiter(char *limiter, int here_doc_fd)
 {
-	char	*tmp;
-
-	tmp = "here_doc";
-	while (*tmp && *first_argument)
-	{
-		if (*tmp != *first_argument)
-			return (0);
-		tmp++;
-		first_argument++;
-	}
-	if (*tmp != *first_argument)
-		return (0);
-	return (1);
+	ft_write_stdin(limiter, here_doc_fd);
+	free(limiter);
+	close(here_doc_fd);
 }

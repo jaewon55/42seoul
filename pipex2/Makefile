@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:42:21 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/04/15 03:52:29 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/04/16 21:48:18 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,17 @@ INCLUDE = ./include/
 
 SSRC = ./share/ft_create_exe_file.c ./share/ft_exec_file.c\
 	   ./share/ft_perror.c ./share/ft_write_exe_file.c\
-	   ./share/ft_strlen.c
+	   ./share/ft_strlen.c ./share/ft_strchr.c ./share/ft_putstr_fd.c
 
 MSRC = ./mandatory/main.c
 
-BSRC = ./bonus/main_bonus.c ./bonus/ft_here_doc.c\
-	   ./bonus/ft_is_here_doc.c ./bonus/ft_multiple_pipe.c
+BSRC = ./bonus/main_bonus.c ./bonus/ft_gnl_bonus.c\
+	   ./bonus/ft_here_doc_bonus.c ./bonus/ft_is_here_doc_bonus.c\
+	   ./bonus/ft_multiple_pipe_bonus.c ./bonus/ft_quotes_limiter_bonus.c\
+	   ./bonus/ft_unquotes_limiter_bonus.c\
+	   ./bonus/ft_write_append_exe_file_bonus.c\
+	   ./bonus/ft_write_stdin_bonus.c
+
 
 SOBJ = $(SSRC:.c=.o)
 

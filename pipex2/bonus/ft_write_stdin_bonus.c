@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec_file.c                                     :+:      :+:    :+:   */
+/*   ft_write_stdin_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 18:50:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/16 20:20:04 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/16 19:35:56 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/16 21:46:18 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdlib.h>
-#include <sys/wait.h>
-static void	ft_child_proc(char **envp)
+static int	ft_is_limiter(char *limiter, char *input)
 {
-	char *const	args[2] = {"/tmp/piep_exe", NULL};
+	int	i;
 
-	if (execve("/tmp/pipe_exe", args, envp) < 0)
-		ft_perror();
+	i = 0;
+	while (limiter[i] && input[i])
+	{
+		if (limiter[i] != input[i])
+			return (0);
+		i++;
+	}
+	if (!limiter[i] && input[i] == '\n')
+		return (1);
+	return (0);
 }
 
-int	ft_exec_file(char **envp)
+void	ft_write_stdin(char *limiter, int fd)
 {
-	pid_t	pid;
-	int		status;
+	char	*line;
 
-	pid = fork();
-	if (pid < 0)
-		ft_perror();
-	else if (!pid)
-		ft_child_proc(envp);
-	wait(&status);
-	unlink("/tmp/pipe_exe");
-	unlink("/tmp/pipe_here_doc");
-	return (WEXITSTATUS(status));
+	line = get_next_line();
+	while (!ft_is_limiter(limiter, line))
+	{
+		ft_putstr_fd(line, fd);
+		free(line);
+		line = get_next_line();
+	}
 }
