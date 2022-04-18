@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_multiple_pipe_bonus.c                           :+:      :+:    :+:   */
+/*   ft_is_limiter_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/15 03:10:18 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/18 16:09:50 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/04/18 15:31:03 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/04/18 15:31:20 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-
-int	ft_multiple_pipe(int ac, char **av, char **envp)
+int	ft_is_limiter(char *limiter, char *input)
 {
-	int	fd;
+	int	i;
 
-	fd = ft_create_exe_file("/tmp/pipe_exe", 0);
-	ft_write_exe_file(ac, av, fd);
-	return (ft_exec_file(envp));
+	i = 0;
+	while (limiter[i] && input[i])
+	{
+		if (limiter[i] != input[i])
+			return (0);
+		i++;
+	}
+	if (!limiter[i] && input[i] == '\n')
+		return (1);
+	return (0);
 }

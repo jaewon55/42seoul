@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:16:40 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/15 03:15:13 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:54:54 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
 static void	ft_write_cmd(char *cmd, int fd)
 {
 	write(fd, " ", 1);

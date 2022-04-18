@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 19:22:13 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/13 19:33:55 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/18 16:03:06 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 
 int	main(int ac, char **av, char **envp)
 {
-	char *args[2] = {"exe", NULL};
-	execve("./exe", args, envp);
-	perror(NULL);
+	printf("%s\n", av[1]);
+//	char *args[2] = {"test", NULL};
+//	execve("./test", args, envp);
+//	perror(NULL);
 	return (0);
 }

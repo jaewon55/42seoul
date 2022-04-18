@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/13 19:42:21 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/04/16 21:48:18 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/04/18 15:32:07 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MSRC = ./mandatory/main.c
 BSRC = ./bonus/main_bonus.c ./bonus/ft_gnl_bonus.c\
 	   ./bonus/ft_here_doc_bonus.c ./bonus/ft_is_here_doc_bonus.c\
 	   ./bonus/ft_multiple_pipe_bonus.c ./bonus/ft_quotes_limiter_bonus.c\
-	   ./bonus/ft_unquotes_limiter_bonus.c\
+	   ./bonus/ft_unquotes_limiter_bonus.c ./bonus/ft_is_limiter_bonus.c\
 	   ./bonus/ft_write_append_exe_file_bonus.c\
 	   ./bonus/ft_write_stdin_bonus.c
 

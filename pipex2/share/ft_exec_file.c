@@ -6,13 +6,14 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:50:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/16 20:20:04 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/18 17:14:50 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdlib.h>
 #include <sys/wait.h>
+
 static void	ft_child_proc(char **envp)
 {
 	char *const	args[2] = {"/tmp/piep_exe", NULL};
