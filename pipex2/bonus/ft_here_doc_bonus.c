@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 03:11:38 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/04/18 16:08:01 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:39:59 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static char	*ft_pars_limiter(char *limiter)
 	if (limiter[0] != '\'' && limiter[0] != '\"')
 		return (NULL);
 	result = malloc(sizeof(char) * (ft_strlen(limiter) - 1));
+	if (!result)
+		ft_perror();
 	i = 1;
 	j = 0;
 	while (limiter[i])
