@@ -121,72 +121,72 @@ void	print_line(char *str)
 	printf("%s%s%s\n", line, str, line);
 }
 
-int main(void)
-{
-	ArrayList *ar;
-	ArrayListNode node1;
-	ArrayListNode node2;
-	ArrayListNode node3;
-	ArrayListNode node4;
-	ArrayListNode node5;
+// int main(void)
+// {
+// 	ArrayList *ar;
+// 	ArrayListNode node1;
+// 	ArrayListNode node2;
+// 	ArrayListNode node3;
+// 	ArrayListNode node4;
+// 	ArrayListNode node5;
 
-	node1.data = 10;
-	node2.data = 20;
-	node3.data = 30;
-	node4.data = 40;
-	node5.data = 50;
-	ar = createArrayList(5);
+// 	node1.data = 10;
+// 	node2.data = 20;
+// 	node3.data = 30;
+// 	node4.data = 40;
+// 	node5.data = 50;
+// 	ar = createArrayList(5);
 
-	print_line("Add Test");
-	displayArrayList(ar);
-	printf("addALE position 1 : %d\n", addALElement(ar, 1, node1));
-	printf("addALE position 0 : %d\n", addALElement(ar, 0, node1));
-	displayArrayList(ar);
-	printf("\n\n");
+// 	print_line("Add Test");
+// 	displayArrayList(ar);
+// 	printf("addALE position 1 : %d\n", addALElement(ar, 1, node1));
+// 	printf("addALE position 0 : %d\n", addALElement(ar, 0, node1));
+// 	displayArrayList(ar);
+// 	printf("\n\n");
 
-	print_line("Remove Test");
-	displayArrayList(ar);
-	printf("removeALE position 1 : %d\n", removeALElement(ar, 1));
-	printf("removeALE position 0 : %d\n", removeALElement(ar, 0));
-	displayArrayList(ar);
-	printf("\n\n");
+// 	print_line("Remove Test");
+// 	displayArrayList(ar);
+// 	printf("removeALE position 1 : %d\n", removeALElement(ar, 1));
+// 	printf("removeALE position 0 : %d\n", removeALElement(ar, 0));
+// 	displayArrayList(ar);
+// 	printf("\n\n");
 
-	print_line("IsFull Test");
-	displayArrayList(ar);
-	printf("isFull : %d\n", isArrayListFull(ar));
-	addALElement(ar, 0, node5);
-	addALElement(ar, 0, node4);
-	addALElement(ar, 0, node3);
-	addALElement(ar, 0, node2);
-	addALElement(ar, 0, node1);
-	printf("\n\nadd all element\n\n");
-	displayArrayList(ar);
-	printf("isFull : %d\n", isArrayListFull(ar));
-	printf("addALE position 0 : %d\n", addALElement(ar, 0, node1));
-	printf("\n\n");
+// 	print_line("IsFull Test");
+// 	displayArrayList(ar);
+// 	printf("isFull : %d\n", isArrayListFull(ar));
+// 	addALElement(ar, 0, node5);
+// 	addALElement(ar, 0, node4);
+// 	addALElement(ar, 0, node3);
+// 	addALElement(ar, 0, node2);
+// 	addALElement(ar, 0, node1);
+// 	printf("\n\nadd all element\n\n");
+// 	displayArrayList(ar);
+// 	printf("isFull : %d\n", isArrayListFull(ar));
+// 	printf("addALE position 0 : %d\n", addALElement(ar, 0, node1));
+// 	printf("\n\n");
 
-	print_line("GetElement Test");
-	addALElement(ar, 0, node1);
-	displayArrayList(ar);
-	ArrayListNode *tmp_node = getALElement(ar, 0);
-	tmp_node->data = -10;
-	printf("\nchange value\n\n");
-	displayArrayList(ar);
-	printf("\n\n");
+// 	print_line("GetElement Test");
+// 	addALElement(ar, 0, node1);
+// 	displayArrayList(ar);
+// 	ArrayListNode *tmp_node = getALElement(ar, 0);
+// 	tmp_node->data = -10;
+// 	printf("\nchange value\n\n");
+// 	displayArrayList(ar);
+// 	printf("\n\n");
 
-	print_line("Clear Test");
-	displayArrayList(ar);
-	clearArrayList(ar);
-	printf("\nafter clear\n\n");
-	displayArrayList(ar);
-	printf("\n\n");
+// 	print_line("Clear Test");
+// 	displayArrayList(ar);
+// 	clearArrayList(ar);
+// 	printf("\nafter clear\n\n");
+// 	displayArrayList(ar);
+// 	printf("\n\n");
 
-	print_line("Delete Test");
-	displayArrayList(ar);
-	deleteArrayList(ar);
-	ar = NULL;
-	printf("\nafter delete\n\n");
-	displayArrayList(ar);
-	printf("\n\n");
-	return (0);
-}
+// 	print_line("Delete Test");
+// 	displayArrayList(ar);
+// 	deleteArrayList(ar);
+// 	ar = NULL;
+// 	printf("\nafter delete\n\n");
+// 	displayArrayList(ar);
+// 	printf("\n\n");
+// 	return (0);
+// }

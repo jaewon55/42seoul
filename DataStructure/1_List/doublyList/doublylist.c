@@ -145,24 +145,24 @@ void displayDoublyListBack(DoublyList* pList)
 	}
 }
 
-int main(void)
-{
-	DoublyList *list;
+// int main(void)
+// {
+// 	DoublyList *list;
 
-	list = createDoublyList();
-	printf("--- AddTest ---\n");
-	addDLElement(list, 0, (DoublyListNode){1, NULL, NULL});
-	addDLElement(list, 1, (DoublyListNode){2, NULL, NULL});
-	addDLElement(list, 2, (DoublyListNode){3, NULL, NULL});
-	addDLElement(list, 3, (DoublyListNode){4, NULL, NULL});
-	addDLElement(list, 4, (DoublyListNode){5, NULL, NULL});
-	displayDoublyList(list);
-	printf("------------------------\n");
-	printf("--- RemoveTest ---\n");
-	printf("remove result : %d\n", removeDLElement(list, 0));
-	displayDoublyListBack(list);
-	printf("------------------------\n");
-	clearDoublyList(list);
-	displayDoublyList(list);
-	deleteDoublyList(list);
-}
+// 	list = createDoublyList();
+// 	printf("--- AddTest ---\n");
+// 	addDLElement(list, 0, (DoublyListNode){1, NULL, NULL});
+// 	addDLElement(list, 1, (DoublyListNode){2, NULL, NULL});
+// 	addDLElement(list, 2, (DoublyListNode){3, NULL, NULL});
+// 	addDLElement(list, 3, (DoublyListNode){4, NULL, NULL});
+// 	addDLElement(list, 4, (DoublyListNode){5, NULL, NULL});
+// 	displayDoublyList(list);
+// 	printf("------------------------\n");
+// 	printf("--- RemoveTest ---\n");
+// 	printf("remove result : %d\n", removeDLElement(list, 0));
+// 	displayDoublyListBack(list);
+// 	printf("------------------------\n");
+// 	clearDoublyList(list);
+// 	displayDoublyList(list);
+// 	deleteDoublyList(list);
+// }

@@ -123,20 +123,20 @@ void displayLinkedList(LinkedList* pList)
 	}
 }
 
-int main(void)
-{
-	ListNode node;
-	node.data = 10;
-	node.pLink = NULL;
-	LinkedList *list = createLinkedList();
-	printf("insert result: %d\n", addLLElement(list, 0, node));
-	node.data = 20;
-	printf("insert result: %d\n", addLLElement(list, 1, node));
-	displayLinkedList(list);
-	printf("value : %d\n", getLLElement(list, 0)->data);
-	printf("value : %d\n", getLLElement(list, 1)->data);
-	printf("remove result: %d\n", removeLLElement(list, 0));
-	displayLinkedList(list);
-	printf("value : %d\n", getLLElement(list, 0)->data);
-	deleteLinkedList(list);
-}
+// int main(void)
+// {
+// 	ListNode node;
+// 	node.data = 10;
+// 	node.pLink = NULL;
+// 	LinkedList *list = createLinkedList();
+// 	printf("insert result: %d\n", addLLElement(list, 0, node));
+// 	node.data = 20;
+// 	printf("insert result: %d\n", addLLElement(list, 1, node));
+// 	displayLinkedList(list);
+// 	printf("value : %d\n", getLLElement(list, 0)->data);
+// 	printf("value : %d\n", getLLElement(list, 1)->data);
+// 	printf("remove result: %d\n", removeLLElement(list, 0));
+// 	displayLinkedList(list);
+// 	printf("value : %d\n", getLLElement(list, 0)->data);
+// 	deleteLinkedList(list);
+// }

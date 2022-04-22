@@ -140,24 +140,24 @@ void displayCircularList(CircularList* pList)
 	}
 }
 
-int main(void)
-{
-	CircularList	*list;
+// int main(void)
+// {
+// 	CircularList	*list;
 
-	list = createCircularList();
-	printf("--- AddTest ---\n");
-	addCLElement(list, 0, (CircularListNode){1, NULL});
-	addCLElement(list, 1, (CircularListNode){2, NULL});
-	addCLElement(list, 2, (CircularListNode){3, NULL});
-	addCLElement(list, 3, (CircularListNode){4, NULL});
-	addCLElement(list, 4, (CircularListNode){5, NULL});
-	displayCircularList(list);
-	printf("------------------------\n");
-	printf("--- RemoveTest ---\n");
-	printf("remove result : %d\n", removeCLElement(list, 0));
-	displayCircularList(list);
-	printf("------------------------\n");
-	clearCircularList(list);
-	displayCircularList(list);
-	deleteCircularList(list);
-}
+// 	list = createCircularList();
+// 	printf("--- AddTest ---\n");
+// 	addCLElement(list, 0, (CircularListNode){1, NULL});
+// 	addCLElement(list, 1, (CircularListNode){2, NULL});
+// 	addCLElement(list, 2, (CircularListNode){3, NULL});
+// 	addCLElement(list, 3, (CircularListNode){4, NULL});
+// 	addCLElement(list, 4, (CircularListNode){5, NULL});
+// 	displayCircularList(list);
+// 	printf("------------------------\n");
+// 	printf("--- RemoveTest ---\n");
+// 	printf("remove result : %d\n", removeCLElement(list, 0));
+// 	displayCircularList(list);
+// 	printf("------------------------\n");
+// 	clearCircularList(list);
+// 	displayCircularList(list);
+// 	deleteCircularList(list);
+// }
