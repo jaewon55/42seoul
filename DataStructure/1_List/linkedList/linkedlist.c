@@ -58,6 +58,8 @@ int removeLLElement(LinkedList* pList, int position)
 	prevNode->pLink = nodeToDelete->pLink;
 	free(nodeToDelete);
 	pList->currentElementCount--;
+	if (pList->currentElementCount == 0)
+		pList->headerNode.pLink = NULL;
 	return (TRUE);
 }
 

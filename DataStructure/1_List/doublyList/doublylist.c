@@ -55,6 +55,8 @@ int removeDLElement(DoublyList* pList, int position)
 	free(temp);
 	temp = NULL;
 	pList->currentElementCount--;
+	if (pList->currentElementCount = 0)
+		pList->headerNode.pRLink = NULL;
 	return (TRUE);
 }
 
