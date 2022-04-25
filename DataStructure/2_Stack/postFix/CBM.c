@@ -17,7 +17,7 @@ static int	ft_braketcmp(char c1, char c2)
 		return (TRUE);
 	else if (c1 == '(' && c2 == ')')
 		return (TRUE);
-	else if (c1 == '(' && c2 == ']')
+	else if (c1 == '[' && c2 == ']')
 		return (TRUE);
 	return (FALSE);
 }

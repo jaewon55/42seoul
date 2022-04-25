@@ -21,8 +21,16 @@ void deleteLinkedStack(LinkedStack* pStack);
 int isLinkedStackEmpty(LinkedStack* pStack);
 void displayLinkedStack(LinkedStack* pList);
 int	checkBracketMatching(char *str);
+void print_line(char *str);
+
 
 // int isLinkedStackFull(LinkedStack* pStack); ????
+
+int		ft_isoperator(char c);
+void	ft_add_operator(LinkedStack *stack, char *result, int *r_idx);
+void	ft_add_operand(char *result, char *str, int *r_idx, int *s_idx);
+int		ft_operator_priority(char c);
+
 #endif
 
 #ifndef _COMMON_STACK_DEF_
