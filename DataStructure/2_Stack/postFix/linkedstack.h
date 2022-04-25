@@ -9,8 +9,8 @@ typedef struct StackNodeType
 
 typedef struct LinkedStackType
 {
-	int currentElementCount;	// 현재 원소의 개수
-	StackNode* pTopElement;		// Top 노드의 포인터
+	int currentElementCount;
+	StackNode* pTopElement;
 } LinkedStack;
 
 LinkedStack* createLinkedStack();
@@ -18,9 +18,11 @@ int pushLS(LinkedStack* pStack, StackNode element);
 StackNode* popLS(LinkedStack* pStack);
 StackNode* peekLS(LinkedStack* pStack);
 void deleteLinkedStack(LinkedStack* pStack);
-int isLinkedStackFull(LinkedStack* pStack);
 int isLinkedStackEmpty(LinkedStack* pStack);
+void displayLinkedStack(LinkedStack* pList);
+int	checkBracketMatching(char *str);
 
+// int isLinkedStackFull(LinkedStack* pStack); ????
 #endif
 
 #ifndef _COMMON_STACK_DEF_
@@ -28,5 +30,6 @@ int isLinkedStackEmpty(LinkedStack* pStack);
 
 #define TRUE		1
 #define FALSE		0
+#define ERROR		-1
 
 #endif

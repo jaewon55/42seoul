@@ -2,11 +2,10 @@
 
 int main(void)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+void    *img;
+    void    *mlx;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "so_long");
-	mlx_loop(mlx_ptr);
+    mlx = mlx_init();
+    img = mlx_new_image(mlx, 1920, 1080);
 	return (0);
 }
