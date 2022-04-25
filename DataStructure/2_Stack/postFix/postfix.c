@@ -40,7 +40,7 @@ char	*postFix(char *str)
 			{
 				// stack의 topData(연산자)가 현재 연산자 보다 우선이라면 result에 추가
 	        	while (!isLinkedStackEmpty(stack) && ft_operator_priority(peekLS(stack)->data)\
-				 >= ft_operator_priority(str[s_idx]))
+				 > ft_operator_priority(str[s_idx]))
 					ft_add_operator(stack, result, &r_idx);
 				pushLS(stack, (StackNode){str[s_idx++], NULL});
 			}
@@ -89,8 +89,8 @@ int main()
 	printf("\n\n");
 
 	print_line("TEST 3");
-	printf("%s\n", "6 / [{2 + 2 * (8 + -10)} * -1] + 12");
-    ret = postFix("6 / [{2 + 2 * (8 + -10)} * -1] + 12");
+	printf("%s\n", "6 / [{2 + 2 + (8 + -10)} * 1] + 12");
+    ret = postFix("6 / [{2 + 2 + (8 + -10)} * 1] + 12");
     printf("%s\n", ret);
 	free(ret);
 	printf("\n\n");
