@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-char	*reversString(char *str)
+char	*revers_string(char *str)
 {
 	ArrayStack	*stack;
 	char		*revers;
@@ -33,7 +33,7 @@ char	*reversString(char *str)
 int	main()
 {
 	char	*str = "abcdefg";
-	char	*revers = reversString(str);
+	char	*revers = revers_string(str);
 	printf("%s\n", str);
 	printf("%s\n", revers);
 	free(revers);

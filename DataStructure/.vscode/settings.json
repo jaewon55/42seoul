@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"mapstack.h": "c",
+		"mapdef.h": "c"
+	}
+}

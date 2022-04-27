@@ -38,11 +38,14 @@ int	checkBracketMatching(char *str)
     while (str[idx])
     {
 		braket_bool = ft_isbraket(str[idx]);
+		// 여는 괄호 -> push
         if (braket_bool == 1)
             pushLS(bStack, (StackNode){str[idx], NULL});
+		// 닫은 괄호 -> pop
         else if (braket_bool == 2)
 		{
 			temp = popLS(bStack);
+			// 여는 괄호와 닫는 괄호 비교
             if (!temp || !ft_braketcmp(temp->data, str[idx]))
 			{
 				free(temp);
@@ -53,6 +56,7 @@ int	checkBracketMatching(char *str)
         }
         idx++;
     }
+	// 모든 수식을 확인했는데 스택에 괄호가 남음 -> false
 	if (!isLinkedStackEmpty(bStack))
 	{
 		deleteLinkedStack(bStack);

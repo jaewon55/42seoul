@@ -48,14 +48,14 @@ char	*postFix(char *str)
 		// 닫는 괄호
 		else if (ft_operator_priority(str[s_idx]) == 3)
         {
-			// 여는 괄호를 만날 때 까지
+			// (스택에서) 여는 괄호를 만날 때 까지
             while (ft_operator_priority(peekLS(stack)->data) != 0)
 				ft_add_operator(stack, result, &r_idx);
 			temp = popLS(stack);
 			free(temp);
 			s_idx++;
         }
-		// 여는 괄호 '('
+		// 여는 괄호
 		else if (ft_operator_priority(str[s_idx]) == 0)
 			pushLS(stack, (StackNode){str[s_idx++], NULL});
 		// 피연산자
