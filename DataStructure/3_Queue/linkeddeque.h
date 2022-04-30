@@ -10,9 +10,9 @@ typedef struct DequeNodeType
 
 typedef struct LinkedDequeType
 {
-	int currentElementCount;	// ÇöÀç ¿ø¼ÒÀÇ °³¼ö
-	DequeNode* pFrontNode;		// Front ³ëµåÀÇ Æ÷ÀÎÅÍ
-	DequeNode* pRearNode;		// Rear ³ëµåÀÇ Æ÷ÀÎÅÍ
+	int currentElementCount;	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	DequeNode* pFrontNode;		// Front ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	DequeNode* pRearNode;		// Rear ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 } LinkedDeque;
 
 LinkedDeque* createLinkedDeque();
@@ -22,7 +22,7 @@ DequeNode* deleteFrontLD(LinkedDeque* pDeque);
 DequeNode* deleteRearLD(LinkedDeque* pDeque);
 DequeNode* peekFrontLD(LinkedDeque* pDeque);
 DequeNode* peekRearLD(LinkedDeque* pDeque);
-void deleteLinkedDeque(LinkedDeque* pDeque);
+void deleteLinkedDeque(LinkedDeque** pDeque);
 int isLinkedDequeFull(LinkedDeque* pDeque);
 int isLinkedDequeEmpty(LinkedDeque* pDeque);
 
@@ -33,5 +33,6 @@ int isLinkedDequeEmpty(LinkedDeque* pDeque);
 
 #define TRUE		1
 #define FALSE		0
+#define ERROR       -1
 
 #endif
