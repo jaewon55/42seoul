@@ -20,6 +20,8 @@ ArrayQueue* createArrayQueue(int maxElementCount)
     queue->currentElementCount = 0;
     queue->front = 0;
     queue->rear = 0;
+    for (int i = 0; i < maxElementCount; i++)
+        queue->pElement[i].data = NULL;
     return (queue);
 }
 
@@ -44,7 +46,8 @@ ArrayQueueNode *dequeueAQ(ArrayQueue* pQueue)
     dequeue = malloc(sizeof(ArrayQueueNode));
     if (!dequeue)
         return (NULL);
-    *dequeue = pQueue->pElement[pQueue->front];
+    dequeue->data = pQueue->pElement[pQueue->front].data;
+    pQueue->pElement[pQueue->front].data = NULL;
     pQueue->front = (pQueue->front + 1) % pQueue->maxElementCount;
     pQueue->currentElementCount--;
     return (dequeue);
@@ -61,6 +64,8 @@ void deleteArrayQueue(ArrayQueue** pQueue)
 {
     if (!pQueue || !*pQueue)
         return ;
+    for (int i = 0; i < (*pQueue)->maxElementCount; i++)
+        free((*pQueue)->pElement[i].data);
     free((*pQueue)->pElement);
     free(*pQueue);
     *pQueue = NULL;

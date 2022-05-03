@@ -3,7 +3,7 @@
 
 typedef struct ArrayQueueNodeType
 {
-	char data;
+	void *data;
 } ArrayQueueNode;
 
 typedef struct ArrayQueueType
