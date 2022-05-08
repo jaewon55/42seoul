@@ -6,13 +6,13 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 16:42:32 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/04/22 17:50:10 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/05/08 16:28:04 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-INCLUDE = ./mlx/
+INCLUDE = ./include/
 
 SRC = ./main.c
 
@@ -23,6 +23,7 @@ CFLAG = -Wall -Wextra -Werror
 all : $(NAME)
 
 clean :
+# @$(MAKE) -s -C mlx clean
 	@rm -f $(OBJ)
 
 fclean : clean
@@ -31,6 +32,7 @@ fclean : clean
 re : fclean all
 
 $(NAME) : $(OBJ)
+# @$(MAKE) -s -C mlx all
 	@$(CC) $(CFLAG) -L ./mlx -lmlx -framework OpenGL \
 		-framework Appkit $(OBJ) -o $(NAME)
 # -L [디렉토리] : 라이브러리를 찾을 디렉토리 지정
