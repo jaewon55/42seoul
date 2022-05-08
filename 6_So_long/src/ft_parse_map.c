@@ -6,18 +6,13 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:31:54 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/08 17:07:17 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/09 01:06:01 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "libft.h"
 #include <fcntl.h>
-
-static char *ft_check_map(char **map)
-{
-	
-}
 
 static char	*ft_read_map(int fd)
 {
@@ -62,6 +57,5 @@ char	**ft_parse_map(char *file)
 	if (!map)
 		ft_error();
 	free(read_map);
-	ft_check_map(map);
 	return (map);
 }
