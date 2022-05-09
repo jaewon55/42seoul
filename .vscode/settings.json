@@ -15,6 +15,8 @@
 		"vector": "c",
 		"iterator": "c",
 		"utility": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"stdio.h": "c",
+		"so_long.h": "c"
 	}
 }

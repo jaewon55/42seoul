@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_put_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 20:38:47 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/09 20:44:12 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/09 20:59:31 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "mlx.h"
 
-int main(int ac, char **av)
+void	ft_put_img(t_mlx_instance instance, char *file, int x, int y)
 {
-	char		**map;
-	t_map_data	map_data;
+	void	*img;
+	int		width;
+	int		height;
 
-	if (ac != 2)
+	img = mlx_xpm_file_to_image(instance.mlx, file, &width, &height);
+	if (!img)
 		ft_error();
-	map = ft_parse_map(av[1]);
-	map_data = ft_check_map(map);
-	ft_play_game(map, map_data);
-	return (0);
+	mlx_put_image_to_window(instance.mlx, instance.win, img, x, y);
+	mlx_destroy_image(instance.mlx, img);
 }

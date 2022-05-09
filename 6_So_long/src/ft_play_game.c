@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_play_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 20:38:47 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/09 20:37:39 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/09 20:43:47 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "mlx.h"
 
-int main(int ac, char **av)
+void	ft_play_game(char **map, t_map_data data)
 {
-	char		**map;
-	t_map_data	map_data;
+	void	*mlx;
+	void	*win;
 
-	if (ac != 2)
+	mlx = mlx_init();
+	if (!mlx)
 		ft_error();
-	map = ft_parse_map(av[1]);
-	map_data = ft_check_map(map);
-	ft_play_game(map, map_data);
-	return (0);
+	win = mlx_new_window(mlx, 64 * data.x, 64 * data.y, "so_long");
+	ft_create_map(map);
 }

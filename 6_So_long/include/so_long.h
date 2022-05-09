@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:26:48 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 01:02:27 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/09 20:52:55 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ typedef struct s_map_data{
 	int	x;
 	int	y;
 }	t_map_data;
+
+typedef struct s_mlx_instance{
+	void	*mlx;
+	void	*win;
+}	t_mlx_instance;
 
 void		ft_error(void);
 char		**ft_parse_map(char *file);
