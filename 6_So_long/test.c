@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define SPACE "img/space.xpm"
+
 int main(void)
 {
 	void	*win;
@@ -15,12 +17,12 @@ int main(void)
 	int		b;
 
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 64 * 4, 64 * 1, "so_long");
-	img = mlx_xpm_file_to_image(mlx, "./img/space.xpm", &a, &b);
-	img2 = mlx_xpm_file_to_image(mlx, "./img/wall.xpm", &a, &b);
-	img3 = mlx_xpm_file_to_image(mlx, "./img/mirror1.xpm", &a, &b);
-	img4 = mlx_xpm_file_to_image(mlx, "./img/mirror2.xpm", &a, &b);
-	img5 = mlx_xpm_file_to_image(mlx, "./img/mushmom1.xpm", &a, &b);
+	win = mlx_new_window(mlx, 64 * 39, 64 * 21, "so_long");
+	img = mlx_xpm_file_to_image(mlx, SPACE, &a, &b);
+	img2 = mlx_xpm_file_to_image(mlx, "img/wall.xpm", &a, &b);
+	img3 = mlx_xpm_file_to_image(mlx, "img/mirror1.xpm", &a, &b);
+	img4 = mlx_xpm_file_to_image(mlx, "img/mirror2.xpm", &a, &b);
+	img5 = mlx_xpm_file_to_image(mlx, "img/mushmom1.xpm", &a, &b);
 	mlx_put_image_to_window(mlx, win, img, 0, 0);
 	mlx_put_image_to_window(mlx, win, img2, 64, 0);
 	mlx_put_image_to_window(mlx, win, img3, 128, 0);

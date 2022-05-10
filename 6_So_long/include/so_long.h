@@ -6,13 +6,15 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:26:48 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 20:52:55 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/10 22:16:23 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# define X 0
+# define Y 1
 #include <stdio.h>
 
 typedef struct s_map_data{
