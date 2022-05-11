@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:59:25 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 03:23:26 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/11 19:29:49 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_map_data ft_check_map(char **map)
 		if (len != j)
 			ft_error();
 	}
-	if (!map_data.c || !map_data.e || !map_data.p)
+	if (!map_data.c || !map_data.e || map_data.p != 1)
 		ft_error();
 	map_data.x = j;
 	map_data.y = i;

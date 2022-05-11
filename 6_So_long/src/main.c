@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 20:38:47 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:47:42 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(int ac, char **av)
 		ft_error();
 	map = ft_parse_map(av[1]);
 	map_data = ft_check_map(map);
-	ft_play_game(map, map_data);
+	map_data.map = map;
+	ft_play_game(map_data);
 	return (0);
 }

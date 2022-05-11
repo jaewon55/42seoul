@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 16:42:32 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/05/09 15:29:13 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/05/11 19:40:35 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ LIBFT_PATH = ./libft/
 
 INCLUDE = ./include/
 
+# SRC = ./src/main.c ./src/ft_check_map.c ./src/ft_error.c\
+# 	  ./src/ft_parse_map.c ./src/ft_play_game.c\
+# 	  ./src/ft_put_img.c ./src/ft_create_map.c
+
 SRC = test.c
-#./src/main.c ./src/ft_check_map.c ./src/ft_error.c\
-	  ./src/ft_parse_map.c
 
 OBJ = $(SRC:.c=.o)
 
