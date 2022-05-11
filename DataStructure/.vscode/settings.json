@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"mapstack.h": "c",
-		"mapdef.h": "c"
+		"mapdef.h": "c",
+		"bintree.h": "c"
 	}
 }

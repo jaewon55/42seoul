@@ -24,6 +24,9 @@ BinTreeNode* getRightChildNodeBT(BinTreeNode* pNode);
 void deleteBinTree(BinTree* pBinTree);
 void deleteBinTreeNode(BinTreeNode* pNode);
 
+void displayTree(BinTreeNode *node);
+
+
 #endif
 
 #ifndef _COMMON_TREE_DEF_
