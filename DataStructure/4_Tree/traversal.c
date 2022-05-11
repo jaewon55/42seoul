@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "bintree.h"
 
-// 중위
+// 중위 LVR
 void inorder(BinTreeNode *node)
 {
 	if (node)
@@ -13,7 +13,7 @@ void inorder(BinTreeNode *node)
 	}
 }
 
-// 전위
+// 전위 VLR
 void preorder(BinTreeNode *node)
 {
 	if (node)
@@ -24,7 +24,7 @@ void preorder(BinTreeNode *node)
 	}
 }
 
-// 후위
+// 후위 LRV
 void postorder(BinTreeNode *node)
 {
 	if (node)
