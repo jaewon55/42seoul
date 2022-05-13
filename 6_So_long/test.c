@@ -70,18 +70,38 @@ void	ft_mush(t_instance *ins)
 		else if (ins->mush_img == 3)
 		{
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
-			ins->loc[0] += 32;
-			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1]);
+			ins->loc[0] += 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
 			ins->mush_img++;
 		}
 		else if (ins->mush_img == 4)
 		{
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
-			ins->loc[0] += 32;
-			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush2, ins->loc[0], ins->loc[1]);
+			ins->loc[0] += 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
 			ins->mush_img++;
 		}
 		else if (ins->mush_img == 5)
+		{
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
+			ins->loc[0] += 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
+			ins->mush_img++;
+		}
+		else if (ins->mush_img == 6)
+		{
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
+			ins->loc[0] += 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
+			ins->mush_img++;
+		}
+		else if (ins->mush_img == 7)
+		{
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush2, ins->loc[0], ins->loc[1]);
+			ins->mush_img++;
+		}
+		else if (ins->mush_img == 8)
 		{
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush1, ins->loc[0], ins->loc[1]);
@@ -106,18 +126,38 @@ void	ft_mush(t_instance *ins)
 		else if (ins->mush_img == 3)
 		{
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
-			ins->loc[0] -= 32;
-			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1]);
+			ins->loc[0] -= 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
 			ins->mush_img++;
 		}
 		else if (ins->mush_img == 4)
 		{
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
-			ins->loc[0] -= 32;
-			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush2, ins->loc[0], ins->loc[1]);
+			ins->loc[0] -= 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
 			ins->mush_img++;
 		}
 		else if (ins->mush_img == 5)
+		{
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
+			ins->loc[0] -= 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
+			ins->mush_img++;
+		}
+		else if (ins->mush_img == 6)
+		{
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
+			ins->loc[0] -= 16;
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush4, ins->loc[0], ins->loc[1] - 16);
+			ins->mush_img++;
+		}
+		else if (ins->mush_img == 7)
+		{
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
+			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush2, ins->loc[0], ins->loc[1]);
+			ins->mush_img++;
+		}
+		else if (ins->mush_img == 8)
 		{
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->space, ins->loc[0], ins->loc[1]);
 			mlx_put_image_to_window(ins->mlx, ins->win, ins->mush1, ins->loc[0], ins->loc[1]);
@@ -178,6 +218,7 @@ int main(void)
 	instance.mush2 = mlx_xpm_file_to_image(instance.mlx, MUSH2, &a, &b);
 	instance.mush3 = mlx_xpm_file_to_image(instance.mlx, MUSH3, &a, &b);
 	instance.mush4 = mlx_xpm_file_to_image(instance.mlx, MUSH4, &a, &b);
+	mlx_string_put(instance.mlx, instance.win, 80, 32, 0x000000, "123");
 	mlx_put_image_to_window(instance.space, instance.win, instance.space, 64, 0);
 	mlx_put_image_to_window(instance.space, instance.win, instance.space, 0, 64);
 	mlx_put_image_to_window(instance.space, instance.win, instance.space, 64, 64);

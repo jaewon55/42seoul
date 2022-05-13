@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 16:42:32 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/05/12 16:40:56 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/05/14 00:09:30 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,15 @@ LIBFT_PATH = ./libft/
 
 INCLUDE = ./include/
 
-# SRC = ./src/main.c ./src/ft_check_map.c ./src/ft_error.c\
-# 	  ./src/ft_parse_map.c ./src/ft_play_game.c\
-# 	  ./src/ft_put_img.c ./src/ft_create_map.c
+SRC = ./src/main.c ./src/ft_check_map.c ./src/ft_error.c\
+	  ./src/ft_parse_map.c ./src/ft_play_game.c\
+	  ./src/ft_put_img.c ./src/ft_create_map.c\
+	  ./src/ft_inst_img.c ./src/ft_loop.c ./src/ft_put_meso.c\
+	  ./src/ft_put_escape.c ./src/ft_put_mush.c src/ft_del_map.c\
+	  ./src/ft_mush_right.c ./src/ft_check_movable.c ./src/ft_mush_left.c\
+	  ./src/ft_collect.c ./src/ft_mush_down.c ./src/ft_mush_up.c
 
-SRC = test.c
+# SRC = test.c
 
 OBJ = $(SRC:.c=.o)
 

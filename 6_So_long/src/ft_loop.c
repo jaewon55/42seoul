@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_loop.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 19:45:51 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/13 18:18:23 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/14 00:17:35 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "mlx.h"
 
-int main(int ac, char **av)
+int	ft_loop(t_mlx_inst *inst)
 {
-	char		**map;
-	t_map		map_data;
+	t_ele	*temp;
 
-	if (ac != 2)
-		ft_error();
-	map = ft_parse_map(av[1]);
-	map_data = ft_check_map(map);
-	map_data.map = map;
-	ft_play_game(map_data);
-	return (0);
+	temp = inst->list;
+	while (temp)
+	{
+		if (temp->c == 'C')
+			ft_put_meso(inst, temp);
+		else
+			ft_put_escape(inst, temp);
+		temp = temp->next;
+	}
+	ft_put_mush(inst);
+	return (1);
 }

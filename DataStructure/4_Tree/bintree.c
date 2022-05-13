@@ -103,8 +103,15 @@ void deleteBinTree(BinTree* pBinTree)
 
 void deleteBinTreeNode(BinTreeNode* pNode)
 {
-	if (pNode != NULL)
-		free(pNode);
+	BinTree	*temp;
+
+	if (pNode == NULL)
+		return ;
+	temp = malloc(sizeof(BinTree));
+	if (!temp)
+		return ;
+	temp->pRootNode = pNode;
+	deleteBinTree(temp);
 }
 
 // int	main(void)

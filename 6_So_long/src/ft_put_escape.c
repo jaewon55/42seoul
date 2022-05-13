@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_put_escape.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 19:45:51 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/13 18:40:19 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/13 19:09:18 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int ac, char **av)
+void	ft_put_escape(t_mlx_inst *inst, t_ele *ele)
 {
-	char		**map;
-	t_map		map_data;
+	int	location[2];
 
-	if (ac != 2)
-		ft_error();
-	map = ft_parse_map(av[1]);
-	map_data = ft_check_map(map);
-	map_data.map = map;
-	ft_play_game(map_data);
-	return (0);
+	location[X] = (short)ele->location;
+	location[Y] = ele->location >> 16;
+	if (!inst->meso_cnt)
+		ft_put_img(*inst, inst->escape2, location);
+	else
+		ft_put_img(*inst, inst->escape1, location);
 }

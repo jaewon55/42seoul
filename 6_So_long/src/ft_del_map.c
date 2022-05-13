@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_del_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 19:45:51 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/13 18:49:54 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/13 18:53:20 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "so_long.h"
 
-int main(int ac, char **av)
+void	ft_del_map(t_map *data)
 {
-	char		**map;
-	t_map		map_data;
+	int	i;
 
-	if (ac != 2)
-		ft_error();
-	map = ft_parse_map(av[1]);
-	map_data = ft_check_map(map);
-	map_data.map = map;
-	ft_play_game(map_data);
-	return (0);
+	i = -1;
+	while(data->map[++i])
+		free(data->map[i]);
+	free(data->map);
+	data->map = NULL;
 }

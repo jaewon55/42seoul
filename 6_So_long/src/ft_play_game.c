@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:37:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/11 18:22:22 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/13 21:33:23 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,40 @@
 #include "mlx.h"
 #include <stdlib.h>
 
-static int	ft_close(t_mlx_instance *instance)
+static int	ft_close(t_mlx_inst *inst)
 {
-	exit(0);
+	exit(1);
 	return (1);
 }
 
-static int	ft_keyhook(int keycode, t_mlx_instance *instance)
+static int	ft_keyhook(int keycode, t_mlx_inst *inst)
 {
 	if (keycode == K_ESC)
-		ft_close(instance);
+		ft_close(inst);
+	if (keycode == K_W || (keycode >= K_A && keycode <= K_D))
+		ft_check_movable(keycode, inst);
 	return (1);
 }
 
-void	ft_play_game(t_map_data data)
+void	ft_play_game(t_map data)
 {
-	t_mlx_instance	instance;
+	t_mlx_inst	inst;
 
 	if (data.x > 39 || data.y > 21)
 		ft_error();
-	instance.mlx = mlx_init();
-	if (!instance.mlx)
-		ft_error();
-	instance.win = mlx_new_window\
-	(instance.mlx, 64 * data.x, 64 * data.y, "so_long");
-	if (!instance.win)
-		ft_error();
-	ft_create_map(instance, data);
-	mlx_hook(instance.win, X_DESTROY, 0, ft_close, &instance);
-	mlx_key_hook(instance.win, ft_keyhook, &instance);
-	mlx_loop(instance.mlx);
+	inst.list = data.list;
+	inst.p_loc = data.p_loc;
+	inst.key = -1;
+	inst.meso_cnt = data.c;
+	inst.motion = 1;
+	inst.move_cnt = 0;
+	inst.map = data.map;
+	inst.mlx = mlx_init();
+	inst.win = mlx_new_window(inst.mlx, 64 * data.x, 64 * data.y, "so_long");
+	ft_inst_img(&inst);
+	ft_create_map(inst, data);
+	mlx_hook(inst.win, X_DESTROY, 0, ft_close, &inst);
+	mlx_key_hook(inst.win, ft_keyhook, &inst);
+	mlx_loop_hook(inst.mlx, ft_loop, &inst);
+	mlx_loop(inst.mlx);
 }

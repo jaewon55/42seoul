@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_collect.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:11:57 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 19:45:51 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/13 23:37:36 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/13 23:59:58 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdlib.h>
 
-int main(int ac, char **av)
+void	ft_collect(t_mlx_inst *inst, int x, int y)
 {
-	char		**map;
-	t_map		map_data;
+	int		loc;
+	t_ele	*temp;
 
-	if (ac != 2)
-		ft_error();
-	map = ft_parse_map(av[1]);
-	map_data = ft_check_map(map);
-	map_data.map = map;
-	ft_play_game(map_data);
-	return (0);
+	inst->map[y][x] = '0';
+	loc = y * 64;
+	loc <<= 16;
+	loc += x * 64;
+	temp = inst->list;
+	while (temp->location != loc)
+		temp = temp->next;
+	if (temp->prev)
+		temp->prev->next = temp->next;
+	if (temp->next)
+		temp->next->prev = temp->prev;
+	free(temp);
+	inst->meso_cnt--;
 }
