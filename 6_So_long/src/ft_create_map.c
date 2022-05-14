@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 22:08:56 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 19:21:51 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:44:28 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static char	*fill_map(t_mlx_inst inst, char *map_line, int *location)
 		ft_put_img(inst, inst.wall, location);
 	else if (*map_line == '0')
 		ft_put_img(inst, inst.space, location);
+	else if (*map_line == 'X')
+		ft_put_img(inst, inst.enemy, location);
 	location[X] += 64;
 	return (++map_line);
 }

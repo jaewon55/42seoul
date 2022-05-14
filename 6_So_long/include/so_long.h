@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:26:48 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 23:44:15 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/14 21:12:30 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 # define X 0
 # define Y 1
 # define K_ESC 53
+# define K_SPACE 49
 # define K_W 13
 # define K_A 0
 # define K_S 1
 # define K_D 2
+# define DEAD 10
+# define CLEAR 11
 # define X_DESTROY 17
 # define SPACE "img/space.xpm"
 # define WALL "img/wall.xpm"
+# define ENEMY "img/enemy.xpm"
 # define ESCAPE_O "img/mirror1.xpm"
 # define ESCAPE_C "img/mirror2.xpm"
 # define MESO1 "img/meso1.xpm"
@@ -33,6 +37,12 @@
 # define MUSH2 "img/mushmom2.xpm"
 # define MUSH3 "img/mushmom3.xpm"
 # define MUSH4 "img/mushmom4.xpm"
+# define DIE1 "img/die1.xpm"
+# define DIE2 "img/die2.xpm"
+# define DIE3 "img/die3.xpm"
+# define DIE4 "img/die4.xpm"
+# define DIE5 "img/die5.xpm"
+# define DIE6 "img/die6.xpm"
 
 #include <stdio.h>
 
@@ -61,6 +71,7 @@ typedef struct s_mlx_inst{
 	void			*win;
 	void			*space;
 	void			*wall;
+	void			*enemy;
 	void			*meso1;
 	void			*meso2;
 	void			*meso3;
@@ -71,7 +82,14 @@ typedef struct s_mlx_inst{
 	void			*mush4;
 	void			*escape1;
 	void			*escape2;
+	void			*die1;
+	void			*die2;
+	void			*die3;
+	void			*die4;
+	void			*die5;
+	void			*die6;
 	char			**map;
+	int				cnt_loc;
 	char			key;
 	int				p_loc;
 	int				meso_cnt;
@@ -90,13 +108,15 @@ void		ft_put_img(t_mlx_inst inst, void *img, int *location);
 void		ft_put_meso(t_mlx_inst *inst, t_ele *ele);
 void		ft_put_escape(t_mlx_inst *inst, t_ele *ele);
 int			ft_loop(t_mlx_inst *inst);
-void		ft_del_map(t_map *data);
+void		ft_del_map(char **data);
 void		ft_put_mush(t_mlx_inst *inst);
 void		ft_check_movable(int keycode, t_mlx_inst *inst);
-void		ft_mush_up(t_mlx_inst *inst);
-void		ft_mush_down(t_mlx_inst *inst);
-void		ft_mush_left(t_mlx_inst *inst);
-void		ft_mush_right(t_mlx_inst *inst);
+void		ft_mush_up(t_mlx_inst *inst, int *loc);
+void		ft_mush_down(t_mlx_inst *inst, int *loc);
+void		ft_mush_left(t_mlx_inst *inst, int *loc);
+void		ft_mush_right(t_mlx_inst *inst, int *loc);
+void		ft_mush_dead(t_mlx_inst *inst, int *loc);
 void		ft_collect(t_mlx_inst *inst, int x, int y);
+void		ft_game_clear(t_mlx_inst *inst);
 
 #endif

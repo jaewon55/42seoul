@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_map.c                                       :+:      :+:    :+:   */
+/*   ft_game_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:49:54 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 20:41:14 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/14 20:03:02 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/14 20:46:49 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "so_long.h"
+#include "mlx.h"
+#include <stdlib.h>
 
-void	ft_del_map(char **map)
+void	ft_game_clear(t_mlx_inst *inst)
 {
-	int	i;
-
-	i = -1;
-	while(map[++i])
-		free(map[i]);
-	free(map);
+	printf("-----Game Clear-----\n");
+	printf("move count : %d\n", inst->move_cnt);
+	ft_del_map(inst->map);
+	mlx_destroy_window(inst->mlx, inst->win);
+	exit(0);
 }

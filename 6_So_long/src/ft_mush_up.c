@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 00:10:17 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 00:11:17 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:57:34 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ static void	ft_put_motion(t_mlx_inst *inst, void *img, int *loc)
 	{
 		inst->motion = 1;
 		inst->key = -1;
+		if (inst->map[loc[Y] / 64][loc[X] / 64] == 'X')
+			inst->key = DEAD;
+		if (inst->map[loc[Y] / 64][loc[X] / 64] == 'E')
+			inst->key = CLEAR;
 	}
 }
 
-void	ft_mush_up(t_mlx_inst *inst)
+void	ft_mush_up(t_mlx_inst *inst, int *loc)
 {
-	int	loc[2];
-
-	loc[X] = (short)inst->p_loc;
-	loc[Y] = inst->p_loc >> 16;
 	if (inst->motion == 1)
 		ft_put_motion(inst, inst->mush2, loc);
 	else if (inst->motion == 2)

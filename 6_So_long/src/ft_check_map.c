@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:59:25 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 21:44:40 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/14 17:49:56 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	ft_check_element(char c, t_map *map_data, int x, int y)
 		map_data->e++;
 	else if (c == 'C')
 		map_data->c++;
-	else if (c != '0' && c != '1')
+	else if (c != '0' && c != '1' && c != 'X')
 		ft_error();
 	if (map_data->p > 1)
 		ft_error();

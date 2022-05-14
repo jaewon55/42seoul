@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 21:21:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 23:39:11 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/14 16:18:23 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_check_movable(int keycode, t_mlx_inst *inst)
 		free(next_loc);
 		return ;
 	}
-	if (inst->map[next_loc[Y]][next_loc[X]] == 'C')
+	else if (inst->map[next_loc[Y]][next_loc[X]] == 'C')
 		ft_collect(inst, next_loc[X], next_loc[Y]);
 	inst->key = keycode;
 	inst->move_cnt++;
