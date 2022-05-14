@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 15:17:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/23 17:50:17 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:15:34 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strdup(const char *s1)
 {
 	char	*result;

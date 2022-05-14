@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:26:48 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 21:12:30 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:12:51 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@
 # define DIE4 "img/die4.xpm"
 # define DIE5 "img/die5.xpm"
 # define DIE6 "img/die6.xpm"
-
-#include <stdio.h>
 
 typedef struct s_ele
 {
@@ -118,5 +116,7 @@ void		ft_mush_right(t_mlx_inst *inst, int *loc);
 void		ft_mush_dead(t_mlx_inst *inst, int *loc);
 void		ft_collect(t_mlx_inst *inst, int x, int y);
 void		ft_game_clear(t_mlx_inst *inst);
+void		ft_del_inst(t_mlx_inst *inst);
+t_mlx_inst	ft_get_inst(t_map map_data);
 
 #endif

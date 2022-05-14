@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 16:31:54 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/09 19:10:45 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:30:49 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**ft_parse_map(char *file)
 	int		fd;
 	char	*read_map;
 	char	**map;
-	
+
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error();

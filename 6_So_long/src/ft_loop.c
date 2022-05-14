@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:18:23 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 21:16:10 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:37:43 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,28 @@
 #include "mlx.h"
 #include <stdlib.h>
 
-int	ft_loop(t_mlx_inst *inst)
+static void	ft_put_cnt(t_mlx_inst *inst)
 {
-	t_ele	*temp;
 	char	*cnt;
+	int		loc[2];
 
 	mlx_do_sync(inst->mlx);
-	mlx_put_image_to_window\
-	(inst->mlx, inst->win, inst->wall, 0, inst->cnt_loc - 64);
+	loc[X] = 0;
+	loc[Y] = inst->cnt_loc - 26;
+	ft_put_img(*inst, inst->wall, loc);
 	cnt = ft_itoa(inst->move_cnt);
 	if (!cnt)
 		ft_error();
-	temp = inst->list;
-	mlx_string_put\
-	(inst->mlx, inst->win, 0, inst->cnt_loc, 0xFF0000, cnt);
+	mlx_string_put(inst->mlx, inst->win, 25, inst->cnt_loc, 0xFF0000, cnt);
 	free(cnt);
+}
+
+int	ft_loop(t_mlx_inst *inst)
+{
+	t_ele	*temp;
+
+	ft_put_cnt(inst);
+	temp = inst->list;
 	while (temp)
 	{
 		if (temp->c == 'C')

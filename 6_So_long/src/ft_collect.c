@@ -6,29 +6,36 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:37:36 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/13 23:59:58 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:04:24 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdlib.h>
 
+static void	ft_set_link(t_mlx_inst *inst, t_ele *del)
+{
+	if (del->prev)
+		del->prev->next = del->next;
+	else
+		inst->list = del->next;
+	if (del->next)
+		del->next->prev = del->prev;
+	free(del);
+}
+
 void	ft_collect(t_mlx_inst *inst, int x, int y)
 {
 	int		loc;
-	t_ele	*temp;
+	t_ele	*del;
 
 	inst->map[y][x] = '0';
 	loc = y * 64;
 	loc <<= 16;
 	loc += x * 64;
-	temp = inst->list;
-	while (temp->location != loc)
-		temp = temp->next;
-	if (temp->prev)
-		temp->prev->next = temp->next;
-	if (temp->next)
-		temp->next->prev = temp->prev;
-	free(temp);
+	del = inst->list;
+	while (del->location != loc)
+		del = del->next;
+	ft_set_link(inst, del);
 	inst->meso_cnt--;
 }

@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:59:25 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 17:49:56 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:31:41 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ static void	ft_check_element(char c, t_map *map_data, int x, int y)
 	}
 }
 
-t_map ft_check_map(char **map)
+t_map	ft_check_map(char **map)
 {
 	t_map	map_data;
-	int			len;
-	int			i;
-	int			j;
+	int		len;
+	int		i;
+	int		j;
 
 	ft_memset(&map_data, 0, sizeof(t_map));
 	len = ft_check_wall(map);
@@ -115,4 +115,3 @@ t_map ft_check_map(char **map)
 	map_data.y = i;
 	return (map_data);
 }
-

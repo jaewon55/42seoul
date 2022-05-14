@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 13:02:19 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/03/20 15:44:51 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:14:19 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_bzero(void *s, size_t n)
 {
 	size_t			i;

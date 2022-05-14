@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 16:45:10 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/11/26 19:54:54 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:15:39 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 static void	ft_strcpy(char *dst, char *src)
 {
 	size_t	i;

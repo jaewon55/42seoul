@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 20:37:39 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 21:14:32 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:05:50 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 static int	ft_close(t_mlx_inst *inst)
 {
 	ft_del_map(inst->map);
+	ft_del_inst(inst);
 	mlx_destroy_window(inst->mlx, inst->win);
-	exit(1);
+	exit(0);
 	return (1);
 }
 
@@ -35,24 +36,14 @@ static int	ft_keyhook(int keycode, t_mlx_inst *inst)
 	return (1);
 }
 
-void	ft_play_game(t_map data)
+void	ft_play_game(t_map map_data)
 {
 	t_mlx_inst	inst;
 
-	if (data.x > 39 || data.y > 21)
+	if (map_data.x > 39 || map_data.y > 21)
 		ft_error();
-	inst.list = data.list;
-	inst.p_loc = data.p_loc;
-	inst.key = -1;
-	inst.meso_cnt = data.c;
-	inst.motion = 1;
-	inst.cnt_loc = data.y * 64;
-	inst.move_cnt = 0;
-	inst.map = data.map;
-	inst.mlx = mlx_init();
-	inst.win = mlx_new_window(inst.mlx, 64 * data.x, 64 * data.y, "so_long");
-	ft_inst_img(&inst);
-	ft_create_map(inst, data);
+	inst = ft_get_inst(map_data);
+	ft_create_map(inst, map_data);
 	mlx_hook(inst.win, X_DESTROY, 0, ft_close, &inst);
 	mlx_key_hook(inst.win, ft_keyhook, &inst);
 	mlx_loop_hook(inst.mlx, ft_loop, &inst);

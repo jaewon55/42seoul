@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/22 16:42:32 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/05/14 20:44:04 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/05/15 02:40:57 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,11 @@ SRC = ./src/main.c ./src/ft_check_map.c ./src/ft_error.c\
 	  ./src/ft_put_escape.c ./src/ft_put_mush.c src/ft_del_map.c\
 	  ./src/ft_mush_right.c ./src/ft_check_movable.c ./src/ft_mush_left.c\
 	  ./src/ft_collect.c ./src/ft_mush_down.c ./src/ft_mush_up.c\
-	  ./src/ft_mush_dead.c ./src/ft_game_clear.c
+	  ./src/ft_mush_dead.c ./src/ft_game_clear.c ./src/ft_del_inst.c\
+	  ./src/ft_get_inst.c
 
-# SRC = test.c
-
+# -L [디렉토리] : 라이브러리를 찾을 디렉토리 지정
+# -l : 같이 링크할 라이브러리를 지정한다.
 OBJ = $(SRC:.c=.o)
 
 CFLAG = -Wall -Wextra -Werror
@@ -36,8 +37,8 @@ CFLAG = -Wall -Wextra -Werror
 all : $(NAME)
 
 clean :
-# @$(MAKE) -s -C $(LIBFT_PATH) fclean
-# @$(MAKE) -s -C mlx clean
+	@$(MAKE) -s -C $(LIBFT_PATH) fclean
+	@$(MAKE) -s -C mlx clean
 	@rm -f $(OBJ)
 
 fclean : clean
@@ -49,11 +50,9 @@ $(LIBFT) :
 	@$(MAKE) -s -C $(LIBFT_PATH) all
 
 $(NAME) : $(OBJ) $(LIBFT)
-# @$(MAKE) -s -C mlx all
+	@$(MAKE) -s -C mlx all
 	@$(CC) $(CFLAG) -L ./mlx -lmlx -framework OpenGL \
 		-framework Appkit $(OBJ) $(LIBFT) -o $(NAME)
-# -L [디렉토리] : 라이브러리를 찾을 디렉토리 지정
-# -l : 같이 링크할 라이브러리를 지정한다.
 %.o : %.c
 	@$(CC) -I $(INCLUDE) -c $^ -o $(^:.c=.o)
 

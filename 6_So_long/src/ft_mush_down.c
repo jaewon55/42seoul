@@ -6,11 +6,12 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 00:03:11 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 19:57:18 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 01:14:50 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "stdio.h"
 
 static void	ft_jump_motion(t_mlx_inst *inst, int *loc)
 {
@@ -30,6 +31,7 @@ static void	ft_put_motion(t_mlx_inst *inst, void *img, int *loc)
 	{
 		inst->motion = 1;
 		inst->key = -1;
+		printf("move count\t:\t%d\n", inst->move_cnt);
 		if (inst->map[loc[Y] / 64][loc[X] / 64] == 'X')
 			inst->key = DEAD;
 		if (inst->map[loc[Y] / 64][loc[X] / 64] == 'E')

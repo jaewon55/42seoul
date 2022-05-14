@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 00:10:17 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 19:57:34 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 01:15:54 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	ft_put_motion(t_mlx_inst *inst, void *img, int *loc)
 	{
 		inst->motion = 1;
 		inst->key = -1;
+		printf("move count\t:\t%d\n", inst->move_cnt);
 		if (inst->map[loc[Y] / 64][loc[X] / 64] == 'X')
 			inst->key = DEAD;
 		if (inst->map[loc[Y] / 64][loc[X] / 64] == 'E')
