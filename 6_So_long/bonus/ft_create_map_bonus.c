@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_map.c                                    :+:      :+:    :+:   */
+/*   ft_create_map_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 22:08:56 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 15:35:03 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:48:43 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static char	*fill_map(t_mlx_inst inst, char *map_line, int *location)
 {
@@ -18,20 +18,13 @@ static char	*fill_map(t_mlx_inst inst, char *map_line, int *location)
 		ft_put_img(inst, inst.wall, location);
 	else if (*map_line == '0')
 		ft_put_img(inst, inst.space, location);
-	else if (*map_line == 'C')
-		ft_put_img(inst, inst.meso, location);
-	else if (*map_line == 'E')
-		ft_put_img(inst, inst.escape, location);
-	else if (*map_line == 'P')
-	{
-		ft_put_img(inst, inst.space, location);
-		ft_put_img(inst, inst.mush, location);
-	}
+	else if (*map_line == 'X')
+		ft_put_img(inst, inst.enemy, location);
 	location[X] += 64;
 	return (++map_line);
 }
 
-void	ft_create_map(t_mlx_inst inst, t_map data)
+void	ft_create_map_b(t_mlx_inst inst, t_map data)
 {
 	int		location[2];
 	char	*map_line;

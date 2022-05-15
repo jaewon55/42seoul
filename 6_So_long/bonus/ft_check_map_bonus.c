@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map.c                                     :+:      :+:    :+:   */
+/*   ft_check_map_b.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 23:59:25 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 15:35:20 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:16:21 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include "libft.h"
 
 static int	ft_check_wall(char	**map)
@@ -34,6 +34,39 @@ static int	ft_check_wall(char	**map)
 	return (len);
 }
 
+static void	ft_linking_list(t_map *map, t_ele *new)
+{
+	if (!map->list)
+	{
+		new->next = NULL;
+		new->prev = NULL;
+		map->list = new;
+		return ;
+	}
+	new->next = map->list;
+	new->prev = NULL;
+	map->list->prev = new;
+	map->list = new;
+}
+
+static void	ft_add_list(char c, t_map *map_data, int x, int y)
+{
+	t_ele	*new;
+
+	new = malloc(sizeof(t_ele));
+	if (!new)
+		ft_error(NULL);
+	new->c = c;
+	new->location = y * 64;
+	new->location <<= 16;
+	new->location += x * 64;
+	if (c == 'C')
+		new->status = 1;
+	else
+		new->status = 0;
+	ft_linking_list(map_data, new);
+}
+
 static void	ft_check_element(char c, t_map *map_data, int x, int y)
 {
 	if (c == 'P')
@@ -42,19 +75,22 @@ static void	ft_check_element(char c, t_map *map_data, int x, int y)
 		map_data->e++;
 	else if (c == 'C')
 		map_data->c++;
-	else if (c != '0' && c != '1')
-		ft_error("The map must be composed of only 5 possible characters\n");
+	else if (c != '0' && c != '1' && c != 'X')
+		ft_error("The map must be composed of only 6 possible characters\n");
 	if (map_data->p > 1)
 		ft_error("Too many starting position\n");
+	if (c == 'E' || c == 'C')
+		ft_add_list(c, map_data, x, y);
 	else if (c == 'P')
 	{
+		map_data->map[y][x] = '0';
 		map_data->p_loc = y * 64;
 		map_data->p_loc <<= 16;
 		map_data->p_loc += x * 64;
 	}
 }
 
-t_map	ft_check_map(char **map)
+t_map	ft_check_map_b(char **map)
 {
 	t_map	map_data;
 	int		len;

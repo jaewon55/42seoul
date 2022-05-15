@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_inst_img.c                                      :+:      :+:    :+:   */
+/*   ft_put_escape.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 13:47:51 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 15:16:08 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/13 18:40:19 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/15 13:56:38 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include "mlx.h"
+#include "so_long_bonus.h"
 
-void	ft_inst_img(t_mlx_inst	*inst)
+void	ft_put_escape(t_mlx_inst *inst, t_ele *ele)
 {
-	int	a;
-	int	b;
+	int	location[2];
 
-	inst->space = mlx_xpm_file_to_image(inst->mlx, SPACE, &a, &b);
-	inst->wall = mlx_xpm_file_to_image(inst->mlx, WALL, &a, &b);
-	inst->meso = mlx_xpm_file_to_image(inst->mlx, MESO, &a, &b);
-	inst->mush = mlx_xpm_file_to_image(inst->mlx, MUSH, &a, &b);
-	inst->escape = mlx_xpm_file_to_image(inst->mlx, ESCAPE, &a, &b);
+	location[X] = (short)ele->location;
+	location[Y] = ele->location >> 16;
+	if (!inst->meso_cnt)
+		ft_put_img(*inst, inst->escape2, location);
+	else
+		ft_put_img(*inst, inst->escape1, location);
 }

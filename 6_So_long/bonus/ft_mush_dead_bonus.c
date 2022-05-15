@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mush_dead.c                                     :+:      :+:    :+:   */
+/*   ft_mush_dead_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:20:17 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 20:56:17 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:54:07 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include "mlx.h"
+#include <stdio.h>
 
 void	ft_mush_dead(t_mlx_inst *inst, int *loc)
 {
@@ -32,5 +33,5 @@ void	ft_mush_dead(t_mlx_inst *inst, int *loc)
 	mlx_do_sync(inst->mlx);
 	mlx_do_sync(inst->mlx);
 	if (inst->motion++ == 6)
-		printf("you dead\npress \"space\" to exit\n");
+		printf("you are dead\npress \"space\" to exit\n");
 }

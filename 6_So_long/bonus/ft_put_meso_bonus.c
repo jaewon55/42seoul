@@ -6,11 +6,11 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:10:26 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 01:43:28 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:56:30 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_put_meso(t_mlx_inst *inst, t_ele *ele)
 {

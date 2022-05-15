@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_map.c                                       :+:      :+:    :+:   */
+/*   ft_put_img.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:49:54 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 02:29:41 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/09 20:44:12 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/15 15:28:30 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "so_long.h"
+#include "mlx.h"
 
-void	ft_del_map(char **map)
+void	ft_put_img(t_mlx_inst inst, void *img, int *location)
 {
-	int	i;
-
-	i = -1;
-	while (map[++i])
-		free(map[i]);
-	free(map);
+	if (!img)
+		return ;
+	mlx_put_image_to_window(inst.mlx, inst.win, img, location[X], location[Y]);
 }

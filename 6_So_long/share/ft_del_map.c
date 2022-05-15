@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_del_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/08 16:20:11 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/08 16:21:11 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/13 18:49:54 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/15 13:36:15 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-#include <unistd.h>
 #include <stdlib.h>
 
-void	ft_error(void)
+void	ft_del_map(char **map)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	int	i;
+
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	free(map);
 }

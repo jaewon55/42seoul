@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_collect.c                                       :+:      :+:    :+:   */
+/*   ft_collect_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 23:37:36 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 02:04:24 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:43:58 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <stdlib.h>
 
 static void	ft_set_link(t_mlx_inst *inst, t_ele *del)
@@ -24,7 +24,7 @@ static void	ft_set_link(t_mlx_inst *inst, t_ele *del)
 	free(del);
 }
 
-void	ft_collect(t_mlx_inst *inst, int x, int y)
+void	ft_collect_b(t_mlx_inst *inst, int x, int y)
 {
 	int		loc;
 	t_ele	*del;

@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_movable.c                                 :+:      :+:    :+:   */
+/*   ft_check_movable_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 21:21:02 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 15:46:50 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:43:11 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <stdlib.h>
-
-static void	ft_collect(t_mlx_inst *inst, int *next_loc)
-{
-	inst->map[next_loc[Y]][next_loc[X]] = '0';
-	inst->meso_cnt--;
-}
 
 static int	*get_next_loc(int keycode, int x, int y)
 {
@@ -45,7 +39,7 @@ static int	*get_next_loc(int keycode, int x, int y)
 	return (next_loc);
 }
 
-int	ft_check_movable(int keycode, t_mlx_inst *inst)
+void	ft_check_movable_b(int keycode, t_mlx_inst *inst)
 {
 	int	*next_loc;
 	int	x;
@@ -57,17 +51,16 @@ int	ft_check_movable(int keycode, t_mlx_inst *inst)
 	if (inst->map[next_loc[Y]][next_loc[X]] == '1')
 	{
 		free(next_loc);
-		return (0);
+		return ;
 	}
 	else if (inst->map[next_loc[Y]][next_loc[X]] == 'E' && inst->meso_cnt)
 	{
 		free(next_loc);
-		return (0);
+		return ;
 	}
 	else if (inst->map[next_loc[Y]][next_loc[X]] == 'C')
-		ft_collect(inst, next_loc);
+		ft_collect_b(inst, next_loc[X], next_loc[Y]);
 	inst->key = keycode;
 	inst->move_cnt++;
 	free(next_loc);
-	return (1);
 }

@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_inst_img.c                                      :+:      :+:    :+:   */
+/*   ft_game_clear_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 13:47:51 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 15:16:08 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/14 20:03:02 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/15 14:13:34 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include "mlx.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-void	ft_inst_img(t_mlx_inst	*inst)
+void	ft_game_clear(t_mlx_inst *inst)
 {
-	int	a;
-	int	b;
-
-	inst->space = mlx_xpm_file_to_image(inst->mlx, SPACE, &a, &b);
-	inst->wall = mlx_xpm_file_to_image(inst->mlx, WALL, &a, &b);
-	inst->meso = mlx_xpm_file_to_image(inst->mlx, MESO, &a, &b);
-	inst->mush = mlx_xpm_file_to_image(inst->mlx, MUSH, &a, &b);
-	inst->escape = mlx_xpm_file_to_image(inst->mlx, ESCAPE, &a, &b);
+	printf("-----Game Clear-----\n");
+	printf("move count : %d\n", inst->move_cnt);
+	ft_del_map(inst->map);
+	ft_del_inst_b(inst);
+	mlx_destroy_window(inst->mlx, inst->win);
+	exit(0);
 }

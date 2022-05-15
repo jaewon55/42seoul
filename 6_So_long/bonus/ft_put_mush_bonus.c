@@ -6,11 +6,11 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:31:08 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/14 19:37:18 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/05/15 13:56:26 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_put_mush(t_mlx_inst *inst)
 {

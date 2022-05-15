@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_escape.c                                    :+:      :+:    :+:   */
+/*   ft_check_map_file_extension.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 18:40:19 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/05/15 01:45:19 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/05/15 12:30:58 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/05/15 13:09:35 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-void	ft_put_escape(t_mlx_inst *inst, t_ele *ele)
+int	ft_check_map_file_extension(char *file)
 {
-	int	location[2];
+	int	i;
 
-	location[X] = (short)ele->location;
-	location[Y] = ele->location >> 16;
-	if (!inst->meso_cnt)
-		ft_put_img(*inst, inst->escape2, location);
-	else
-		ft_put_img(*inst, inst->escape1, location);
+	i = -1;
+	while (file[++i] != '.')
+		;
+	if (file[++i] != 'b')
+		return (0);
+	if (file[++i] != 'e')
+		return (0);
+	if (file[++i] != 'r')
+		return (0);
+	if (file[++i] != '\0')
+		return (0);
+	return (1);
 }
