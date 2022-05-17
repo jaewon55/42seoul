@@ -3,10 +3,5 @@
 
 int main(void)
 {
-	int a;
-	int b;
-	int c;
-
-	c = 10;
-	a = b = c;
+	printf("%d\n", 33 * 64);
 }
