@@ -29,7 +29,7 @@ int pushHeap(t_heap *heap, t_heapNode heapNode)
         return (FALSE);
     heap->currentElementCount += 1;
     i = heap->currentElementCount;
-    while ((i != 1) && (heap->compare(heapNode.data, heap->arrayHeap[i/2]->data)))
+    while ((i != 1) && (heap->compare(heapNode.data, heap->arrayHeap[i/2].data)))
     {
         heap->arrayHeap[i] = heap->arrayHeap[i/2];
         i = i / 2;
@@ -46,7 +46,7 @@ t_heapNode  popHeap(t_heap *heap)
     int         child;
 
     if (heap == NULL || isHeapEmpty(heap))
-        return (FALSE);
+        return (result);
     result = heap->arrayHeap[1];
     temp = heap->arrayHeap[heap->currentElementCount];
     heap->currentElementCount -= 1;
@@ -57,9 +57,9 @@ t_heapNode  popHeap(t_heap *heap)
         if ((child < heap->currentElementCount)\
         && heap->compare(heap->arrayHeap[child + 1].data, heap->arrayHeap[child].data))
             child = child + 1;
-        if (!heap->compare(heap->arrayHeap[child].data, temp->data))
+        if (!heap->compare(heap->arrayHeap[child].data, temp.data))
             break;
-        heap->arrayHeap[parent] = heap->arrayHeap[child]
+        heap->arrayHeap[parent] = heap->arrayHeap[child];
         parent = child;
         child = child * 2;
     }
@@ -76,9 +76,9 @@ void        deleteHeap(t_heap **heap)
 {
     if (*heap == NULL)
         return ;
-    free(*heap->arrayHeap);
+    free((*heap)->arrayHeap);
     free(*heap);
-    *heap == NULL;
+    *heap = NULL;
 }
 
 int         isHeapFull(t_heap *heap)
@@ -95,7 +95,7 @@ int         isFullBinTree(t_heap *heap)
 {
     int i = 2;
 
-    while (i - 1 < heap->currentElementCount)
+    while (i - 1 <= heap->currentElementCount)
     {
         if (i - 1 == heap->currentElementCount)
             return (TRUE);
@@ -114,8 +114,36 @@ int         minHeapCompare(char data1, char data2)
     return (data1 < data2);
 }
 
+void    displayHeap(t_heap  *heap)
+{
+    for(int i = 1; i <= heap->currentElementCount; i++)
+    {
+        printf("%c ", heap->arrayHeap[i].data);
+    }
+    printf("\n");
+}
+
 int main(void)
 {
-
+    t_heap  *maxHeap = createHeap(7, minHeapCompare);
+    pushHeap(maxHeap, (t_heapNode){'7'});
+    pushHeap(maxHeap, (t_heapNode){'6'});
+    pushHeap(maxHeap, (t_heapNode){'5'});
+    pushHeap(maxHeap, (t_heapNode){'4'});
+    pushHeap(maxHeap, (t_heapNode){'3'});
+    pushHeap(maxHeap, (t_heapNode){'2'});
+    pushHeap(maxHeap, (t_heapNode){'1'});
+    displayHeap(maxHeap);
+    printf("isFull : %d\n", isHeapFull(maxHeap));
+    printf("isFullBinTree : %d\n", isFullBinTree(maxHeap));
+    printf("peek : %c\n", peekHeap(maxHeap).data);
+    displayHeap(maxHeap);
+    printf("pop : %c\n", popHeap(maxHeap).data);
+    displayHeap(maxHeap);
+    printf("isFullBinTree : %d\n", isFullBinTree(maxHeap));
+    deleteHeap(&maxHeap);
+    if (!maxHeap)
+        printf("good\n");
+    system("leaks a.out");
     return (0);
 }
