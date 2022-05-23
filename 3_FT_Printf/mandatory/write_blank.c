@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   write_blank.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 15:51:15 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/12/24 14:10:57 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/07 16:48:07 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:33:17 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "ft_printf.h"
+int	write_blank(char blank, int n)
+{
+	int	result;
+	int	temp;
 
-# include "./../libft/libft.h"
-
-#endif
+	result = 0;
+	while (result > -1 && n > 0)
+	{
+		temp = write(1, &blank, 1);
+		if (temp < 0)
+			return (-1);
+		n--;
+		result++;
+	}
+	return (result);
+}

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: jaewchoi <jaewchoi@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:06:05 by jaewchoi          #+#    #+#             */
 /*   Updated: 2022/01/10 15:06:06 by jaewchoi         ###   ########.fr       */

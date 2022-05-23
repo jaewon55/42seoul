@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/19 17:54:16 by jaewchoi          #+#    #+#             */
-/*   Updated: 2021/12/27 02:50:55 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/01/09 19:30:56 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/01/09 19:31:23 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			handling_conversion(format, ap, &result);
+			handling_conversion(format, ap, &result, i);
 			format += (f_len(&format[i]) + (sizeof(char) * i) + sizeof(char));
 			i = 0;
 			continue ;

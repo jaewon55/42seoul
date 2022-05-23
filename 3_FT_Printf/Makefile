@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/19 13:18:08 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/03/08 16:31:51 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/01/13 17:24:12 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,14 @@ NAME = libftprintf.a
 
 LIBFT = libft.a
 
-SRC = ./mandatory/ft_printf.c ./mandatory/handling_conversion.c\
-	  ./mandatory/write_char.c ./mandatory/write_nbr.c ./mandatory/write_str.c\
-	  ./mandatory/ft_putnstr.c
+SRC = ./mandatory/ft_printf.c ./mandatory/check_error.c\
+	  ./mandatory/get_precision.c ./mandatory/get_width.c\
+	  ./mandatory/handling_conversion.c ./mandatory/handling_char.c\
+	  ./mandatory/handling_int.c ./mandatory/handling_uint.c\
+	  ./mandatory/handling_ptr.c ./mandatory/handling_str.c\
+	  ./mandatory/nbr_len.c	./mandatory/write_blank.c\
+	  ./mandatory/write_char.c ./mandatory/write_nbr.c\
+	  ./mandatory/write_str.c ./mandatory/ft_putnstr.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -42,11 +47,9 @@ CFLAG = -Wall -Wextra -Werror
 all : $(NAME)
 
 clean :
-	@$(MAKE) -C ./libft clean
 	@rm -f $(OBJ) $(BOBJ)
 
 fclean : clean
-	@$(MAKE) -C ./libft fclean
 	@rm -f $(NAME)
 
 re : fclean all
@@ -57,6 +60,7 @@ bonus :
 $(NAME) : $(OBJECT)
 	@$(MAKE) -C ./libft bonus
 	@cp ./libft/$(LIBFT) ./$@
+	@$(MAKE) -C ./libft fclean
 	@ar rcs $@ $^
 
 %.o : %.c
