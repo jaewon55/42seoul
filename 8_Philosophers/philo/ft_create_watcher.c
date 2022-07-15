@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_start_routine.c                                 :+:      :+:    :+:   */
+/*   ft_create_watcher.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 11:16:14 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/12 12:01:00 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/07/15 16:21:12 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/15 17:57:25 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	*ft_start_routine(void *arg)
+void	ft_create_watcher(t_philo *head)
 {
-	t_share			*share;
-	unsigned long	time;
+	pthread_t	watcher;
 
-	share = arg;
-	time = 0;
-	while (share->start)
-	{
-		ft_pick_up(share, time);
-		// has taken fork
-		ft_philo_eat(share, time);
-		// is eating
-		ft_put_down(share, time);
-		// is sleeping
-		ft_philo_sleep(share, time);
-		// is thinking
-		ft_philo_think(share, time);
-	}
+	pthread_create(&watcher, NULL, ft_watcher_routine, head);
+	pthread_join(watcher, NULL);
 }

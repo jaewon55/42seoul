@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_start_philo.c                                   :+:      :+:    :+:   */
+/*   ft_ms_time_util.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 10:21:31 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/12 11:11:50 by jaewchoi         ###   ########.fr       */
+/*   Created: 2022/07/15 17:37:07 by jaewchoi          #+#    #+#             */
+/*   Updated: 2022/07/15 19:14:53 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_start_philo(t_times times, t_philo *head, t_share *share)
+long	ft_get_elapsed_time(struct timeval start)
 {
-	unsigned int	i;
+	struct timeval end;
 
-	share->start = TRUE;
-	i = 0;
-	while(1)
-	{
-		// 철학자 죽음
-		if (share->state[i++ % times.philo_count] == DIE)
-		{
-			// stop all philo
-			share->start = FALSE;
-			return ;
-		}
-	}
+	gettimeofday(&end, NULL);
+	return ((end.tv_sec - start.tv_sec) * 1000 \
+	+ (end.tv_usec - start.tv_usec) / 1000);
 }

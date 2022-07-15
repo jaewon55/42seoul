@@ -18,6 +18,8 @@
 		"mlx.h": "c",
 		"stdio.h": "c",
 		"so_long.h": "c",
-		"bintree.h": "c"
+		"bintree.h": "c",
+		"philo.h": "c",
+		"complex": "c"
 	}
 }
