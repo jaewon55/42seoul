@@ -6,7 +6,7 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 05:25:01 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/16 01:49:09 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/19 00:57:15 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ enum e_mutex
 {
 	F_ONE,
 	F_TWO,
-	EAT_COUNT,
+	OVER_EAT,
 	D_TIME
 };
 
@@ -38,15 +38,15 @@ typedef struct s_times
 	int				eat_time;
 	int				sleep_time;
 	int				eat_count;
-	pthread_mutex_t	m_run;
+	pthread_mutex_t	*m_run;
 	int				*run;
 }	t_times;
 
 typedef struct s_arg
 {
 	t_times			times;
-	pthread_mutex_t	mutex[4];
 	int				index;
+	pthread_mutex_t	*mutex[4];
 	int				over_eat;
 	struct timeval	s_time;
 	struct timeval	d_time;
@@ -56,7 +56,8 @@ typedef struct s_philo
 {
 	pthread_t		id;
 	int				index;
-	pthread_mutex_t	fork;
+	pthread_mutex_t *mutex[4];
+	pthread_mutex_t	*fork;
 	t_arg			*arg;
 	struct s_philo	*next;
 }	t_philo;
@@ -65,6 +66,7 @@ int		ft_atoi(const char *str);
 int		ft_create_arg(t_times times, t_philo *head);
 t_philo	*ft_create_philo_list(int philo_count);
 void	ft_create_philo(t_philo *head);
+int		ft_parsing_times(t_times *times, char **av);
 int		ft_argument_size_error(void);
 int		ft_argument_valid_error(t_times times);
 int		ft_share_error(t_times times);
@@ -77,7 +79,7 @@ long	ft_get_elapsed_time(struct timeval start);
 void	ft_create_watcher(t_philo *head);
 
 int		ft_run_state(t_times time);
-void	ft_set_time(pthread_mutex_t mut, struct timeval *time);
+void	ft_set_time(pthread_mutex_t *mut, struct timeval *time);
 void	ft_set_eat_count(t_arg *arg, int *count);
 
 int		ft_take_fork(t_arg *arg, int f_num);

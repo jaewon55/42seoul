@@ -6,7 +6,7 @@
 #    By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/15 14:39:32 by jaewchoi          #+#    #+#              #
-#    Updated: 2022/07/16 01:57:22 by jaewchoi         ###   ########.fr        #
+#    Updated: 2022/07/19 01:02:49 by jaewchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC = ./ft_atoi.c ./ft_create_arg.c ./ft_create_philo_list.c \
 	  ./ft_create_philo.c ./ft_error_util.c ./ft_lst_util.c \
 	  ./ft_philo_routine.c ./philo.c ./ft_create_watcher.c \
 	  ./ft_ms_time_util.c ./ft_mutex_util.c ./ft_odd_philo_routine.c \
-	  ./ft_philo_action.c ./ft_watcher_routine.c
+	  ./ft_philo_action.c ./ft_watcher_routine.c ./ft_parsing_times.c
 
 OBJ = $(SRC:.c=.o)
 

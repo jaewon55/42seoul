@@ -6,13 +6,13 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 16:23:28 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/16 02:24:13 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/19 02:11:01 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <unistd.h>
-
+#include <stdio.h>//
 static int	ft_die_check(t_times time, struct timeval d_time)
 {
 	long	elapsed_time;
@@ -29,26 +29,26 @@ void	*ft_watcher_routine(void *v_arg)
 	int		stop;
 
 	*(((t_philo *)v_arg)->arg->times.run) = TRUE;
-	usleep(100);
+	usleep(200 * ((t_philo *)v_arg)->arg->times.philo_count);
 	stop = FALSE;
 	while (!stop)
 	{
 		philo = v_arg;
 		while (!stop && philo)
 		{
-			pthread_mutex_lock(&philo->arg->mutex[D_TIME]);
+			pthread_mutex_lock(philo->mutex[D_TIME]);
 			if (ft_die_check(philo->arg->times, philo->arg->d_time))
 			{
 				ft_philo_die(philo->arg->s_time, philo->index);
 				stop = TRUE;
 				*(((t_philo *)v_arg)->arg->times.run) = FALSE;
-				usleep(100);
+				usleep(200);
 				return (NULL);
 			}
-			pthread_mutex_unlock(&philo->arg->mutex[D_TIME]);
+			pthread_mutex_unlock(philo->mutex[D_TIME]);
 			philo = philo->next;
 		}
-		usleep(100);
+		usleep(200);
 	}
 	return (NULL);
 }

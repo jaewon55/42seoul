@@ -6,38 +6,11 @@
 /*   By: jaewchoi <jaewchoi@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 05:25:53 by jaewchoi          #+#    #+#             */
-/*   Updated: 2022/07/16 02:11:09 by jaewchoi         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:08:33 by jaewchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-#include <stdio.h>
-#include <unistd.h>
-
-static int	ft_parsing_times(t_times *times, char **av)
-{
-	int	start;
-
-	times->philo_count = ft_atoi(av[1]);
-	times->die_time = ft_atoi(av[2]);
-	times->eat_time = ft_atoi(av[3]);
-	times->sleep_time = ft_atoi(av[4]);
-	start = FALSE;
-	times->run = &start;
-	pthread_mutex_init(&times->m_run, NULL);
-	if (times->philo_count <= 0 || times->die_time < 0 \
-	|| times->eat_time < 0 || times->sleep_time < 0)
-		return (FALSE);
-	if (av[5])
-	{
-		times->eat_count = ft_atoi(av[5]);
-		if (times->eat_count < 0)
-			return (FALSE);
-	}
-	else
-		times->eat_count = -1;
-	return (TRUE);
-}
 
 int	main(int ac, char **av)
 {
